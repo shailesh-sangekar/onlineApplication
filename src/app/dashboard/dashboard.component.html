@@ -1,0 +1,463 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+    <!-- BEGIN: Subheader -->
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="m-subheader__title ">Dashboard</h3>
+            </div>
+            <div>
+                <span class="m-subheader__daterange" id="m_dashboard_daterangepicker">
+					<span class="m-subheader__daterange-label">
+						<span class="m-subheader__daterange-title">Today:</span>
+                <span class="m-subheader__daterange-date m--font-brand">Jul 17</span>
+                </span>
+                <a href="#" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
+						<i class="fa fa-angle-down"></i>
+					</a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- END: Subheader -->
+    <div class="m-content">
+
+        <!--Begin::Section-->
+        <div class="m-portlet">
+            <div class="m-portlet__body  m-portlet__body--no-padding">
+                <div class="row m-row--no-padding m-row--col-separator-xl">
+                    <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
+                        <!--begin:: Widgets/Profit Share-->
+                        <div class="m-widget14">
+                            <div class="m-widget14__header">
+                                <h3 class="m-widget14__title">
+                                    Transport
+                                </h3>
+                                <!-- <span class="m-widget14__desc">
+		                            Profit Share between customers
+		                        </span> -->
+                            </div>
+                            <div class="row  align-items-center">
+                                <div class="col">
+                                    <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+                                        <div class="m-widget14__stat">45</div>
+                                        <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
+                                            <g class="ct-series custom">
+                                                <path d="M96.747,98.608A43.703,43.703,0,0,0,57.203,36.297" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="87.8716049194336px 87.8716049194336px"
+                                                    stroke-dashoffset="-87.8716049194336px" stroke="#716aca">
+                                                    <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-87.8716049194336px"
+                                                        to="0px" fill="freeze" stroke="#716aca" calcMode="spline" keySplines="0.23 1 0.32 1"
+                                                        keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M23.529,107.857A43.703,43.703,0,0,0,96.812,98.47" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="88.0250473022461px 88.0250473022461px"
+                                                    stroke-dashoffset="-88.0250473022461px" stroke="#00c5dc">
+                                                    <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-88.0250473022461px"
+                                                        to="0px" fill="freeze" stroke="#00c5dc" begin="anim0.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M57.203,36.297A43.703,43.703,0,0,0,23.627,107.975" class="ct-slice-donut"
+                                                    ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="99.0086898803711px 99.0086898803711px"
+                                                    stroke-dashoffset="-99.0086898803711px" stroke="#ffb822">
+                                                    <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-99.0086898803711px"
+                                                        to="0px" fill="freeze" stroke="#ffb822" begin="anim1.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="m-widget14__legends">
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-accent"></span>
+                                            <span class="m-widget14__legend-text">37% Pending</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-warning"></span>
+                                            <span class="m-widget14__legend-text">47% Approved</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-brand"></span>
+                                            <span class="m-widget14__legend-text">19% Rejected</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end:: Widgets/Profit Share-->
+                    </div>
+
+                    <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
+                        <!--begin:: Widgets/Profit Share-->
+                        <div class="m-widget14">
+                            <div class="m-widget14__header">
+                                <h3 class="m-widget14__title">
+                                    Passport
+                                </h3>
+                                <!-- <span class="m-widget14__desc">
+		                            Profit Share between customers
+		                        </span> -->
+                            </div>
+                            <div class="row  align-items-center">
+                                <div class="col">
+                                    <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+                                        <div class="m-widget14__stat">45</div>
+                                        <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
+                                            <g class="ct-series custom">
+                                                <path d="M96.747,98.608A43.703,43.703,0,0,0,57.203,36.297" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="87.8716049194336px 87.8716049194336px"
+                                                    stroke-dashoffset="-87.8716049194336px" stroke="#716aca">
+                                                    <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-87.8716049194336px"
+                                                        to="0px" fill="freeze" stroke="#716aca" calcMode="spline" keySplines="0.23 1 0.32 1"
+                                                        keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M23.529,107.857A43.703,43.703,0,0,0,96.812,98.47" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="88.0250473022461px 88.0250473022461px"
+                                                    stroke-dashoffset="-88.0250473022461px" stroke="#00c5dc">
+                                                    <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-88.0250473022461px"
+                                                        to="0px" fill="freeze" stroke="#00c5dc" begin="anim0.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M57.203,36.297A43.703,43.703,0,0,0,23.627,107.975" class="ct-slice-donut"
+                                                    ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="99.0086898803711px 99.0086898803711px"
+                                                    stroke-dashoffset="-99.0086898803711px" stroke="#ffb822">
+                                                    <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-99.0086898803711px"
+                                                        to="0px" fill="freeze" stroke="#ffb822" begin="anim1.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="m-widget14__legends">
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-accent"></span>
+                                            <span class="m-widget14__legend-text">37% Pending</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-warning"></span>
+                                            <span class="m-widget14__legend-text">47% Approved</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-brand"></span>
+                                            <span class="m-widget14__legend-text">19% Rejected</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end:: Widgets/Profit Share-->
+                    </div>
+                    
+                    <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
+                        <!--begin:: Widgets/Profit Share-->
+                        <div class="m-widget14">
+                            <div class="m-widget14__header">
+                                <h3 class="m-widget14__title">
+                                    Driving Licence
+                                </h3>
+                                <!-- <span class="m-widget14__desc">
+		                            Profit Share between customers
+		                        </span> -->
+                            </div>
+                            <div class="row  align-items-center">
+                                <div class="col">
+                                    <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+                                        <div class="m-widget14__stat">45</div>
+                                        <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
+                                            <g class="ct-series custom">
+                                                <path d="M96.747,98.608A43.703,43.703,0,0,0,57.203,36.297" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="87.8716049194336px 87.8716049194336px"
+                                                    stroke-dashoffset="-87.8716049194336px" stroke="#716aca">
+                                                    <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-87.8716049194336px"
+                                                        to="0px" fill="freeze" stroke="#716aca" calcMode="spline" keySplines="0.23 1 0.32 1"
+                                                        keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M23.529,107.857A43.703,43.703,0,0,0,96.812,98.47" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="88.0250473022461px 88.0250473022461px"
+                                                    stroke-dashoffset="-88.0250473022461px" stroke="#00c5dc">
+                                                    <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-88.0250473022461px"
+                                                        to="0px" fill="freeze" stroke="#00c5dc" begin="anim0.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M57.203,36.297A43.703,43.703,0,0,0,23.627,107.975" class="ct-slice-donut"
+                                                    ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="99.0086898803711px 99.0086898803711px"
+                                                    stroke-dashoffset="-99.0086898803711px" stroke="#ffb822">
+                                                    <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-99.0086898803711px"
+                                                        to="0px" fill="freeze" stroke="#ffb822" begin="anim1.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="m-widget14__legends">
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-accent"></span>
+                                            <span class="m-widget14__legend-text">37% Pending</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-warning"></span>
+                                            <span class="m-widget14__legend-text">47% Approved</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-brand"></span>
+                                            <span class="m-widget14__legend-text">19% Rejected</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end:: Widgets/Profit Share-->
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="m-portlet">
+            <div class="m-portlet__body  m-portlet__body--no-padding">
+                <div class="row m-row--no-padding m-row--col-separator-xl">
+                    <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
+                        <!--begin:: Widgets/Profit Share-->
+                        <div class="m-widget14">
+                            <div class="m-widget14__header">
+                                <h3 class="m-widget14__title">
+                                    PAN Card
+                                </h3>
+                                <!-- <span class="m-widget14__desc">
+		                            Profit Share between customers
+		                        </span> -->
+                            </div>
+                            <div class="row  align-items-center">
+                                <div class="col">
+                                    <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+                                        <div class="m-widget14__stat">45</div>
+                                        <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
+                                            <g class="ct-series custom">
+                                                <path d="M96.747,98.608A43.703,43.703,0,0,0,57.203,36.297" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="87.8716049194336px 87.8716049194336px"
+                                                    stroke-dashoffset="-87.8716049194336px" stroke="#716aca">
+                                                    <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-87.8716049194336px"
+                                                        to="0px" fill="freeze" stroke="#716aca" calcMode="spline" keySplines="0.23 1 0.32 1"
+                                                        keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M23.529,107.857A43.703,43.703,0,0,0,96.812,98.47" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="88.0250473022461px 88.0250473022461px"
+                                                    stroke-dashoffset="-88.0250473022461px" stroke="#00c5dc">
+                                                    <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-88.0250473022461px"
+                                                        to="0px" fill="freeze" stroke="#00c5dc" begin="anim0.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M57.203,36.297A43.703,43.703,0,0,0,23.627,107.975" class="ct-slice-donut"
+                                                    ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="99.0086898803711px 99.0086898803711px"
+                                                    stroke-dashoffset="-99.0086898803711px" stroke="#ffb822">
+                                                    <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-99.0086898803711px"
+                                                        to="0px" fill="freeze" stroke="#ffb822" begin="anim1.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="m-widget14__legends">
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-accent"></span>
+                                            <span class="m-widget14__legend-text">37% Sport Tickets</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-warning"></span>
+                                            <span class="m-widget14__legend-text">47% Business Events</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-brand"></span>
+                                            <span class="m-widget14__legend-text">19% Others</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end:: Widgets/Profit Share-->
+                    </div>
+
+                    <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
+                        <!--begin:: Widgets/Profit Share-->
+                        <div class="m-widget14">
+                            <div class="m-widget14__header">
+                                <h3 class="m-widget14__title">
+                                    Profit Share
+                                </h3>
+                                <span class="m-widget14__desc">
+		                            Profit Share between customers
+		                        </span>
+                            </div>
+                            <div class="row  align-items-center">
+                                <div class="col">
+                                    <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+                                        <div class="m-widget14__stat">45</div>
+                                        <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
+                                            <g class="ct-series custom">
+                                                <path d="M96.747,98.608A43.703,43.703,0,0,0,57.203,36.297" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="87.8716049194336px 87.8716049194336px"
+                                                    stroke-dashoffset="-87.8716049194336px" stroke="#716aca">
+                                                    <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-87.8716049194336px"
+                                                        to="0px" fill="freeze" stroke="#716aca" calcMode="spline" keySplines="0.23 1 0.32 1"
+                                                        keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M23.529,107.857A43.703,43.703,0,0,0,96.812,98.47" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="88.0250473022461px 88.0250473022461px"
+                                                    stroke-dashoffset="-88.0250473022461px" stroke="#00c5dc">
+                                                    <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-88.0250473022461px"
+                                                        to="0px" fill="freeze" stroke="#00c5dc" begin="anim0.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M57.203,36.297A43.703,43.703,0,0,0,23.627,107.975" class="ct-slice-donut"
+                                                    ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="99.0086898803711px 99.0086898803711px"
+                                                    stroke-dashoffset="-99.0086898803711px" stroke="#ffb822">
+                                                    <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-99.0086898803711px"
+                                                        to="0px" fill="freeze" stroke="#ffb822" begin="anim1.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="m-widget14__legends">
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-accent"></span>
+                                            <span class="m-widget14__legend-text">37% Sport Tickets</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-warning"></span>
+                                            <span class="m-widget14__legend-text">47% Business Events</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-brand"></span>
+                                            <span class="m-widget14__legend-text">19% Others</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end:: Widgets/Profit Share-->
+                    </div>
+                    
+                    <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
+                        <!--begin:: Widgets/Profit Share-->
+                        <div class="m-widget14">
+                            <div class="m-widget14__header">
+                                <h3 class="m-widget14__title">
+                                    Profit Share
+                                </h3>
+                                <span class="m-widget14__desc">
+		                            Profit Share between customers
+		                        </span>
+                            </div>
+                            <div class="row  align-items-center">
+                                <div class="col">
+                                    <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+                                        <div class="m-widget14__stat">45</div>
+                                        <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
+                                            <g class="ct-series custom">
+                                                <path d="M96.747,98.608A43.703,43.703,0,0,0,57.203,36.297" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="87.8716049194336px 87.8716049194336px"
+                                                    stroke-dashoffset="-87.8716049194336px" stroke="#716aca">
+                                                    <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-87.8716049194336px"
+                                                        to="0px" fill="freeze" stroke="#716aca" calcMode="spline" keySplines="0.23 1 0.32 1"
+                                                        keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M23.529,107.857A43.703,43.703,0,0,0,96.812,98.47" class="ct-slice-donut"
+                                                    ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="88.0250473022461px 88.0250473022461px"
+                                                    stroke-dashoffset="-88.0250473022461px" stroke="#00c5dc">
+                                                    <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-88.0250473022461px"
+                                                        to="0px" fill="freeze" stroke="#00c5dc" begin="anim0.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M57.203,36.297A43.703,43.703,0,0,0,23.627,107.975" class="ct-slice-donut"
+                                                    ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="99.0086898803711px 99.0086898803711px"
+                                                    stroke-dashoffset="-99.0086898803711px" stroke="#ffb822">
+                                                    <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-99.0086898803711px"
+                                                        to="0px" fill="freeze" stroke="#ffb822" begin="anim1.end" calcMode="spline"
+                                                        keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="m-widget14__legends">
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-accent"></span>
+                                            <span class="m-widget14__legend-text">37% Sport Tickets</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-warning"></span>
+                                            <span class="m-widget14__legend-text">47% Business Events</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-brand"></span>
+                                            <span class="m-widget14__legend-text">19% Others</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end:: Widgets/Profit Share-->
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+        <!--End::Section-->
+    </div>
+</div>

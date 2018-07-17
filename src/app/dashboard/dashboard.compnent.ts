@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthInfo } from '../shared/models/authInfo';
-import { AuthTokenService } from '../shared/services/authToken.service';
-import { CommonService } from '../shared/services/common.service';
-import { SpService } from '../shared/services/spcommon.service';
-import { TransportService } from '../services/transport.service';
+import { AuthInfo } from '../../shared/models/authInfo';
+import { AuthTokenService } from '../../shared/services/authToken.service';
+import { CommonService } from '../../shared/services/common.service';
+import { SpService } from '../../shared/services/spcommon.service';
+import { TransportService } from '../../services/transport.service';
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
   providers: [SpService]
 })
-export class AppComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   model: AuthInfo;
   loggedInUser: string;

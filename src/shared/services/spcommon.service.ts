@@ -44,7 +44,7 @@ export class SpService {
     login: String;
 
     constructor(private http: Http) {
-        this.setBaseUrl('');
+        this.setBaseUrl('http://espld205:2233');
     }
 
     // HTTP Error handling
@@ -82,7 +82,9 @@ export class SpService {
         }
 
         // Default to local web URL
+        // this.apiUrl = this.baseUrl + '/_api/web/lists/GetByTitle(\'{0}\')/items';
         this.apiUrl = this.baseUrl + '/_api/web/lists/GetByTitle(\'{0}\')/items';
+
 
         // Request digest
         const el = document.querySelector('#__REQUESTDIGEST');

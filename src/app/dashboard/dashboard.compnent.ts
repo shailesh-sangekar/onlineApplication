@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthInfo } from '../../shared/models/authInfo';
+import { ServiceConfig } from '../../shared/models/serviceConfig';
 import { AuthTokenService } from '../../shared/services/authToken.service';
 import { CommonService } from '../../shared/services/common.service';
 import { SpService } from '../../shared/services/spcommon.service';
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  styleUrls: ['dashboard.component.css'],
   providers: [SpService]
 })
 export class DashboardComponent implements OnInit {
@@ -20,6 +21,7 @@ export class DashboardComponent implements OnInit {
   loginName: string;
   errorMessage: string;
   loggedInUserData: any;
+  data: Array<ServiceConfig>;
 
 
   title = 'app';
@@ -28,6 +30,7 @@ export class DashboardComponent implements OnInit {
   constructor(private _commonService: CommonService, private _authTokenService: AuthTokenService,
     private _transportService: TransportService, private _spService: SpService,
     private _router: Router) {
+    this.data = new Array<ServiceConfig>();
     this.model = new AuthInfo('password', '', '');
     this._spService.baseUrl = 'http://espld205:2233/';
   }
@@ -43,11 +46,28 @@ export class DashboardComponent implements OnInit {
     this.loggedInUser = 'Ankit.panchal';
     this.loginName = 'Ankit.panchal';
 
-     this.getTransport();
+    // this.getTransport();
     // this.getAuthToken();
-    // this._spService.read('ServiceConfig').then(function (response) {
-    //   console.log(response.d.results);
-    // });
+    this.getServiceData();
+
+  }
+  getServiceData() {
+    const ctl = this;
+    this._spService.read('ServiceConfig').then(function (response) {
+      if (response.d.results !== null) {
+        const res: any = response.d.results;
+        res.forEach(element => {
+          const tempData: ServiceConfig = new ServiceConfig();
+          tempData.Title = element.Title;
+          tempData.ListName = element.ListName;
+          tempData.ServiceName = element.ServiceName;
+          tempData.Permissions = element.Permissions;
+          tempData.siteUrl = element.siteUrl;
+          ctl.data.push(tempData);
+        });
+        console.log(ctl.data);
+      }
+    });
   }
 
   getAuthToken() {
@@ -56,32 +76,32 @@ export class DashboardComponent implements OnInit {
     this.model.Password = 'Espl@123';
     this._commonService.getAuthToken(this.model)
       .subscribe(
-      (results: any) => {
+        (results: any) => {
 
-        console.log('Access grated for current user');
-        console.log(results);
-      },
-      error => {
+          console.log('Access grated for current user');
+          console.log(results);
+        },
+        error => {
 
-        this.errorMessage = <any>error;
-        // this._router.navigate(['/unauthorized', 1]);
-      });
+          this.errorMessage = <any>error;
+          // this._router.navigate(['/unauthorized', 1]);
+        });
   }
 
   getTransport() {
     console.log('from transport');
     this._transportService.getTransport()
       .subscribe(
-      (results: any) => {
+        (results: any) => {
 
-        console.log('Transport Data');
-        console.log(results);
-      },
-      error => {
-        // debugger;
-        this.errorMessage = <any>error;
-        // this._router.navigate(['/unauthorized', 1]);
-      });
+          console.log('Transport Data');
+          console.log(results);
+        },
+        error => {
+          // debugger;
+          this.errorMessage = <any>error;
+          // this._router.navigate(['/unauthorized', 1]);
+        });
   }
 
   onService(service: any, action: any, e: any) {

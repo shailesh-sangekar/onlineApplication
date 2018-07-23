@@ -1,561 +1,350 @@
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto:300,400,500,600,700"
+    media="all">
+
+
 <!-- style="margin-top: -84px;" -->
-<div class="m-grid__item m-grid__item--fluid m-wrapper" >
+<div class="m-grid__item m-grid__item--fluid m-wrapper" style="margin-top: -84px;">
 
     <!-- BEGIN: Subheader -->
     <div class="m-subheader ">
         <div class="d-flex align-items-center">
             <div class="mr-auto">
-                <h3 class="m-subheader__title ">Dashboard</h3>
+                <h3 class="m-subheader__title">Dashboard for Transport Service</h3>
             </div>
             <div>
-                <span class="m-subheader__daterange" id="m_dashboard_daterangepicker">
-					<span class="m-subheader__daterange-label">
-						<span class="m-subheader__daterange-title">Today:</span>
-                <span class="m-subheader__daterange-date m--font-brand">Jul 17</span>
-                </span>
-                <a href="#" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
-						<i class="fa fa-angle-down"></i>
-					</a>
+                <span class="m-subheader__desc" id="m_dashboard_daterangepicker">
+                    <span class="m-subheader__daterange-label">
+                        <span class="">Current Quarter :</span>
+                        <span class=""> Q2 2018</span>
+                    </span>
                 </span>
             </div>
         </div>
     </div>
-
-    <div class="row" style="margin-top:15px;">
-        <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
-            <!--begin:: Widgets/Blog-->
-            <div class="m-portlet m-portlet--head-overlay m-portlet--full-height  m-portlet--rounded-force">
-                <div class="m-portlet__head m-portlet__head--fit-">
-                    <div class="m-portlet__head-caption">
-                        <div class="m-portlet__head-title">
-                            <div class="col">
-                                <h3>Transport</h3>
+    <!--Begin: Single service section-->
+    <div class="row" style="margin-top: 25px!important;margin-left: 25px;">
+        <div class="m-portlet">
+            <div class="m-portlet__body  m-portlet__body--no-padding">
+                <div class="row m-row--no-padding m-row--col-separator-xl">
+                    <div class="col-xl-4">
+                        <!--begin:: Widgets/Stats2-1 -->
+                        <div class="m-widget1">
+                            <div class="m-widget1__item">
+                                <div class="row m-row--no-padding align-items-center">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Today's Requests</h3>
+                                        <span class="m-widget1__desc">Request added in last 24 hours</span>
+                                    </div>
+                                    <div class="col m--align-right">
+                                        <span class="m-widget1__number m--font-brand">#102</span>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- <div class="col m--align-right">
-                                        <div class="btn-group m-btn-group btn-group-sm" role="group" aria-label="...">
-                                            <button type="button" class="btn btn-accent">Pending</button>
-                                            <button type="button" class="btn btn-warning">Approved</button>
-                                            <button type="button" class="btn btn-brand">Rejected</button>
-                                        </div>
-                            </div> -->
+
+                            <div class="m-widget1__item">
+                                <div class="row m-row--no-padding align-items-center">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Closed Requests</h3>
+                                        <span class="m-widget1__desc">Requests are Completed under current quarter</span>
+                                    </div>
+                                    <div class="col m--align-right">
+                                        <span class="m-widget1__number m--font-success">#2,049</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-widget1__item">
+                                <div class="row m-row--no-padding align-items-center">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Rejected Requests</h3>
+                                        <span class="m-widget1__desc">Requests rejected after screening documents</span>
+                                    </div>
+                                    <div class="col m--align-right">
+                                        <span class="m-widget1__number m--font-danger">#640</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end:: Widgets/Stats2-1 -->
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="m-widget14">
+                            <div class="m-widget14__header m--margin-bottom-30">
+                                <h3 class="m-widget14__title">
+                                    <i class="fa fa-car"></i> Transport Actions
+                                </h3>
+                                <span class="m-widget14__desc">
+                                    Click actions button to work on specific list of requests
+                                </span>
+                            </div>
+                            <div class="m-widget14__chart" style="height:120px;">
+                                <div class="row" style="margin-top: 25px">
+                                    <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-warning m-btn m-btn--icon btn-lg m-btn--icon-only  m-btn--pill m-btn--air"
+                                        (click)="onService('Transport','Pending',$event)">
+                                        <i class="fa fa-hourglass-half"></i>
+                                    </a>
+                                    <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-success m-btn m-btn--icon btn-lg m-btn--icon-only m-btn--pill m-btn--air"
+                                        (click)="onService('Transport','Approved',$event)">
+                                        <i class="fa fa-check-square-o"></i>
+                                    </a>
+                                    <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-danger m-btn m-btn--icon btn-lg m-btn--icon-only  m-btn--pill m-btn--air"
+                                        (click)="onService('Transport','Rejected',$event)">
+                                        <i class="fa fa-window-close"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="m-portlet__body">
-                    <div class="m-widget27 m-portlet-fit--sides">
-                        <div class="m-widget27__container">
 
-                            <!-- begin::Tab Content -->
-                            <div class="m-widget27__tab tab-content m-widget27--no-padding">
-                                <div id="m_personal_income_quater_1" class="tab-pane active">
-                                    <div class="row  align-items-center">
-                                        <div class="col">
-                                            <div id="m_chart_personal_income_quater_1" class="m-widget27__chart" style="height: 160px">
-                                                
-                                                <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
-                                                    <g class="ct-series custom">
-                                                        <path d="M95.884,98.415A43.25,43.25,0,0,0,56.75,36.75" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="86.96046447753906px 86.96046447753906px"
-                                                            stroke-dashoffset="-86.96046447753906px" stroke="#00c5dc">
-                                                            <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-86.96046447753906px" to="0px" fill="freeze" stroke="#00c5dc"
-                                                                calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M23.425,107.569A43.25,43.25,0,0,0,95.948,98.278" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="87.1122055053711px 87.1122055053711px"
-                                                            stroke-dashoffset="-87.1122055053711px" stroke="#ffb822">
-                                                            <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-87.1122055053711px" to="0px" fill="freeze" stroke="#ffb822"
-                                                                begin="anim0.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M56.75,36.75A43.25,43.25,0,0,0,23.522,107.685" class="ct-slice-donut" ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="97.98243713378906px 97.98243713378906px"
-                                                            stroke-dashoffset="-97.98243713378906px" stroke="#716aca">
-                                                            <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-97.98243713378906px" to="0px" fill="freeze" stroke="#716aca"
-                                                                begin="anim1.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                </svg>
-                                            </div>
+                    <div class="col-xl-4">
+                        <!--begin:: Widgets/Profit Share-->
+                        <div class="m-widget14">
+                            <div class="m-widget14__header">
+                                <h3 class="m-widget14__title">
+                                    Requests Status
+                                </h3>
+                                <span class="m-widget14__desc">
+                                    Current Quarter Requests Status by percentage
+                                </span>
+                            </div>
+                            <div class="row  align-items-center">
+                                <div class="col">
+                                    <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+                                        <div class="m-widget14__stat">45</div>
+                                        <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
+                                            <g class="ct-series custom">
+                                                <path d="M110.393,101.658A50.867,50.867,0,0,0,64.367,29.133" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="102.27520751953125px 102.27520751953125px"
+                                                    stroke-dashoffset="-102.27520751953125px" stroke="#716aca">
+                                                    <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-102.27520751953125px" to="0px" fill="freeze" stroke="#716aca"
+                                                        calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M25.173,112.424A50.867,50.867,0,0,0,110.469,101.497" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="102.45503234863281px 102.45503234863281px"
+                                                    stroke-dashoffset="-102.45503234863281px" stroke="#00c5dc">
+                                                    <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-102.45503234863281px" to="0px" fill="freeze" stroke="#00c5dc"
+                                                        begin="anim0.end" calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M64.367,29.133A50.867,50.867,0,0,0,25.287,112.561" class="ct-slice-donut" ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="115.23920440673828px 115.23920440673828px"
+                                                    stroke-dashoffset="-115.23920440673828px" stroke="#ffb822">
+                                                    <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-115.23920440673828px" to="0px" fill="freeze" stroke="#ffb822"
+                                                        begin="anim1.end" calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="m-widget14__legends">
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-accent"></span>
+                                            <span class="m-widget14__legend-text">37% Pending</span>
                                         </div>
-                                        <div class="col">
-                                            <div class="m-widget27__legends">
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-accent"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Trasport','Pending',$event)"><h6> 37% Pending </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-warning"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Trasport','Approved',$event)"><h6> 42% Approved </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-brand"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Trasport','Rejected',$event)"><h6> 19% Rejected </h6></a></span>
-                                                </div>
-                                            </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-warning"></span>
+                                            <span class="m-widget14__legend-text">47% Inprocess</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-brand"></span>
+                                            <span class="m-widget14__legend-text">19% Completed</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end::Tab Content -->
                         </div>
+                        <!--end:: Widgets/Profit Share-->
                     </div>
                 </div>
             </div>
-            <!--end:: Widgets/Blog-->
-
-
-        </div>
-
-        <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
-            <!--begin:: Widgets/Blog-->
-            <div class="m-portlet m-portlet--head-overlay m-portlet--full-height  m-portlet--rounded-force">
-                <div class="m-portlet__head m-portlet__head--fit-">
-                    <div class="m-portlet__head-caption">
-                        <div class="m-portlet__head-title">
-                            <div class="col">
-                                <h3>Passport</h3>
-                            </div>
-                            <!-- <div class="col m--align-right">
-                                        <div class="btn-group m-btn-group btn-group-sm" role="group" aria-label="...">
-                                            <button type="button" class="btn btn-accent">Pending</button>
-                                            <button type="button" class="btn btn-warning">Approved</button>
-                                            <button type="button" class="btn btn-brand">Rejected</button>
-                                        </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="m-portlet__body">
-                    <div class="m-widget27 m-portlet-fit--sides">
-                        <div class="m-widget27__container">
-
-                            <!-- begin::Tab Content -->
-                            <div class="m-widget27__tab tab-content m-widget27--no-padding">
-                                <div id="m_personal_income_quater_2" class="tab-pane active">
-                                    <div class="row  align-items-center">
-                                        <div class="col">
-                                            <div id="m_chart_personal_income_quater_2" class="m-widget27__chart" style="height: 160px">
-                                                
-                                                <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
-                                                    <g class="ct-series custom">
-                                                        <path d="M95.884,98.415A43.25,43.25,0,0,0,56.75,36.75" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="86.96046447753906px 86.96046447753906px"
-                                                            stroke-dashoffset="-86.96046447753906px" stroke="#00c5dc">
-                                                            <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-86.96046447753906px" to="0px" fill="freeze" stroke="#00c5dc"
-                                                                calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M23.425,107.569A43.25,43.25,0,0,0,95.948,98.278" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="87.1122055053711px 87.1122055053711px"
-                                                            stroke-dashoffset="-87.1122055053711px" stroke="#ffb822">
-                                                            <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-87.1122055053711px" to="0px" fill="freeze" stroke="#ffb822"
-                                                                begin="anim0.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M56.75,36.75A43.25,43.25,0,0,0,23.522,107.685" class="ct-slice-donut" ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="97.98243713378906px 97.98243713378906px"
-                                                            stroke-dashoffset="-97.98243713378906px" stroke="#716aca">
-                                                            <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-97.98243713378906px" to="0px" fill="freeze" stroke="#716aca"
-                                                                begin="anim1.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="m-widget27__legends">
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-accent"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Passport','Pending',$event)"><h6> 37% Pending </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-warning"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Passport','Approved',$event)"><h6> 42% Approved </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-brand"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Passport','Rejected',$event)"><h6> 19% Rejected </h6></a></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end::Tab Content -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--end:: Widgets/Blog-->
-
-
-        </div>
-
-        <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
-            <!--begin:: Widgets/Blog-->
-            <div class="m-portlet m-portlet--head-overlay m-portlet--full-height  m-portlet--rounded-force">
-                <div class="m-portlet__head m-portlet__head--fit-">
-                    <div class="m-portlet__head-caption">
-                        <div class="m-portlet__head-title">
-                            <div class="col">
-                                <h3>Driving Licence</h3>
-                            </div>
-                            <!-- <div class="col m--align-right">
-                                        <div class="btn-group m-btn-group btn-group-sm" role="group" aria-label="...">
-                                            <button type="button" class="btn btn-accent">Pending</button>
-                                            <button type="button" class="btn btn-warning">Approved</button>
-                                            <button type="button" class="btn btn-brand">Rejected</button>
-                                        </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="m-portlet__body">
-                    <div class="m-widget27 m-portlet-fit--sides">
-                        <div class="m-widget27__container">
-
-                            <!-- begin::Tab Content -->
-                            <div class="m-widget27__tab tab-content m-widget27--no-padding">
-                                <div id="m_personal_income_quater_1" class="tab-pane active">
-                                    <div class="row  align-items-center">
-                                        <div class="col">
-                                            <div id="m_chart_personal_income_quater_1" class="m-widget27__chart" style="height: 160px">
-                                                
-                                                <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
-                                                    <g class="ct-series custom">
-                                                        <path d="M95.884,98.415A43.25,43.25,0,0,0,56.75,36.75" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="86.96046447753906px 86.96046447753906px"
-                                                            stroke-dashoffset="-86.96046447753906px" stroke="#00c5dc">
-                                                            <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-86.96046447753906px" to="0px" fill="freeze" stroke="#00c5dc"
-                                                                calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M23.425,107.569A43.25,43.25,0,0,0,95.948,98.278" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="87.1122055053711px 87.1122055053711px"
-                                                            stroke-dashoffset="-87.1122055053711px" stroke="#ffb822">
-                                                            <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-87.1122055053711px" to="0px" fill="freeze" stroke="#ffb822"
-                                                                begin="anim0.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M56.75,36.75A43.25,43.25,0,0,0,23.522,107.685" class="ct-slice-donut" ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="97.98243713378906px 97.98243713378906px"
-                                                            stroke-dashoffset="-97.98243713378906px" stroke="#716aca">
-                                                            <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-97.98243713378906px" to="0px" fill="freeze" stroke="#716aca"
-                                                                begin="anim1.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="m-widget27__legends">
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-accent"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Driving Licence','Pending',$event)"><h6> 37% Pending </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-warning"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Driving Licence','Approved',$event)"><h6> 42% Approved </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-brand"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Driving Licence','Rejected',$event)"><h6> 19% Rejected </h6></a></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end::Tab Content -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--end:: Widgets/Blog-->
-
-
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
-            <!--begin:: Widgets/Blog-->
-            <div class="m-portlet m-portlet--head-overlay m-portlet--full-height  m-portlet--rounded-force">
-                <div class="m-portlet__head m-portlet__head--fit-">
-                    <div class="m-portlet__head-caption">
-                        <div class="m-portlet__head-title">
-                            <div class="col">
-                                <h3>Business</h3>
+    <!--End: Single service section-->
+    <hr/>
+    <!--Begin: Second service section-->
+    <div class="row" style="margin-top: 25px!important;margin-left: 25px;">
+        <div class="m-portlet">
+            <div class="m-portlet__body  m-portlet__body--no-padding">
+                <div class="row m-row--no-padding m-row--col-separator-xl">
+                    <div class="col-xl-4">
+                        <!--begin:: Widgets/Stats2-1 -->
+                        <div class="m-widget1">
+                            <div class="m-widget1__item">
+                                <div class="row m-row--no-padding align-items-center">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Today's Requests</h3>
+                                        <span class="m-widget1__desc">Request added in last 24 hours</span>
+                                    </div>
+                                    <div class="col m--align-right">
+                                        <span class="m-widget1__number m--font-brand">#102</span>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- <div class="col m--align-right">
-                                        <div class="btn-group m-btn-group btn-group-sm" role="group" aria-label="...">
-                                            <button type="button" class="btn btn-accent">Pending</button>
-                                            <button type="button" class="btn btn-warning">Approved</button>
-                                            <button type="button" class="btn btn-brand">Rejected</button>
-                                        </div>
-                            </div> -->
+
+                            <div class="m-widget1__item">
+                                <div class="row m-row--no-padding align-items-center">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Closed Requests</h3>
+                                        <span class="m-widget1__desc">Requests are Completed under current quarter</span>
+                                    </div>
+                                    <div class="col m--align-right">
+                                        <span class="m-widget1__number m--font-success">#2,049</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-widget1__item">
+                                <div class="row m-row--no-padding align-items-center">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Rejected Requests</h3>
+                                        <span class="m-widget1__desc">Requests rejected after screening documents</span>
+                                    </div>
+                                    <div class="col m--align-right">
+                                        <span class="m-widget1__number m--font-danger">#640</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end:: Widgets/Stats2-1 -->
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="m-widget14">
+                            <div class="m-widget14__header m--margin-bottom-30">
+                                <h3 class="m-widget14__title">
+                                    <i class="fa fa-address-card"></i> Passport Actions
+                                </h3>
+                                <span class="m-widget14__desc">
+                                    Click actions button to work on specific list of requests
+                                </span>
+                            </div>
+                            <div class="m-widget14__chart" style="height:120px;">
+                                <div class="row" style="margin-top: 25px">
+                                    <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-warning m-btn m-btn--icon btn-lg m-btn--icon-only  m-btn--pill m-btn--air"
+                                        (click)="onService('Transport','Pending',$event)">
+                                        <i class="fa fa-hourglass-half"></i>
+                                    </a>
+                                    <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-success m-btn m-btn--icon btn-lg m-btn--icon-only m-btn--pill m-btn--air"
+                                        (click)="onService('Transport','Approved',$event)">
+                                        <i class="fa fa-check-square-o"></i>
+                                    </a>
+                                    <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-danger m-btn m-btn--icon btn-lg m-btn--icon-only  m-btn--pill m-btn--air"
+                                        (click)="onService('Transport','Rejected',$event)">
+                                        <i class="fa fa-window-close"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="m-portlet__body">
-                    <div class="m-widget27 m-portlet-fit--sides">
-                        <div class="m-widget27__container">
 
-                            <!-- begin::Tab Content -->
-                            <div class="m-widget27__tab tab-content m-widget27--no-padding">
-                                <div id="m_personal_income_quater_1" class="tab-pane active">
-                                    <div class="row  align-items-center">
-                                        <div class="col">
-                                            <div id="m_chart_personal_income_quater_1" class="m-widget27__chart" style="height: 160px">
-                                                
-                                                <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
-                                                    <g class="ct-series custom">
-                                                        <path d="M95.884,98.415A43.25,43.25,0,0,0,56.75,36.75" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="86.96046447753906px 86.96046447753906px"
-                                                            stroke-dashoffset="-86.96046447753906px" stroke="#00c5dc">
-                                                            <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-86.96046447753906px" to="0px" fill="freeze" stroke="#00c5dc"
-                                                                calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M23.425,107.569A43.25,43.25,0,0,0,95.948,98.278" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="87.1122055053711px 87.1122055053711px"
-                                                            stroke-dashoffset="-87.1122055053711px" stroke="#ffb822">
-                                                            <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-87.1122055053711px" to="0px" fill="freeze" stroke="#ffb822"
-                                                                begin="anim0.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M56.75,36.75A43.25,43.25,0,0,0,23.522,107.685" class="ct-slice-donut" ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="97.98243713378906px 97.98243713378906px"
-                                                            stroke-dashoffset="-97.98243713378906px" stroke="#716aca">
-                                                            <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-97.98243713378906px" to="0px" fill="freeze" stroke="#716aca"
-                                                                begin="anim1.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                </svg>
-                                            </div>
+                    <div class="col-xl-4">
+                        <!--begin:: Widgets/Profit Share-->
+                        <div class="m-widget14">
+                            <div class="m-widget14__header">
+                                <h3 class="m-widget14__title">
+                                    Requests Status
+                                </h3>
+                                <span class="m-widget14__desc">
+                                    Current Quarter Requests Status by percentage
+                                </span>
+                            </div>
+                            <div class="row  align-items-center">
+                                <div class="col">
+                                    <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+                                        <div class="m-widget14__stat">45</div>
+                                        <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
+                                            <g class="ct-series custom">
+                                                <path d="M110.393,101.658A50.867,50.867,0,0,0,64.367,29.133" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="102.27520751953125px 102.27520751953125px"
+                                                    stroke-dashoffset="-102.27520751953125px" stroke="#716aca">
+                                                    <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-102.27520751953125px" to="0px" fill="freeze" stroke="#716aca"
+                                                        calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M25.173,112.424A50.867,50.867,0,0,0,110.469,101.497" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="102.45503234863281px 102.45503234863281px"
+                                                    stroke-dashoffset="-102.45503234863281px" stroke="#00c5dc">
+                                                    <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-102.45503234863281px" to="0px" fill="freeze" stroke="#00c5dc"
+                                                        begin="anim0.end" calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                            <g class="ct-series custom">
+                                                <path d="M64.367,29.133A50.867,50.867,0,0,0,25.287,112.561" class="ct-slice-donut" ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
+                                                    style="stroke-width: 17px;" stroke-dasharray="115.23920440673828px 115.23920440673828px"
+                                                    stroke-dashoffset="-115.23920440673828px" stroke="#ffb822">
+                                                    <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-115.23920440673828px" to="0px" fill="freeze" stroke="#ffb822"
+                                                        begin="anim1.end" calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="m-widget14__legends">
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-accent"></span>
+                                            <span class="m-widget14__legend-text">37% Pending</span>
                                         </div>
-                                        <div class="col">
-                                            <div class="m-widget27__legends">
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-accent"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Business','Pending',$event)"><h6> 37% Pending </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-warning"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Business','Approved',$event)"><h6> 42% Approved </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-brand"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Business','Rejected',$event)"><h6> 19% Rejected </h6></a></span>
-                                                </div>
-                                            </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-warning"></span>
+                                            <span class="m-widget14__legend-text">47% Inprocess</span>
+                                        </div>
+                                        <div class="m-widget14__legend">
+                                            <span class="m-widget14__legend-bullet m--bg-brand"></span>
+                                            <span class="m-widget14__legend-text">19% Completed</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end::Tab Content -->
                         </div>
+                        <!--end:: Widgets/Profit Share-->
                     </div>
                 </div>
             </div>
-            <!--end:: Widgets/Blog-->
-
-
-        </div>
-
-        <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
-            <!--begin:: Widgets/Blog-->
-            <div class="m-portlet m-portlet--head-overlay m-portlet--full-height  m-portlet--rounded-force">
-                <div class="m-portlet__head m-portlet__head--fit-">
-                    <div class="m-portlet__head-caption">
-                        <div class="m-portlet__head-title">
-                            <div class="col">
-                                <h3>Defence</h3>
-                            </div>
-                            <!-- <div class="col m--align-right">
-                                        <div class="btn-group m-btn-group btn-group-sm" role="group" aria-label="...">
-                                            <button type="button" class="btn btn-accent">Pending</button>
-                                            <button type="button" class="btn btn-warning">Approved</button>
-                                            <button type="button" class="btn btn-brand">Rejected</button>
-                                        </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="m-portlet__body">
-                    <div class="m-widget27 m-portlet-fit--sides">
-                        <div class="m-widget27__container">
-
-                            <!-- begin::Tab Content -->
-                            <div class="m-widget27__tab tab-content m-widget27--no-padding">
-                                <div id="m_personal_income_quater_1" class="tab-pane active">
-                                    <div class="row  align-items-center">
-                                        <div class="col">
-                                            <div id="m_chart_personal_income_quater_1" class="m-widget27__chart" style="height: 160px">
-                                                
-                                                <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
-                                                    <g class="ct-series custom">
-                                                        <path d="M95.884,98.415A43.25,43.25,0,0,0,56.75,36.75" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="86.96046447753906px 86.96046447753906px"
-                                                            stroke-dashoffset="-86.96046447753906px" stroke="#00c5dc">
-                                                            <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-86.96046447753906px" to="0px" fill="freeze" stroke="#00c5dc"
-                                                                calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M23.425,107.569A43.25,43.25,0,0,0,95.948,98.278" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="87.1122055053711px 87.1122055053711px"
-                                                            stroke-dashoffset="-87.1122055053711px" stroke="#ffb822">
-                                                            <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-87.1122055053711px" to="0px" fill="freeze" stroke="#ffb822"
-                                                                begin="anim0.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M56.75,36.75A43.25,43.25,0,0,0,23.522,107.685" class="ct-slice-donut" ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="97.98243713378906px 97.98243713378906px"
-                                                            stroke-dashoffset="-97.98243713378906px" stroke="#716aca">
-                                                            <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-97.98243713378906px" to="0px" fill="freeze" stroke="#716aca"
-                                                                begin="anim1.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="m-widget27__legends">
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-accent"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Defence','Pending',$event)"><h6> 37% Pending </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-warning"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Defence','Approved',$event)"><h6> 42% Approved </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-brand"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Defence','Rejected',$event)"><h6> 19% Rejected </h6></a></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end::Tab Content -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--end:: Widgets/Blog-->
-
-
-        </div>
-
-        <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6">
-            <!--begin:: Widgets/Blog-->
-            <div class="m-portlet m-portlet--head-overlay m-portlet--full-height  m-portlet--rounded-force">
-                <div class="m-portlet__head m-portlet__head--fit-">
-                    <div class="m-portlet__head-caption">
-                        <div class="m-portlet__head-title">
-                            <div class="col">
-                                <h3>Forensic</h3>
-                            </div>
-                            <!-- <div class="col m--align-right">
-                                        <div class="btn-group m-btn-group btn-group-sm" role="group" aria-label="...">
-                                            <button type="button" class="btn btn-accent">Pending</button>
-                                            <button type="button" class="btn btn-warning">Approved</button>
-                                            <button type="button" class="btn btn-brand">Rejected</button>
-                                        </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="m-portlet__body">
-                    <div class="m-widget27 m-portlet-fit--sides">
-                        <div class="m-widget27__container">
-
-                            <!-- begin::Tab Content -->
-                            <div class="m-widget27__tab tab-content m-widget27--no-padding">
-                                <div id="m_personal_income_quater_1" class="tab-pane active">
-                                    <div class="row  align-items-center">
-                                        <div class="col">
-                                            <div id="m_chart_personal_income_quater_1" class="m-widget27__chart" style="height: 160px">
-                                                
-                                                <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
-                                                    <g class="ct-series custom">
-                                                        <path d="M95.884,98.415A43.25,43.25,0,0,0,56.75,36.75" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="86.96046447753906px 86.96046447753906px"
-                                                            stroke-dashoffset="-86.96046447753906px" stroke="#00c5dc">
-                                                            <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-86.96046447753906px" to="0px" fill="freeze" stroke="#00c5dc"
-                                                                calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M23.425,107.569A43.25,43.25,0,0,0,95.948,98.278" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="87.1122055053711px 87.1122055053711px"
-                                                            stroke-dashoffset="-87.1122055053711px" stroke="#ffb822">
-                                                            <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-87.1122055053711px" to="0px" fill="freeze" stroke="#ffb822"
-                                                                begin="anim0.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                    <g class="ct-series custom">
-                                                        <path d="M56.75,36.75A43.25,43.25,0,0,0,23.522,107.685" class="ct-slice-donut" ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
-                                                            style="stroke-width: 17px;" stroke-dasharray="97.98243713378906px 97.98243713378906px"
-                                                            stroke-dashoffset="-97.98243713378906px" stroke="#716aca">
-                                                            <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-97.98243713378906px" to="0px" fill="freeze" stroke="#716aca"
-                                                                begin="anim1.end" calcMode="spline" keySplines="0.23 1 0.32 1"
-                                                                keyTimes="0;1"></animate>
-                                                        </path>
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="m-widget27__legends">
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-accent"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Forensic','Pending',$event)"><h6> 37% Pending </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-warning"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Forensic','Approved',$event)"><h6> 42% Approved </h6></a></span>
-                                                </div>
-                                                <div class="m-widget27__legend">
-                                                    <span class="m-widget27__legend-bullet m--bg-brand"></span>
-                                                    <span class="m-widget27__legend-text"><a href="#" (click)="onService('Forensic','Rejected',$event)"><h6> 19% Rejected </h6></a></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end::Tab Content -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--end:: Widgets/Blog-->
-
-
         </div>
     </div>
+    <!--End: Second service section-->
+
+    <!--Begin: Footer section-->
+    <!-- <footer class="m-grid__item	m-footer">
+        <div class="m-container m-container--fluid m-container--full-height m-page__container">
+            <div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
+                    <span class="m-footer__copyright">
+                        2018 © developed by the FRCI corporation
+                        <a href="#" class="m-link">FRCI</a>
+                    </span>
+                </div>
+                <div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">
+                    <ul class="m-footer__nav m-nav m-nav--inline m--pull-right">
+                        <li class="m-nav__item">
+                            <a href="#" class="m-nav__link">
+                                <span class="m-nav__link-text">About</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item">
+                            <a href="#" class="m-nav__link">
+                                <span class="m-nav__link-text">Privacy</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item">
+                            <a href="#" class="m-nav__link">
+                                <span class="m-nav__link-text">T&amp;C</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item">
+                            <a href="#" class="m-nav__link">
+                                <span class="m-nav__link-text">Purchase</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+    <!--End: Footer section-->
 </div>

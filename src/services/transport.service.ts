@@ -20,9 +20,9 @@ export class TransportService {
     constructor(http: Http,
         private authHttp: AuthHttp,
         private _spinnerService: SpinnerService,
-        //private router: Router,
+        // private router: Router,
         private _authTokenService: AuthTokenService) {
-        this.http = http
+        this.http = http;
     }
 
     getTransport() {

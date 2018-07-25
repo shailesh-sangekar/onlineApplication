@@ -32,7 +32,7 @@
             <span class="m-type m--bg-brand"><span class="m--font-light">S<span><span>
             -->
                                         </span>
-                                        <span class="m-topbar__username m--hide">Nick</span>
+                                        <span class="m-topbar__username m--hide">{{currentUser.Title}}</span>
                                     </a>
                                     <div class="m-dropdown__wrapper">
                                         <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
@@ -44,8 +44,8 @@
 
                                                     </div>
                                                     <div class="m-card-user__details">
-                                                        <span class="m-card-user__name m--font-weight-500">Mark Andre</span>
-                                                        <a href="" class="m-card-user__email m--font-weight-300 m-link">mark.andre@gmail.com</a>
+                                                        <span class="m-card-user__name m--font-weight-500">{{currentUser.Title}}</span>
+                                                        <a href="" class="m-card-user__email m--font-weight-300 m-link">{{currentUser.Email!==null?currentUser.Email:'N/A'}}</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -71,7 +71,7 @@
                                                         <li class="m-nav__separator m-nav__separator--fit">
                                                         </li>
                                                         <li class="m-nav__item">
-                                                            <a href="?page=snippets/pages/user/login-1&amp;demo=default" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</a>
+                                                            <a href="?page=snippets/pages/user/login-1&amp;demo=default" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -92,46 +92,47 @@
         <router-outlet></router-outlet>
     </div>
     <!-- Footer -->
-    <!-- <footer class="m-grid__item m-footer ">
+    <footer class="m-grid__item m-footer ">
         <div class="m-container m-container--fluid m-container--full-height m-page__container">
             <div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
                 <div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
                     <span class="m-footer__copyright">
-					2017 © Metronic theme by <a href="https://keenthemes.com" class="m-link">Keenthemes</a>
-				</span>
+                        2017 © Metronic theme by
+                        <a href="https://keenthemes.com" class="m-link">Keenthemes</a>
+                    </span>
                 </div>
                 <div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">
                     <ul class="m-footer__nav m-nav m-nav--inline m--pull-right">
                         <li class="m-nav__item">
                             <a href="#" class="m-nav__link">
-							<span class="m-nav__link-text">About</span>
-						</a>
+                                <span class="m-nav__link-text">About</span>
+                            </a>
                         </li>
                         <li class="m-nav__item">
                             <a href="#" class="m-nav__link">
-							<span class="m-nav__link-text">Privacy</span>
-						</a>
+                                <span class="m-nav__link-text">Privacy</span>
+                            </a>
                         </li>
                         <li class="m-nav__item">
                             <a href="#" class="m-nav__link">
-							<span class="m-nav__link-text">T&amp;C</span>
-						</a>
+                                <span class="m-nav__link-text">T&amp;C</span>
+                            </a>
                         </li>
                         <li class="m-nav__item">
                             <a href="#" class="m-nav__link">
-							<span class="m-nav__link-text">Purchase</span>
-						</a>
+                                <span class="m-nav__link-text">Purchase</span>
+                            </a>
                         </li>
                         <li class="m-nav__item m-nav__item">
                             <a href="#" class="m-nav__link" data-toggle="m-tooltip" title="" data-placement="left" data-original-title="Support Center">
-							<i class="m-nav__link-icon flaticon-info m--icon-font-size-lg3"></i>
-						</a>
+                                <i class="m-nav__link-icon flaticon-info m--icon-font-size-lg3"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-    </footer> -->
+    </footer>
 </div>
 
 

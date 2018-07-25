@@ -5,9 +5,9 @@ import { AuthTokenService } from './authToken.service';
 @Injectable()
 export class AuthHttp {
     http: Http;
-    constructor(http: Http, private _authTokenService : AuthTokenService) {
+    constructor(http: Http, private _authTokenService: AuthTokenService) {
         this.http = http;
-     }
+    }
     createAuthorizationHeader(headers: Headers) {
         if (this._authTokenService.authToken !== '') {
             headers.append('Authorization', 'Bearer ' + this._authTokenService.authToken);

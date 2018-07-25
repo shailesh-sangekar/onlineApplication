@@ -15,41 +15,31 @@ import { Router } from '@angular/router';
   providers: [SpService]
 })
 export class DashboardComponent implements OnInit {
-
-  model: AuthInfo;
-  loggedInUser: string;
-  loginName: string;
-  errorMessage: string;
-  loggedInUserData: any;
   data: Array<ServiceConfig>;
-
-
   title = 'app';
   displayError = true;
 
-  constructor(private _commonService: CommonService, private _authTokenService: AuthTokenService,
-    private _transportService: TransportService, private _spService: SpService,
-    private _router: Router) {
+  constructor(private _spService: SpService, private _router: Router) {
     this.data = new Array<ServiceConfig>();
-    this.model = new AuthInfo('password', '', '');
-    this._spService.baseUrl = 'http://espld205:2233/';
+    // // TODO :: Delete Test Data
+    const testD = new ServiceConfig();
+    testD.Title = 'TransportService';
+    testD.ListName = 'TransportList';
+    testD.ServiceName = 'Transport Service';
+    testD.Permissions = 'frci Members';
+    testD.siteUrl = 'http://espld205:2233/transport/';
+    this.data.push(testD);
+    const testD1 = new ServiceConfig();
+    testD1.Title = 'PassportService';
+    testD1.ListName = 'TransportList';
+    testD1.ServiceName = 'Passport Service';
+    testD1.Permissions = 'frci Members';
+    testD1.siteUrl = 'http://espld205:2233/transport/';
+    this.data.push(testD1);
+    // // END :: Delete Test Data
   }
-
-  submitTransportData() {
-    this.displayError = false;
-    console.log('submit function' + this.displayError);
-
-
-  }
-
   ngOnInit() {
-    this.loggedInUser = 'Ankit.panchal';
-    this.loginName = 'Ankit.panchal';
-
-    // this.getTransport();
-    // this.getAuthToken();
-    this.getServiceData();
-
+    // this.getServiceData();
   }
   getServiceData() {
     const ctl = this;
@@ -70,42 +60,5 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  getAuthToken() {
 
-    this.model.UserName = this.loginName;
-    this.model.Password = 'Espl@123';
-    this._commonService.getAuthToken(this.model)
-      .subscribe(
-        (results: any) => {
-
-          console.log('Access grated for current user');
-          console.log(results);
-        },
-        error => {
-
-          this.errorMessage = <any>error;
-          // this._router.navigate(['/unauthorized', 1]);
-        });
-  }
-
-  getTransport() {
-    console.log('from transport');
-    this._transportService.getTransport()
-      .subscribe(
-        (results: any) => {
-
-          console.log('Transport Data');
-          console.log(results);
-        },
-        error => {
-          // debugger;
-          this.errorMessage = <any>error;
-          // this._router.navigate(['/unauthorized', 1]);
-        });
-  }
-
-  onService(service: any, action: any, e: any) {
-    e.preventDefault();
-    this._router.navigate(['/user-list', service + '-' + action]);
-  }
 }

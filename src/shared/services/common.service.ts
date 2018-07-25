@@ -11,7 +11,7 @@ import 'rxjs/add/operator/finally';
 /** Third party dependencies */
 import { SpinnerService } from '../spinner/spinner.service';
 import { Config } from '../config/config';
-import { AuthHttp } from '../services/authHttp.service';
+import { AuthHttp } from './authHttp.service';
 import { AuthInfo } from '../models/authInfo';
 import { AuthTokenService } from './authToken.service';
 

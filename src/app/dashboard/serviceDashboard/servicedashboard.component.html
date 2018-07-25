@@ -1,0 +1,143 @@
+<!--Begin: Single service section-->
+<!-- style="margin-top: 25px!important;margin-left: 25px;" -->
+<div class="row">
+    <div class="m-portlet">
+        <div class="m-portlet__body  m-portlet__body--no-padding">
+            <div class="row m-row--no-padding m-row--col-separator-xl">
+                <div class="col-xl-4">
+                    <!--begin:: Widgets/Stats2-1 -->
+                    <div class="m-widget1">
+                        <div class="m-widget1__item">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Pending's Requests</h3>
+                                    <span class="m-widget1__desc">Request added in last 24 hours</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span class="m-widget1__number m--font-brand">#{{pendingReq}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="m-widget1__item">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Closed Requests</h3>
+                                    <span class="m-widget1__desc">Requests are Completed under current quarter</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span class="m-widget1__number m--font-success">#{{approvedReq}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-widget1__item">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Rejected Requests</h3>
+                                    <span class="m-widget1__desc">Requests rejected after screening documents</span>
+                                </div>
+                                <div class="col m--align-right">
+                                    <span class="m-widget1__number m--font-danger">#{{rejectedReq}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end:: Widgets/Stats2-1 -->
+                </div>
+                <div class="col-xl-4">
+                    <div class="m-widget14">
+                        <div class="m-widget14__header m--margin-bottom-30">
+                            <h3 class="m-widget14__title">
+                                {{serviceRef.ServiceName}} Actions #{{testMessage}}
+                            </h3>
+                            <span class="m-widget14__desc">
+                                Click actions button to work on specific list of requests
+                            </span>
+                        </div>
+                        <div class="m-widget14__chart" style="height:120px;">
+                            <div class="row" style="margin-top: 25px">
+                                <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-warning m-btn m-btn--icon btn-lg m-btn--icon-only  m-btn--pill m-btn--air"
+                                    (click)="onService('Transport','Pending',$event)">
+                                    <i class="fa fa-hourglass-half"></i>
+                                </a>
+                                <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-success m-btn m-btn--icon btn-lg m-btn--icon-only m-btn--pill m-btn--air"
+                                    (click)="onService('Transport','Approved',$event)">
+                                    <i class="fa fa-check-square-o"></i>
+                                </a>
+                                <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-danger m-btn m-btn--icon btn-lg m-btn--icon-only  m-btn--pill m-btn--air"
+                                    (click)="onService('Transport','Rejected',$event)">
+                                    <i class="fa fa-window-close"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4">
+                    <!--begin:: Widgets/Profit Share-->
+                    <div class="m-widget14">
+                        <div class="m-widget14__header">
+                            <h3 class="m-widget14__title">
+                                Requests Status
+                            </h3>
+                            <span class="m-widget14__desc">
+                                Current Quarter Requests Status by percentage
+                            </span>
+                        </div>
+                        <div class="row  align-items-center">
+                            <div class="col">
+                                <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+                                    <div class="m-widget14__stat">45</div>
+                                    <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
+                                        <g class="ct-series custom">
+                                            <path d="M110.393,101.658A50.867,50.867,0,0,0,64.367,29.133" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#716aca&amp;quot;}}"
+                                                style="stroke-width: 17px;" stroke-dasharray="102.27520751953125px 102.27520751953125px"
+                                                stroke-dashoffset="-102.27520751953125px" stroke="#716aca">
+                                                <animate attributeName="stroke-dashoffset" id="anim0" dur="1000ms" from="-102.27520751953125px" to="0px" fill="freeze" stroke="#716aca"
+                                                    calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                            </path>
+                                        </g>
+                                        <g class="ct-series custom">
+                                            <path d="M25.173,112.424A50.867,50.867,0,0,0,110.469,101.497" class="ct-slice-donut" ct:value="32" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#00c5dc&amp;quot;}}"
+                                                style="stroke-width: 17px;" stroke-dasharray="102.45503234863281px 102.45503234863281px"
+                                                stroke-dashoffset="-102.45503234863281px" stroke="#00c5dc">
+                                                <animate attributeName="stroke-dashoffset" id="anim1" dur="1000ms" from="-102.45503234863281px" to="0px" fill="freeze" stroke="#00c5dc"
+                                                    begin="anim0.end" calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                            </path>
+                                        </g>
+                                        <g class="ct-series custom">
+                                            <path d="M64.367,29.133A50.867,50.867,0,0,0,25.287,112.561" class="ct-slice-donut" ct:value="36" ct:meta="{&amp;quot;data&amp;quot;:{&amp;quot;color&amp;quot;:&amp;quot;#ffb822&amp;quot;}}"
+                                                style="stroke-width: 17px;" stroke-dasharray="115.23920440673828px 115.23920440673828px"
+                                                stroke-dashoffset="-115.23920440673828px" stroke="#ffb822">
+                                                <animate attributeName="stroke-dashoffset" id="anim2" dur="1000ms" from="-115.23920440673828px" to="0px" fill="freeze" stroke="#ffb822"
+                                                    begin="anim1.end" calcMode="spline" keySplines="0.23 1 0.32 1" keyTimes="0;1"></animate>
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="m-widget14__legends">
+                                    <div class="m-widget14__legend">
+                                        <span class="m-widget14__legend-bullet m--bg-accent"></span>
+                                        <span class="m-widget14__legend-text">37% Pending</span>
+                                    </div>
+                                    <div class="m-widget14__legend">
+                                        <span class="m-widget14__legend-bullet m--bg-warning"></span>
+                                        <span class="m-widget14__legend-text">47% Inprocess</span>
+                                    </div>
+                                    <div class="m-widget14__legend">
+                                        <span class="m-widget14__legend-bullet m--bg-brand"></span>
+                                        <span class="m-widget14__legend-text">19% Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end:: Widgets/Profit Share-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End: Single service section-->

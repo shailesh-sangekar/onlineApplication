@@ -11,4 +11,10 @@ export class Config {
         // let baseURL = 'http://espl202:5555';
         return baseURL + apiURL;
     }
+    public static GetRoot(): string {
+        const rootURL = 'http://espld205:2233/';
+        /**Prod */
+        // const rootURL = '';
+        return rootURL;
+    }
 }

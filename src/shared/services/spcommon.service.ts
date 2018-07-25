@@ -1,25 +1,3 @@
-/**
- * Library with Angular 2+ operations for CRUD operations to SharePoint 2013/2016/Online lists over REST api
- *
- * Contains 6 core functions and other misc helper functions
- *
- * 1) Create    - add item to List
- * 2) Read      - find all items or single item from List
- * 3) Update    - update item in List
- * 4) Delete    - delete item in List
- * 5) jsonRead  - read JSON to List
- * 6) jsonWrite - write JSON to List ("upsert" = add if missing, update if exists)
- *
- * NOTE - 5 and 6 require the target SharePoint List to have two columns: "Title" (indexed) and "JSON" (mult-text).   These are
- * intendend to save JSON objects for JS internal application needs.   For example, saving user preferences to a "JSON-Settings" list
- * where one row is created per user (Title = current user Login) and JSON multi-text field holds the JSON blob.
- * Simple and flexible way to save data for many scenarios.
- *
- *
- * version 0.2.09
- * last updated 03-06-2017
- *
- */
 
 import { Injectable } from '@angular/core';
 
@@ -44,7 +22,7 @@ export class SpService {
     login: String;
 
     constructor(private http: Http) {
-        this.setBaseUrl('http://espld205:2233');
+        this.setBaseUrl();
     }
 
     // HTTP Error handling

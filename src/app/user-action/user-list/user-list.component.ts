@@ -23,6 +23,13 @@ export class UserlistComponent implements OnInit {
   params: Params;
   service: any = '';
   action: any = '';
+  serviceUrl: string;
+  serviceList: string;
+  data: any;
+
+  cars: Array<Car>;
+
+  cols: any[];
 
   constructor(private _commonService: CommonService, private _authTokenService: AuthTokenService,
     private _transportService: TransportService, private _spService: SpService,
@@ -34,10 +41,57 @@ export class UserlistComponent implements OnInit {
       this.params = params['id'];
       this.service = this.params ? this.params.split('-')[0] : '';
       this.action = this.params ? this.params.split('-')[1] : '';
+      this.serviceUrl = params['url'];
+      this.serviceList = params['list'];
+      console.log(this.serviceList + ' Url : ' + this.serviceUrl);
+    });
+    this._spService.setBaseUrl(this.serviceUrl);
+    // this.getListData(this.serviceList);
+    this.cars = new Array<Car>();
+    let tempData = new Car();
+    tempData.vin = 'MH8938';
+    tempData.color = 'VVhite';
+    tempData.brand = 'HND';
+    tempData.year = '2016';
+    this.cars.push(tempData);
+    let tempData1 = new Car();
+    tempData1.vin = 'MH8938';
+    tempData1.color = 'VVhite';
+    tempData1.brand = 'HND';
+    tempData1.year = '2016';
+    this.cars.push(tempData1);
+    this.cols = [
+      { field: 'vin', header: 'Vin' },
+      { field: 'year', header: 'Year' },
+      { field: 'brand', header: 'Brand' },
+      { field: 'color', header: 'Color' }
+    ];
+
+    console.log(this.cars);
+    console.log(this.cols);
+  }
+
+  getListData(ListName: string) {
+    const ctl = this;
+    this._spService.read(ListName).then(function (response) {
+      if (response.d.results !== null) {
+        ctl.data = response.d.results;
+        console.log(ctl.data);
+      }
+    }).catch(function (response) {
+      console.error('Wrong communication Occured at getData');
+      console.error(response);
     });
   }
 
   onUpdateRequest() {
     this._router.navigate(['/user-action', 1]);
   }
+}
+
+export class Car {
+  public vin: string;
+  public year: string;
+  public brand: string;
+  public color: string;
 }

@@ -9,7 +9,7 @@ import { UserActionComponent } from './user-action/user-action/user-action.compo
 const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'user-list/:id/:url/:list', component: UserlistComponent },
-    { path: 'user-action/:id', component: UserActionComponent },
+    { path: 'user-action/:id/:url/:list', component: UserActionComponent },
     // {
     //     path: 'contact-list', component: ContactListComponent,
     //     children: [

@@ -1,3 +1,15 @@
 :host{
     width:100% !important;
 }
+.Approved{
+    color: #34bfa3;
+    font-size: 1.8rem!important;
+}
+.Pending{
+    color: #ffb822;
+    font-size: 1.8rem!important;
+}
+.Rejected{
+    color: #f4516c;
+    font-size: 1.8rem!important;
+}

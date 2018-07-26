@@ -174,6 +174,15 @@ export class SpService {
         }).catch(this.handleError);
     }
 
+    // Get All fields
+    getAllCustomFields(listTitle: string): Promise<any> {
+        const url = this.baseUrl + '/_api/web/lists/getbytitle(\''
+            + listTitle + '\')/fields?$filter=Hidden eq false and ReadOnlyField eq false';
+        return this.http.get(url, this.options).toPromise().then(function (res: Response) {
+            return res.json();
+        }).catch(this.handleError);
+    }
+
     // ----------SHAREPOINT FILES AND FOLDERS----------
     // Create folder
     createFolder(folderUrl: string): Promise<any> {

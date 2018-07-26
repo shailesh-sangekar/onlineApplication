@@ -9,8 +9,8 @@
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">
                                 <span class="m-portlet__head-icon m--hide">
-						<i class="la la-gear"></i>
-						</span>
+                                    <i class="la la-gear"></i>
+                                </span>
                                 <h3 class="m-portlet__head-text">
                                     Approve/Reject Action
                                 </h3>
@@ -18,15 +18,16 @@
                         </div>
                     </div>
                     <!--begin::Form-->
-                    <form class="m-form m-form--fit m-form--label-align-right">
+                    <!-- <form class="m-form m-form--fit m-form--label-align-right"> -->
+                    <div class="m-form m-form--fit m-form--label-align-right">
                         <div class="m-portlet__body">
-                            <div class="form-group m-form__group row">
-                                <label for="example-text-input" class="col-2 col-form-label">ID : </label>
+                            <div class="form-group m-form__group row" *ngFor="let item of mappedData">
+                                <label for="example-text-input" class="col-2 col-form-label">{{item.Label}} : </label>
                                 <div class="col-10">
-                                    <input class="form-control m-input" type="text" value="47781-264" disabled id="example-text-input">
+                                    <input class="form-control m-input" type="text" [(ngModel)]="item.Value" disabled id="example-text-input">
                                 </div>
                             </div>
-                            <div class="form-group m-form__group row">
+                            <!-- <div class="form-group m-form__group row">
                                 <label for="example-search-input" class="col-2 col-form-label">Full Name : </label>
                                 <div class="col-10">
                                     <input class="form-control m-input" type="text" value="Dwanje Martin" disabled id="example-text-input">
@@ -55,14 +56,14 @@
                                 <div class="col-10">
                                     <input class="form-control m-input" type="text" value="21/07/2018" disabled id="example-text-input">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group m-form__group row">
                                 <label for="example-password-input" class="col-2 col-form-label">Comments: </label>
                                 <div class="col-10">
-                                    <textarea class="form-control m-input" id="example-text-input1"></textarea>
+                                    <textarea class="form-control m-input" [(ngModel)]="updates.Title" id="example-text-input1"></textarea>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="m-portlet__foot m-portlet__foot--fit">
                             <div class="m-form__actions">
@@ -70,14 +71,14 @@
                                     <div class="col-2">
                                     </div>
                                     <div class="col-10">
-                                        <button type="button" class="btn btn-success" style="margin-right:5px;">Approve</button>
-                                        <button type="button" class="btn btn-info" style="margin-right:5px;">Reject</button>
+                                        <button type="button" (click)="onUpdate('Approved')" class="btn btn-success" style="margin-right:5px;">Approve</button>
+                                        <button type="button" (click)="onUpdate('Rejected')" class="btn btn-info" style="margin-right:5px;">Reject</button>
                                         <button type="button" (click)="onBack()" class="btn btn-danger">Back</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

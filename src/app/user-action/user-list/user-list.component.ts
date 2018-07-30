@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { AuthInfo } from '../../../shared/models/authInfo';
-import { AuthTokenService } from '../../../shared/services/authToken.service';
-import { CommonService } from '../../../shared/services/common.service';
-import { SpService } from '../../../shared/services/spcommon.service';
-import { TransportService } from '../../../services/transport.service';
-import { RestOptions } from '../../../shared/models/restoptions';
-import { ServiceRequest } from './serviceRequest';
+import { RestOptions, SpService, CommonService } from '../../../shared';
+import { ServiceRequest } from '../';
 
 @Component({
   selector: 'app-user-list',
@@ -16,11 +11,6 @@ import { ServiceRequest } from './serviceRequest';
 })
 export class UserlistComponent implements OnInit {
 
-  // model: AuthInfo;
-  // loggedInUser: string;
-  // loginName: string;
-  // errorMessage: string;
-  // loggedInUserData: any;
   params: Params;
   service: any = '';
   action: any = '';
@@ -29,8 +19,7 @@ export class UserlistComponent implements OnInit {
   data: Array<ServiceRequest>;
   options: RestOptions;
 
-  constructor(private _commonService: CommonService, private _authTokenService: AuthTokenService,
-    private _transportService: TransportService, private _spService: SpService,
+  constructor(private _spService: SpService, private _commonservice: CommonService,
     private _router: Router, private route: ActivatedRoute) {
   }
 
@@ -45,13 +34,13 @@ export class UserlistComponent implements OnInit {
     });
     this._spService.setBaseUrl(this.serviceUrl);
     this.init();
-    this.getListData(this.serviceList);
-    // this.getAllFields(this.serviceList);
+    this.getListData(this.serviceList, this.options);
   }
   private init() {
     this.options = new RestOptions();
     this.options.select = 'ID,SID,NIC,FirstName,FamilyName,Address,CountryOfResidence,MobileNumber,Status,Created,Modified';
     this.options.orderby = 'ID desc';
+    this.options.filter = 'Status eq \'' + this.action + '\'';
     this.data = Array<ServiceRequest>();
     // for (let i = 1; i <= 100; i++) {
     //   let tempData = new ServiceRequest();
@@ -83,22 +72,12 @@ export class UserlistComponent implements OnInit {
     // tempData1.MobileNumber = '15612016';
     // this.data.push(tempData1);
   }
-  getAllFields(ListName: string) {
-    const ctl = this;
-    this._spService.getAllCustomFields(ListName).then(function (response) {
-      if (response.d.results !== null) {
-        console.log('All Fields');
-        console.log(response.d.results);
-      }
-    });
-  }
   getListData(ListName: string, Options?: RestOptions) {
     const ctl = this;
     if (this.options != null) {
       this._spService.read(ListName, Options).then(function (response) {
         if (response.d.results !== null) {
           ctl.data = response.d.results;
-          console.log(ctl.data);
         }
       }).catch(function (response) {
         console.log('Wrong communication Occured at getData');
@@ -108,7 +87,6 @@ export class UserlistComponent implements OnInit {
       this._spService.read(ListName).then(function (response) {
         if (response.d.results !== null) {
           ctl.data = response.d.results;
-          console.log(ctl.data);
         }
       }).catch(function (response) {
         console.log('Wrong communication Occured at getData');
@@ -118,7 +96,12 @@ export class UserlistComponent implements OnInit {
   }
 
   onUpdateRequest(id: string) {
-    this._router.navigate(['/user-action', id, this.serviceUrl, this.serviceList]);
+    this._router.navigate(['/user-action', id, this.serviceUrl, this.serviceList, this.service + '-' + this.action]);
+  }
+
+  export() {
+    const headers: any = Object.getOwnPropertyNames(this.data[0]);
+    this._commonservice.exportCSVFile(headers, this.data, 'testFileExport.csv');
   }
 }
 

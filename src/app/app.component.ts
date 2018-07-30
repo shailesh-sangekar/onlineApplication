@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthInfo } from '../shared/models/authInfo';
-import { User } from '../shared/models/User';
-import { AuthTokenService } from '../shared/services/authToken.service';
-import { CommonService } from '../shared/services/common.service';
-import { SpService } from '../shared/services/spcommon.service';
-import { TransportService } from '../services/transport.service';
-import { Config } from '../shared/config/config';
+import { Config, AuthInfo, User, AuthTokenService, CommonService, SpService } from '../shared';
+import { TransportService } from '../services';
 
 @Component({
   selector: 'app-root',
@@ -37,14 +32,12 @@ export class AppComponent implements OnInit {
     this.displayError = false;
     console.log('submit function' + this.displayError);
   }
-
   ngOnInit() {
     this.loggedInUser = 'Ankit.panchal';
     this.loginName = 'Ankit.panchal';
     this._spService.setBaseUrl(this.root);
-    // this.getUserDetails();
+    this.getUserDetails();
   }
-
   getUserDetails() {
     const _this = this;
     this._spService.getCurrentUser().then(function (response) {
@@ -54,12 +47,10 @@ export class AppComponent implements OnInit {
         _this.currentUser.LoginName = _user.LoginName;
         _this.currentUser.Email = _user.Email;
         _this.currentUser.Groups = _user.Groups.results.map(g => g.Title);
-        console.log('My profile response');
-        console.log(_this.currentUser);
+        localStorage.setItem('user', JSON.stringify(_this.currentUser));
       }
     });
   }
-
   //// TODO :: FOR Front End form
   getAuthToken() {
 
@@ -69,8 +60,8 @@ export class AppComponent implements OnInit {
       .subscribe(
         (results: any) => {
 
-          console.log('Access grated for current user');
-          console.log(results);
+          // console.log('Access grated for current user');
+          // console.log(results);
         },
         error => {
 
@@ -85,8 +76,8 @@ export class AppComponent implements OnInit {
       .subscribe(
         (results: any) => {
 
-          console.log('Transport Data');
-          console.log(results);
+          // console.log('Transport Data');
+          // console.log(results);
         },
         error => {
           // debugger;
@@ -94,5 +85,4 @@ export class AppComponent implements OnInit {
           // this._router.navigate(['/unauthorized', 1]);
         });
   }
-
 }

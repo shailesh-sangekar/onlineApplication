@@ -13,3 +13,9 @@
     color: #f4516c;
     font-size: 1.8rem!important;
 }
+.prod{
+    margin-top: -84px;
+}
+.heading{
+    text-transform: capitalize;
+}

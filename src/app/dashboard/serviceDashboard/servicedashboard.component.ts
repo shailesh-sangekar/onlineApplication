@@ -1,10 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthInfo } from '../../../shared/models/authInfo';
-import { ServiceConfig } from '../../../shared/models/serviceConfig';
-import { AuthTokenService } from '../../../shared/services/authToken.service';
-import { CommonService } from '../../../shared/services/common.service';
-import { SpService } from '../../../shared/services/spcommon.service';
-import { TransportService } from '../../../services/transport.service';
+import { ServiceConfig, SpService } from '../../../shared';
 import { Router } from '@angular/router';
 
 
@@ -22,6 +17,8 @@ export class ServiceDashboardComponent implements OnInit {
     pendingReq: number;
     approvedReq: number;
     rejectedReq: number;
+    chartdata: any;
+    chartOptions: any;
     constructor(private _spService: SpService, private _router: Router) {
         this.data = new Array<ServiceConfig>();
         this.serviceData = new Array<any>();
@@ -31,6 +28,7 @@ export class ServiceDashboardComponent implements OnInit {
         // this._spService.baseUrl = this.serviceRef.siteUrl;
         this._spService.setBaseUrl(this.serviceRef.siteUrl);
         this.getData(this.serviceRef.ListName);
+
     }
     getData(ListName: string) {
         const ctl = this;
@@ -38,6 +36,7 @@ export class ServiceDashboardComponent implements OnInit {
             if (response.d.results !== null) {
                 ctl.serviceData = response.d.results;
                 ctl.testMessage = ctl.serviceData.length.toString();
+
                 ctl.getStatusCounter(ctl.serviceData);
             }
         }).catch(function (response) {
@@ -55,15 +54,36 @@ export class ServiceDashboardComponent implements OnInit {
         ctl.pendingReq = _pending.length;
         ctl.approvedReq = _approved.length;
         ctl.rejectedReq = _rejected.length;
+        this.bindChart([this.pendingReq, this.approvedReq, this.rejectedReq]);
     }
 
     onService(service: any, action: any, e: any) {
         e.preventDefault();
         this._router.navigate(['/user-list',
-            service + '-' + action,
+            this.serviceRef.ServiceName + '-' + action,
             this.serviceRef.siteUrl,
             this.serviceRef.ListName
         ]);
 
+    }
+    bindChart(_data: Array<number>) {
+        const countpen = Math.round((this.pendingReq / parseInt(this.testMessage, 0) * 100)) + '% Pending';
+        const countap = Math.round((this.approvedReq / parseInt(this.testMessage, 0) * 100)) + '% Closed';
+        const countre = Math.round((this.rejectedReq / parseInt(this.testMessage, 0) * 100)) + '% Rejected';
+        this.chartOptions = {
+            legend: { display: true, position: 'right' },
+            animation: {
+                duration: 1500
+            }
+        },
+            this.chartdata = {
+                labels: [countpen, countap, countre],
+                datasets: [
+                    {
+                        data: _data,
+                        backgroundColor: ['#ffb822', '#00c5dc', '#716aca'],
+                        hoverBackgroundColor: ['#ffb822', '#00c5dc', '#716aca'/**'#f4516c'*/]
+                    }]
+            };
     }
 }

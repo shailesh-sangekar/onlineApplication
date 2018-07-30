@@ -205,9 +205,12 @@ export class SpService {
     uploadFile(folderUrl: string, fileName: string, binary: any): Promise<any> {
         const url = this.baseUrl + '/_api/web/GetFolderByServerRelativeUrl(\''
             + folderUrl + '\')/files/add(overwrite=true, url=\'' + fileName + '\')';
-        return this.http.post(url, binary, this.options).toPromise().then(function (res: Response) {
-            return res.json();
-        }).catch(this.handleError);
+        const svc = this;
+        return this.refreshDigest().then(function (_res: Response) {
+            return svc.http.post(url, binary, svc.options).toPromise().then(function (res: Response) {
+                return res.json();
+            }).catch(svc.handleError);
+        });
     }
 
     // Upload attachment to item
@@ -222,9 +225,12 @@ export class SpService {
             // CREATE scenario
             url += ')/AttachmentFiles/add(FileName=\'' + fileName + '\')';
         }
-        return this.http.post(url, binary, options).toPromise().then(function (res: Response) {
-            return res.json();
-        }).catch(this.handleError);
+        const svc = this;
+        return this.refreshDigest().then(function (_res: Response) {
+            return svc.http.post(url, binary, options).toPromise().then(function (res: Response) {
+                return res.json();
+            }).catch(svc.handleError);
+        });
     }
 
     // Get attachment for item
@@ -255,9 +261,12 @@ export class SpService {
             };
         }
         const data = JSON.stringify(jsonBody);
-        return this.http.post(url, data, this.options).toPromise().then(function (res: Response) {
-            return res.json();
-        }).catch(this.handleError);
+        const svc = this;
+        return this.refreshDigest().then(function (_res: Response) {
+            return svc.http.post(url, data, svc.options).toPromise().then(function (res: Response) {
+                return res.json();
+            }).catch(svc.handleError);
+        });
     }
 
     // Build URL string with OData parameters
@@ -320,8 +329,11 @@ export class SpService {
         }
         const data = JSON.stringify(jsonBody);
         const url = this.apiUrl.replace('{0}', listName) + '(' + id + ')';
-        return this.http.post(url, data, localOptions).toPromise().then(function (resp: Response) {
-            return resp.json();
+        const svc = this;
+        return this.refreshDigest().then(function (res: Response) {
+            return svc.http.post(url, data, localOptions).toPromise().then(function (resp: Response) {
+                return resp.json();
+            });
         });
     }
 

@@ -54,18 +54,18 @@
                                 Click actions button to work on specific list of requests
                             </span>
                         </div>
-                        <div class="m-widget14__chart" style="height:120px;">
+                        <div class="m-widget14__chart" style="height:120px;min-width: 400px;">
                             <div class="row" style="margin-top: 25px">
                                 <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-warning m-btn m-btn--icon btn-lg m-btn--icon-only  m-btn--pill m-btn--air"
-                                    (click)="onService('Transport','Pending',$event)">
+                                    (click)="onService('Transport','Pending',$event)" pTooltip="View Pending Requests" tooltipPosition="top">
                                     <i class="fa fa-hourglass-half"></i>
                                 </a>
                                 <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-success m-btn m-btn--icon btn-lg m-btn--icon-only m-btn--pill m-btn--air"
-                                    (click)="onService('Transport','Approved',$event)">
+                                    (click)="onService('Transport','Approved',$event)" pTooltip="View Closed Requests" tooltipPosition="top">
                                     <i class="fa fa-check-square-o"></i>
                                 </a>
                                 <a href="#" style="margin: 5px 5px 5px 5px;width: 100px;height: 100px;" class="btn btn-danger m-btn m-btn--icon btn-lg m-btn--icon-only  m-btn--pill m-btn--air"
-                                    (click)="onService('Transport','Rejected',$event)">
+                                    (click)="onService('Transport','Rejected',$event)" pTooltip="View Rejected Requests" tooltipPosition="top">
                                     <i class="fa fa-window-close"></i>
                                 </a>
                             </div>
@@ -85,7 +85,7 @@
                             </span>
                         </div>
                         <div class="row  align-items-center">
-                            <div class="col">
+                            <!-- <div class="col">
                                 <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
                                     <div class="m-widget14__stat">45</div>
                                     <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-donut" style="width: 100%; height: 100%;">
@@ -131,7 +131,13 @@
                                         <span class="m-widget14__legend-text">19% Completed</span>
                                     </div>
                                 </div>
+                            </div> -->
+
+                            <!-- BEGIN: Dyanamic Chart-->
+                            <div class="col" style="max-width: 400px;">
+                                <p-chart type="doughnut" [data]="chartdata" [options]="chartOptions"></p-chart>
                             </div>
+                            <!-- END: Dyanamic Chart-->
                         </div>
                     </div>
                     <!--end:: Widgets/Profit Share-->

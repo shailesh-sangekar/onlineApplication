@@ -1,6 +1,3 @@
-
-
-
 <!-- prod -->
 <div class="m-grid__item m-grid__item--fluid m-wrapper prod">
     <!-- BEGIN: Subheader -->
@@ -13,7 +10,7 @@
                 <span class="m-subheader__desc" id="m_dashboard_daterangepicker">
                     <span class="m-subheader__daterange-label">
                         <span class="">Current Quarter :</span>
-                        <span class=""> Q2 2018</span>
+                        <span class=""> {{quarter}}</span>
                     </span>
                 </span>
             </div>
@@ -26,4 +23,7 @@
         <!-- <hr/> -->
         <!--END : Dashboard Component-->
     </div>
+    <h2>
+        <p-message *ngIf="NoDataMsg" severity="info" text="You are not authorized for any service! Please contact admin."></p-message>
+    </h2>
 </div>

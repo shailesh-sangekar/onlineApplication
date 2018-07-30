@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthInfo } from '../../shared/models/authInfo';
-import { ServiceConfig } from '../../shared/models/serviceConfig';
-import { AuthTokenService } from '../../shared/services/authToken.service';
-import { CommonService } from '../../shared/services/common.service';
 import { SpService } from '../../shared/services/spcommon.service';
-import { TransportService } from '../../services/transport.service';
 import { Router } from '@angular/router';
-import { RestOptions } from '../../shared/models/restoptions';
+import { RestOptions, ServiceConfig, User, CommonService } from '../../shared';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +14,9 @@ export class DashboardComponent implements OnInit {
   title = 'app';
   displayError = true;
   options: RestOptions;
-  constructor(private _spService: SpService, private _router: Router) {
+  quarter: string;
+  NoDataMsg = false;
+  constructor(private _commonService: CommonService, private _spService: SpService, private _router: Router) {
     this.data = new Array<ServiceConfig>();
     // // TODO :: Delete Test Data
     // const testD = new ServiceConfig();
@@ -43,6 +40,9 @@ export class DashboardComponent implements OnInit {
     this.getServiceData();
   }
   private init() {
+    const __dt = new Date();
+    const userGroup: User = JSON.parse(localStorage.getItem('user'));
+    this.quarter = this._commonService.getCurrentQurter();
     this.options = new RestOptions();
     this.options.select = 'ID,Title,ServiceName,ListName,Permissions/ID,Permissions/Name,siteUrl,Created,Modified';
     this.options.orderby = 'ID desc';
@@ -52,6 +52,7 @@ export class DashboardComponent implements OnInit {
     const ctl = this;
     this._spService.read('ServiceConfig', this.options).then(function (response) {
       if (response.d.results !== null) {
+        const userGroup: User = JSON.parse(localStorage.getItem('user'));
         const res: any = response.d.results;
         res.forEach(element => {
           const tempData: ServiceConfig = new ServiceConfig();
@@ -60,9 +61,14 @@ export class DashboardComponent implements OnInit {
           tempData.ServiceName = element.ServiceName;
           tempData.Permissions = element.Permissions;
           tempData.siteUrl = element.siteUrl;
-          ctl.data.push(tempData);
+          // ctl.data.push(tempData);
+          if (userGroup.Groups.indexOf(element.Permissions) > -1) {
+            ctl.data.push(tempData);
+          }
         });
-        console.log(ctl.data);
+        if (ctl.data.length === 0) {
+          ctl.NoDataMsg = true;
+        }
       }
     });
   }

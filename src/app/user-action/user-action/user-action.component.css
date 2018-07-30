@@ -4,3 +4,9 @@ app-users-action{
 :host{
     width:100% !important;
 }
+.prod{
+    margin-top: -84px;
+}
+.heading{
+    text-transform: capitalize;
+}

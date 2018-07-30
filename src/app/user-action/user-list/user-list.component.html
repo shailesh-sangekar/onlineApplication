@@ -1,12 +1,12 @@
 <!-- style="margin-top: -84px;" -->
-<div class="m-grid__item m-grid__item--fluid m-wrapper" style="margin-top: -84px;">
+<div class="m-grid__item m-grid__item--fluid m-wrapper prod">
     <div class="m-content">
         <div class="m-portlet m-portlet--mobile">
             <div class="m-portlet__head">
                 <div class="m-portlet__head-caption">
                     <div class="m-portlet__head-title">
-                        <h3 class="m-portlet__head-text">
-                            <strong class={{action}}>{{service}} Service {{action}} requests.</strong>
+                        <h3 class="m-portlet__head-text heading">
+                            <strong class={{action}}>{{service}} {{action}} requests.</strong>
                         </h3>
                     </div>
                 </div>
@@ -18,9 +18,11 @@
                 <!-- BEGIN :: Dynamic table structure-->
                 <p-table #srv [value]="data" [paginator]="true" [rows]="15" [globalFilterFields]="['SID','NIC','FirstName','MobileNumber','Address','CountryOfResidence']">
                     <ng-template pTemplate="caption">
+                        <!-- <div class="ui-helper-clearfix">
+                            <input type="button" value="test" text="test" (click)="export()" />
+                            <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="All Data" (click)="srv.exportCSV()" style="float:left"></button>
+                        </div> -->
                         <div style="text-align: right">
-                            <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="All Data" (click)="srv.exportCSV()" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"></button>
-                            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
                             <input type="text" pInputText size="50" placeholder=" Search..." class="ui-inputtext ui-corner-all ui-state-default ui-widget"
                                 (input)="srv.filterGlobal($event.target.value, 'contains')" style="width:auto">
                         </div>

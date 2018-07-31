@@ -19,12 +19,16 @@
                 <p-table #srv [value]="data" [paginator]="true" [rows]="15" [globalFilterFields]="['SID','NIC','FirstName','MobileNumber','Address','CountryOfResidence']">
                     <ng-template pTemplate="caption">
                         <!-- <div class="ui-helper-clearfix">
-                            <input type="button" value="test" text="test" (click)="export()" />
-                            <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="All Data" (click)="srv.exportCSV()" style="float:left"></button>
+                            <input type="button" class="btn btn-info m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill" value="Export" text="Export"
+                                (click)="export()" />
                         </div> -->
                         <div style="text-align: right">
+                            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
                             <input type="text" pInputText size="50" placeholder=" Search..." class="ui-inputtext ui-corner-all ui-state-default ui-widget"
-                                (input)="srv.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                                (input)="srv.filterGlobal($event.target.value, 'contains')" style="width:auto;margin-right: 4pt">
+                            <a (click)="export()" pTooltip="Export List" tooltipPosition="top" class="btn btn-outline-warning m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--outline-2x m-btn--pill m-btn--air">
+                                <i class="fa fa-share-square"></i>
+                            </a>
                         </div>
                     </ng-template>
                     <ng-template pTemplate="header" let-requestCol>
@@ -51,7 +55,7 @@
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-request>
-                        <tr>
+                        <tr class="tblrow">
                             <td style="display: none;">{{request.ID}}</td>
                             <td>{{request.SID}}</td>
                             <td>{{request.NIC}}</td>
@@ -60,7 +64,7 @@
                             <td>{{request.Address}}</td>
                             <td>{{request.CountryOfResidence}}</td>
                             <td *ngIf="action === 'Pending'">
-                                <button class="btn btn-info m-btn--pill" (click)="onUpdateRequest(request.ID)">
+                                <button class="btn btn-info btn-sm m-btn--pill" (click)="onUpdateRequest(request.ID)">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button>
                             </td>

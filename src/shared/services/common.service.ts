@@ -36,10 +36,13 @@ export class CommonService {
 
     private convertToCSV(objArray: any) {
         const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
-        let str = '';
-        for (let i = 0; i < array.length; i++) {
+        array[0].splice(array[0].indexOf('__metadata'), 1);
+        array[0].splice(array[0].indexOf('ContentType'), 1);
+        array[0].splice(array[0].indexOf('Attachments'), 1);
+        let str = array[0].toString() + '\r\n';
+        for (let i = 1; i < array.length; i++) {
             let line = '';
-            array.forEach(index => {
+            array[0].forEach(index => {
                 if (line !== '') { line += ','; }
                 line += array[i][index];
             });

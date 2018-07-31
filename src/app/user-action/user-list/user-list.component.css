@@ -19,3 +19,6 @@
 .heading{
     text-transform: capitalize;
 }
+.tblrow{
+    height: 45px;
+}

@@ -18,7 +18,7 @@ export class UserlistComponent implements OnInit {
   serviceList: string;
   data: Array<ServiceRequest>;
   options: RestOptions;
-
+  fields: string;
   constructor(private _spService: SpService, private _commonservice: CommonService,
     private _router: Router, private route: ActivatedRoute) {
   }
@@ -30,10 +30,10 @@ export class UserlistComponent implements OnInit {
       this.action = this.params ? this.params.split('-')[1] : '';
       this.serviceUrl = params['url'];
       this.serviceList = params['list'];
-      console.log(this.serviceList + ' Url : ' + this.serviceUrl);
     });
     this._spService.setBaseUrl(this.serviceUrl);
     this.init();
+    this.getAllFields(this.serviceList);
     this.getListData(this.serviceList, this.options);
   }
   private init() {
@@ -100,8 +100,35 @@ export class UserlistComponent implements OnInit {
   }
 
   export() {
-    const headers: any = Object.getOwnPropertyNames(this.data[0]);
-    this._commonservice.exportCSVFile(headers, this.data, 'testFileExport.csv');
+    const _options = new RestOptions();
+    _options.select = this.fields;
+    _options.orderby = 'ID desc';
+    _options.filter = 'Status eq \'' + this.action + '\'';
+    this.getData(this.serviceList, _options);
+  }
+  getData(ListName: string, Options?: RestOptions) {
+    const ctl = this;
+    this._spService.read(ListName, Options).then(function (response) {
+      if (response.d.results !== null) {
+        const _data: Array<any> = response.d.results;
+        const _headers: any = Object.getOwnPropertyNames(_data[0]);
+        const _dataToExport = JSON.parse(JSON.stringify(_data));
+        const _currentDate = new Date();
+        const _fileName: string = ctl.service + ' ' + ctl.action + ' Requests On ' + _currentDate.toDateString();
+        ctl._commonservice.exportCSVFile(_headers, _dataToExport, _fileName);
+      }
+    }).catch(function (response) {
+      console.log('Wrong communication Occured at getData');
+      console.error(response);
+    });
+  }
+  getAllFields(ListName: string) {
+    const ctl = this;
+    this._spService.getAllCustomFields(ListName).then(function (response) {
+      if (response.d.results !== null) {
+        ctl.fields = response.d.results.map(x => x.InternalName).toString();
+      }
+    });
   }
 }
 

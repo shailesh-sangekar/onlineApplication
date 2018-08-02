@@ -5,4 +5,3 @@ export class AuthInfo {
       public UserName: string
     ) {  }
   }
-  

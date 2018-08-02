@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 /** Third party dependencies */
 import { SpinnerService } from '../spinner/spinner.service';
 import { Config } from '../config/config';
-import { AuthHttp } from '../services/authHttp.service';
+import { AuthHttp } from './authHttp.service';
 
 @Injectable()
 export class AuthTokenService {

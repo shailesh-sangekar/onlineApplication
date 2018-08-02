@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
     this.loginName = 'Ankit.panchal';
 
     // this.getTransport();
-    // this.getAuthToken();
+    this.getAuthToken();
     // this._spService.read('test').then(function (response) {
     //   console.log(response.d.results);
     // });

@@ -1,0 +1,9 @@
+.menuIcon{
+    width: 100px!important;
+    height: 100px!important;
+    margin-left: 15px!important;
+    margin-top: 30px
+}
+.menuIcon>i{
+    font-size: 2.0rem!important;
+}

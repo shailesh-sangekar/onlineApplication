@@ -1,0 +1,16 @@
+.heading{
+    color: whitesmoke;
+    background-color: cornflowerblue;
+}
+.frmBody{
+    width: 80%;
+}
+.sidebar{
+    width: 20%;
+}
+.section-title{
+    margin: 15px 0px 10px 55px;
+}
+hr.style1{
+	border-top: 2px solid #8c8b8b;
+}

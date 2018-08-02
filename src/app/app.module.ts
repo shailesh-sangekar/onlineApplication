@@ -8,22 +8,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_BASE_HREF, CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app.routing';
-import { DashboardComponent } from './dashboard/dashboard.compnent';
-import { UserlistComponent } from './user-action/user-list/user-list.component';
-import { UserActionComponent } from './user-action/user-action/user-action.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewTransportComponent } from './transport/transportNew.component';
+import { TooltipModule } from 'primeng/tooltip';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    UserlistComponent,
-    UserActionComponent
+    NewTransportComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     AppRoutingModule,
+    MessagesModule,
+    MessageModule,
+    TooltipModule,
     SharedModule.forRoot()
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },

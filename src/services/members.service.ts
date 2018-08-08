@@ -6,7 +6,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/finally';
-// import { Router } from '@angular/router';
 
 /** Third party dependencies */
 import { SpinnerService } from '../shared/spinner/spinner.service';
@@ -15,65 +14,31 @@ import { AuthHttp } from '../shared/services/authHttp.service';
 import { AuthTokenService } from '../shared/services/authToken.service';
 
 @Injectable()
-export class TransportService {
+export class MembersService {
     http: Http;
     constructor(http: Http,
         private authHttp: AuthHttp,
         private _spinnerService: SpinnerService,
-        // private router: Router,
         private _authTokenService: AuthTokenService) {
         this.http = http;
     }
 
-    getTransport() {
-        const url = Config.GetURL('/api/FRCI/Transport/Get');
+    getMembers() {
+        const url = Config.GetMemberURL('/api/members');
         this._spinnerService.show();
         return this.authHttp.get(url)
             .map(this.extractData)
             .catch(this.handleError)
             .finally(() => this._spinnerService.hide());
     }
-    addTransport(payload: any) {
-        const url = Config.GetURL('/api/FRCI/Transport/Post');
-        this._spinnerService.show();
-        return this.authHttp.post(url, payload)
-            .map(this.extractData)
-            .catch(this.handleError)
-            .finally(() => this._spinnerService.hide());
-    }
-    updateTransport(payload: any) {
-        const url = Config.GetURL('/api/FRCI/Transport/UpdateTransportByID');
-        this._spinnerService.show();
-        return this.authHttp.post(url, payload)
-            .map(this.extractData)
-            .catch(this.handleError)
-            .finally(() => this._spinnerService.hide());
-    }
-    getTransportByID(id: any) {
-        const url = Config.GetURL('/api/FRCI/Transport/TransportByID/' + id);
+    getDetails(UserName: any) {
+        const url = Config.GetMemberURL('/api/FRCI/Transport/TransportCountByStatus?Status=' + UserName);
         this._spinnerService.show();
         return this.authHttp.get(url)
             .map(this.extractData)
             .catch(this.handleError)
             .finally(() => this._spinnerService.hide());
     }
-    getTransportByStatus(Status: any) {
-        const url = Config.GetURL('/api/FRCI/Transport/TransportByStatus?Status=' + Status);
-        this._spinnerService.show();
-        return this.authHttp.get(url)
-            .map(this.extractData)
-            .catch(this.handleError)
-            .finally(() => this._spinnerService.hide());
-    }
-    getTransportCountByStatus(Status: any) {
-        const url = Config.GetURL('/api/FRCI/Transport/TransportCountByStatus?Status=' + Status);
-        this._spinnerService.show();
-        return this.authHttp.get(url)
-            .map(this.extractData)
-            .catch(this.handleError)
-            .finally(() => this._spinnerService.hide());
-    }
-
     /**Success Handler */
     private extractData(res: Response) {
         if (res.status < 200 || res.status >= 300) {

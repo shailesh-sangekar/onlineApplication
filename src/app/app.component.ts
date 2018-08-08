@@ -4,6 +4,7 @@ import { AuthTokenService } from '../shared/services/authToken.service';
 import { CommonService } from '../shared/services/common.service';
 import { SpService } from '../shared/services/spcommon.service';
 import { TransportService } from '../services/transport.service';
+import { MembersService } from '../services/members.service';
 
 
 @Component({
@@ -19,13 +20,13 @@ export class AppComponent implements OnInit {
   loginName: string;
   errorMessage: string;
   loggedInUserData: any;
-
+  currentUser: any;
 
   title = 'app';
   displayError = true;
 
   constructor(private _commonService: CommonService, private _authTokenService: AuthTokenService,
-    private _transportService: TransportService, private _spService: SpService) {
+    private _transportService: TransportService, private _spService: SpService, private _membersService: MembersService) {
     this.model = new AuthInfo('password', '', '');
     this._spService.baseUrl = '';
   }
@@ -43,9 +44,7 @@ export class AppComponent implements OnInit {
 
     // this.getTransport();
     this.getAuthToken();
-    // this._spService.read('test').then(function (response) {
-    //   console.log(response.d.results);
-    // });
+    this.getMemberDetails('TestLoginName');
   }
 
   getAuthToken() {
@@ -55,9 +54,8 @@ export class AppComponent implements OnInit {
     this._commonService.getAuthToken(this.model)
       .subscribe(
         (results: any) => {
-
-          console.log('Access grated for current user');
-          console.log(results);
+          // console.log('Access grated for current user');
+          // console.log(results);
         },
         error => {
 
@@ -79,6 +77,20 @@ export class AppComponent implements OnInit {
           // debugger;
           this.errorMessage = <any>error;
           // this._router.navigate(['/unauthorized', 1]);
+        });
+  }
+
+  getMemberDetails(loginName: string) {
+    const _cntx = this;
+    this._membersService.getMembers()
+      .subscribe(
+        (results: any) => {
+          _cntx.currentUser = results;
+        },
+        error => {
+          // debugger;
+          this.errorMessage = <any>error;
+          console.log(this.errorMessage);
         });
   }
 

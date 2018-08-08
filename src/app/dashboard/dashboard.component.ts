@@ -50,39 +50,39 @@ export class DashboardComponent implements OnInit {
     // });
   }
 
-  getAuthToken() {
+  // getAuthToken() {
 
-    this.model.UserName = this.loginName;
-    this.model.Password = 'Espl@123';
-    this._commonService.getAuthToken(this.model)
-      .subscribe(
-        (results: any) => {
+  //   this.model.UserName = this.loginName;
+  //   this.model.Password = 'Espl@123';
+  //   this._commonService.getAuthToken(this.model)
+  //     .subscribe(
+  //       (results: any) => {
 
-          console.log('Access grated for current user');
-          console.log(results);
-        },
-        error => {
+  //         console.log('Access grated for current user');
+  //         console.log(results);
+  //       },
+  //       error => {
 
-          this.errorMessage = <any>error;
-          // this._router.navigate(['/unauthorized', 1]);
-        });
-  }
+  //         this.errorMessage = <any>error;
+  //         // this._router.navigate(['/unauthorized', 1]);
+  //       });
+  // }
 
-  getTransport() {
-    console.log('from transport');
-    this._transportService.getTransport()
-      .subscribe(
-        (results: any) => {
+  // getTransport() {
+  //   console.log('from transport');
+  //   this._transportService.getTransport()
+  //     .subscribe(
+  //       (results: any) => {
 
-          console.log('Transport Data');
-          console.log(results);
-        },
-        error => {
-          // debugger;
-          this.errorMessage = <any>error;
-          // this._router.navigate(['/unauthorized', 1]);
-        });
-  }
+  //         console.log('Transport Data');
+  //         console.log(results);
+  //       },
+  //       error => {
+  //         // debugger;
+  //         this.errorMessage = <any>error;
+  //         // this._router.navigate(['/unauthorized', 1]);
+  //       });
+  // }
 
   newRequest(e: any) {
     e.preventDefault();

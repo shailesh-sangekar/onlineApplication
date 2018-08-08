@@ -1,3 +1,5 @@
+
+
 <h1 class="heading">From New Transport page!!</h1>
 <div class="sidebar"></div>
 
@@ -15,18 +17,17 @@
                         <h3 class="m-portlet__head-text">
                             New Registration Mark Form
                         </h3>
-                        <input type="text" [(ngModel)]="data.FirstName" autocomplete="false" class="form-control m-input m-input--square" placeholder="Name">
                     </div>
                 </div>
             </div>
             <!--begin::Form-->
-            <form class="m-form m-form--fit m-form--label-align-right">
+            <form role="form" [formGroup]="TransportForm" class="m-form m-form--fit m-form--label-align-right" (ngSubmit)="onSubmit(TransportForm)">
                 <div class="m-portlet__body">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group m-form__group">
                                 <label for="exampleSelect1">Application Type :</label>
-                                <select class="form-control m-input m-input--square" id="exampleSelect1">
+                                <select formControlName="ApplicatType" class="form-control m-input m-input--square" id="drpApplicantType">
                                     <option>Individual Applicant</option>
                                     <option>Registered Companies, Corporate Bodies</option>
                                 </select>
@@ -37,7 +38,7 @@
                                 <label for="exampleSelect1">
                                     <div class="form-group m-form__group">
                                         <label for="exampleSelect1">On behalf of someone? :</label>
-                                        <select class="form-control m-input m-input--square" id="exampleSelect1">
+                                        <select formControlName="OnBehalf" class="form-control m-input m-input--square" id="drpOnBehalf">
                                             <option>Yes</option>
                                             <option>No</option>
                                         </select>
@@ -54,24 +55,30 @@
                         <div class="col-md-4">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">First Name</label>
-                                <input type="text" [(ngModel)]="data.FirstName" autocomplete="false" class="form-control m-input m-input--square" placeholder="Name">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
+                                <input type="text" id="txtFirstName"  formControlName="FirstName" autocomplete="false" class="form-control m-input m-input--square"
+                                    placeholder="Name">
+                                    <div class="valmsg" *ngIf="TransportForm.get('FirstName').hasError('required') && submitFail">
+                                        First name required !
+                                    </div>
+                                
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">Middle Name</label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                <input type="text"  formControlName="MiddleName" class="form-control m-input m-input--square" id="txtMiddleName"
                                     placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
+                                
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">Family Name</label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                <input type="text" required formControlName="FamilyName" class="form-control m-input m-input--square" id="txtFamilyName"
                                     placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
+                                    <div class="valmsg" *ngIf="TransportForm.get('FamilyName').hasError('required') && submitFail">
+                                        Family name required !
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -79,16 +86,20 @@
                         <div class="col-md-6">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">Company Name</label>
-                                <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
+                                <input type="text" required class="form-control m-input m-input--square" id="txtCompanyNane" placeholder="Enter email">
+                                <div class="valmsg" *ngIf="TransportForm.get('FamilyName').hasError('required') && submitFail">
+                                    Company name required !
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">Registered Company Number</label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                <input type="text" required formControlName="CompanyName" class="form-control m-input m-input--square" id="txtCompanyNumber"
                                     placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
+                                    <div class="valmsg" *ngIf="TransportForm.get('CompanyName').hasError('required') && submitFail">
+                                        Registered Company Number required !
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -100,9 +111,10 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">Address</label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                    placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
+                                <input type="text" required formControlName="Address" class="form-control m-input m-input--square" id="txtAddress" placeholder="Enter email">
+                                <div class="valmsg" *ngIf="TransportForm.get('Address').hasError('required') && submitFail">
+                                    Address required !
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -110,24 +122,23 @@
                         <div class="col-md-4">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">State </label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                    placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
+                                <input type="text" required formControlName="State" class="form-control m-input m-input--square" id="txtState" placeholder="Enter email">
+                                <div class="valmsg" *ngIf="TransportForm.get('State').hasError('required')">
+                                    State required !
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">Town/Village </label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                    placeholder="Enter email">
+                                <input type="text" required formControlName="Town" class="form-control m-input m-input--square" id="txtTown" placeholder="Enter email">
                                 <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">City </label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                    placeholder="Enter email">
+                                <input type="text" required formControlName="City" class="form-control m-input m-input--square" id="txtCity" placeholder="Enter email">
                                 <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
                             </div>
                         </div>
@@ -136,23 +147,25 @@
                         <div class="col-md-4">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">Country Of Residence </label>
-                                <input type="email" [(ngModel)]="data.FirstName" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square"
-                                    id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Phone Number </label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                <input type="text" required formControlName="ContryOfResidence" class="form-control m-input m-input--square" id="txtContryOfResidence"
                                     placeholder="Enter email">
                                 <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">Phone Number </label>
+                                <input type="text" required formControlName="PhoneNumber" class="form-control m-input m-input--square" id="txtPhNumber"
+                                    placeholder="Enter email">
+                                    <div class="valmsg" *ngIf="TransportForm.get('PhoneNumber').hasError('required') && submitFail">
+                                        Phone Number required !
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">Mobile Number </label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                <input type="text" required formControlName="MobileNumber" class="form-control m-input m-input--square" id="txtMoNumber"
                                     placeholder="Enter email">
                                 <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
                             </div>
@@ -167,17 +180,20 @@
                         <div class="col-md-6">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">Registration Mark Applied For </label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                <input type="text" required formControlName="RegistrationNumber" class="form-control m-input m-input--square" id="txtRegistrationNumber"
                                     placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
+                                    <div class="valmsg" *ngIf="TransportForm.get('RegistrationNumber').hasError('required') && submitFail">
+                                        Registration Number required !
+                                    </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group m-form__group">
                                 <label for="exampleInputEmail1">Insert NYP for vehicle not yet purchased </label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                    placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
+                                <input type="text" required formControlName="NYP" class="form-control m-input m-input--square" id="txtNYP" placeholder="Enter email">
+                                <div class="valmsg" *ngIf="TransportForm.get('NYP').hasError('required') && submitFail">
+                                    NYP required !
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -186,10 +202,10 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Captcha </label>
-                                <input type="email" [(ngModel)]="data.FirstName" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                    placeholder="Enter email">
-                                <span class="m-form__help">We'll never share your email with anyone else.</span>
+                                <label>Captcha </label>
+                                <!-- <input type="email" formControlName="Captcha" class="form-control m-input m-input--square" id="txtCaptcha" placeholder="Enter email"> -->
+                                <p-captcha siteKey="6LdZhmgUAAAAAJQRaQslsDukOQROpgYfFW-d7HVA" id="txtCaptcha" (onResponse)="showResponse($event)"></p-captcha>
+                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -199,8 +215,8 @@
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions">
-                        <button type="reset" class="btn btn-success">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="reset" (click)="back()" class="btn btn-secondary">Cancel</button>
                     </div>
                 </div>
             </form>

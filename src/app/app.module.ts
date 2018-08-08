@@ -13,6 +13,8 @@ import { NewTransportComponent } from './transport/transportNew.component';
 import { TooltipModule } from 'primeng/tooltip';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import {CaptchaModule} from 'primeng/captcha';
+import { MembersService } from '../services/members.service';
 
 @NgModule({
   declarations: [
@@ -28,10 +30,11 @@ import { MessageModule } from 'primeng/message';
     MessagesModule,
     MessageModule,
     TooltipModule,
+    CaptchaModule,
     SharedModule.forRoot()
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
-  { provide: APP_BASE_HREF, useValue: '/' }, TransportService],
+  { provide: APP_BASE_HREF, useValue: '/' }, TransportService, MembersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

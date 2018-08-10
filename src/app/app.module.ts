@@ -13,7 +13,8 @@ import { NewTransportComponent } from './transport/transportNew.component';
 import { TooltipModule } from 'primeng/tooltip';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
-import {CaptchaModule} from 'primeng/captcha';
+import { CaptchaModule } from 'primeng/captcha';
+import { InputMaskModule } from 'primeng/inputmask';
 import { MembersService } from '../services/members.service';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { MembersService } from '../services/members.service';
     MessagesModule,
     MessageModule,
     TooltipModule,
+    InputMaskModule,
     CaptchaModule,
     SharedModule.forRoot()
   ],

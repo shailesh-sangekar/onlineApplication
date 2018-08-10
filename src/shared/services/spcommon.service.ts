@@ -29,6 +29,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import { Config } from '../config/config';
 
 @Injectable()
 export class SpService {
@@ -44,7 +45,7 @@ export class SpService {
     login: String;
 
     constructor(private http: Http) {
-        this.setBaseUrl('http://espld205:2233');
+        this.setBaseUrl(Config.getRootURL());
     }
 
     // HTTP Error handling
@@ -130,6 +131,7 @@ export class SpService {
     // ----------SHAREPOINT USER PROFILES----------
     // Lookup SharePoint current web user
     getCurrentUser(): Promise<any> {
+        const cntx = this;
         const url = this.baseUrl + '/_api/web/currentuser?$expand=Groups';
         return this.http.get(url, this.options).toPromise().then(function (res: Response) {
             return res.json();

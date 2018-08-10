@@ -1,0 +1,73 @@
+/* MEDIA QUERIES*/
+
+/* Small Mobiles */
+@media screen and (min-width: 0) and (max-width: 719px) {
+	.my-navbar-button { left:11px }
+	.egov-button { width: 40px; height: 40px; padding:0;}
+	#nav,.egov-button .text,.btn-momoris {display: none;}
+	header .bottom-nav-container { z-index: 98}
+	.logo { width: 123px;  height: 32px; top: 4px; position: fixed; margin-left: 0; left: 44px;}
+	.logo.smaller { width: 123px;  height: 32px;  margin-top: 0;}
+	header .bottom-nav-container { padding:0}
+	header.scrolled .bottom-nav-container {padding:0;}
+	.gov-site-home-banner-container { margin-top:40px; height: auto}
+	.banner-mobile-wrapper { display:block}
+
+	/*Footer*/
+	footer .bottom-footer-cn {padding: 25px 20px;}
+	.top-footer-cn .col-left { font-size:23px;margin-bottom: 10px;}
+	.top-footer-cn .col-right .holiday-date .icn { width: 31px; height: 29px; display:block; float:left;} 
+	.top-footer-cn .col-right .holiday-date .txt { margin-left: 50px; display: block; }
+	.top-footer-cn .col-right .holiday-date .txt .t2 { font-size:21px}
+	footer .bottom-footer-cn .bottom-menu,footer .bottom-footer-cn .copyright,footer .top-footer-cn .col-left,footer .top-footer-cn .col-right {width:100%;text-align: left;}
+	footer .bottom-footer-cn .copyright { margin-top:10px}
+}
+
+/* ipad-protrait */
+@media screen and (min-width: 720px) and (max-width: 979px){
+	.my-navbar-button { left:11px }
+	.egov-button { width: 40px; height: 40px; padding:0;}
+
+	#nav,.egov-button .text,.btn-momoris {display: none;}
+	header .bottom-nav-container { z-index: 98}
+	.logo { width: 123px;  height: 32px; top: 4px; position: fixed; margin-left: 0; left: 44px;}
+	.logo.smaller { width: 123px;  height: 32px;  margin-top: 0;}
+	header .bottom-nav-container { padding:0}
+	header.scrolled .bottom-nav-container {padding:0;}
+	.gov-site-home-banner-container { margin-top:40px; height: auto}
+	.banner-mobile-wrapper { display:block}
+	
+	/* footer */
+	.top-footer-cn .col-left {font-size: 32px}
+	.top-footer-cn .col-right .holiday-date .txt .t2 {font-size: 25px;}
+	.top-footer-cn .col-right .holiday-date .icn {width: 42px;height: 40px;}
+
+}
+@media screen and (min-width: 980px) and (max-width: 1023px){
+	.my-navbar-button { left:11px }
+	.egov-button { width: 40px; height: 40px; padding:0;}
+
+	#nav,.egov-button .text,.btn-momoris {display: none;}
+	header .bottom-nav-container { z-index: 98}
+	.logo { width: 123px;  height: 32px; top: 4px; position: fixed; margin-left: 0; left: 44px;}
+	.logo.smaller { width: 123px;  height: 32px;  margin-top: 0;}
+	header .bottom-nav-container { padding:0}
+	header.scrolled .bottom-nav-container {padding:0;}
+	.gov-site-home-banner-container { margin-top:40px; height: auto}
+	.banner-mobile-wrapper { display:block}
+	
+}
+@media screen and (min-width: 1024px) and (max-width: 1199px){
+
+}
+
+/* laptops 13inch */
+@media only screen and (min-width: 1200px) and (max-width: 1366px) {
+.logo {  width: 179px;	height: 47px;}
+	#nav ul li { font-size:15px;margin-left: 20px;}
+	.btn-momoris {  width:206px;}
+	.btn-momoris .txt1 { font-size: 22px;}
+	#nav li ul { max-width:1200px;  min-height: 250px;}
+	#nav li ul .sub-box > li a { font-size:13px;}
+	
+}

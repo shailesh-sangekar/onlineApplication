@@ -17,3 +17,21 @@ hr.style1{
 .valmsg{
     color: #dc3545;
 }
+.requiredMark{
+    color: #E70008;
+}
+.sidespace{
+    margin-left: 25px
+}
+::placeholder {
+    color: #c5c5c5bf;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #c5c5c5bf;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #c5c5c5bf;
+}

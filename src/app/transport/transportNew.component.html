@@ -1,228 +1,151 @@
-
-
-<h1 class="heading">From New Transport page!!</h1>
-<div class="sidebar"></div>
-
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-        <!--begin::Portlet-->
-        <div class="m-portlet m-portlet--tab">
-            <div class="m-portlet__head">
-                <div class="m-portlet__head-caption">
-                    <div class="m-portlet__head-title">
-                        <span class="m-portlet__head-icon m--hide">
-                            <i class="la la-gear"></i>
-                        </span>
-                        <h3 class="m-portlet__head-text">
-                            New Registration Mark Form
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            <!--begin::Form-->
-            <form role="form" [formGroup]="TransportForm" class="m-form m-form--fit m-form--label-align-right" (ngSubmit)="onSubmit(TransportForm)">
-                <div class="m-portlet__body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleSelect1">Application Type :</label>
-                                <select formControlName="ApplicatType" class="form-control m-input m-input--square" id="drpApplicantType">
-                                    <option>Individual Applicant</option>
-                                    <option>Registered Companies, Corporate Bodies</option>
+<div class="Innerpage_content bg-white Registration-mark">
+    <div class="cont1450 sidespace">
+        <div class="inner-title">Application for Specific Registration Mark</div>
+        <div class="inner-sub-title">E-Services</div>
+        <div class="cnWrapper sidespace">
+            <div class="Registration-form">
+                <form role="form" [formGroup]="TransportForm" (ngSubmit)="onSubmit(TransportForm)">
+                    <div class="form-row">
+                        <div class="col12">
+                            <div class="col6">
+                                <label>Applicant Type
+                                    <span class="requiredMark">*</span>
+                                </label>
+                                <select formControlName="ApplicatType" name="Applicant_Type form-control" (change)="onSelect($event.target.value)" class="Applicant_Type">
+                                    <option *ngFor="let type of ApplicantType" value={{type}}>{{type}}</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleSelect1">
-                                    <div class="form-group m-form__group">
-                                        <label for="exampleSelect1">On behalf of someone? :</label>
-                                        <select formControlName="OnBehalf" class="form-control m-input m-input--square" id="drpOnBehalf">
-                                            <option>Yes</option>
-                                            <option>No</option>
-                                        </select>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <h3 class="section-title">Applicant Information</h3>
-                        <hr class="style1">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">First Name</label>
-                                <input type="text" id="txtFirstName"  formControlName="FirstName" autocomplete="false" class="form-control m-input m-input--square"
-                                    placeholder="Name">
-                                    <div class="valmsg" *ngIf="TransportForm.get('FirstName').hasError('required') && submitFail">
-                                        First name required !
-                                    </div>
-                                
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Middle Name</label>
-                                <input type="text"  formControlName="MiddleName" class="form-control m-input m-input--square" id="txtMiddleName"
-                                    placeholder="Enter email">
-                                
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Family Name</label>
-                                <input type="text" required formControlName="FamilyName" class="form-control m-input m-input--square" id="txtFamilyName"
-                                    placeholder="Enter email">
-                                    <div class="valmsg" *ngIf="TransportForm.get('FamilyName').hasError('required') && submitFail">
-                                        Family name required !
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Company Name</label>
-                                <input type="text" required class="form-control m-input m-input--square" id="txtCompanyNane" placeholder="Enter email">
-                                <div class="valmsg" *ngIf="TransportForm.get('FamilyName').hasError('required') && submitFail">
-                                    Company name required !
+                            <div class="col6">
+                                <div class="col6">
+                                    <label>On behalf of someone?</label>
+                                    <select formControlName="OnBehalf" name="Applicant_Type form-control" (change)="onSelectOnBehalf($event.target.value)" class="Applicant_Type">
+                                        <option *ngFor="let _value of OnBehalfValues" value={{_value}}>{{_value}}</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Registered Company Number</label>
-                                <input type="text" required formControlName="CompanyName" class="form-control m-input m-input--square" id="txtCompanyNumber"
-                                    placeholder="Enter email">
-                                    <div class="valmsg" *ngIf="TransportForm.get('CompanyName').hasError('required') && submitFail">
-                                        Registered Company Number required !
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <h3 class="section-title">Address</h3>
-                        <hr/>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Address</label>
-                                <input type="text" required formControlName="Address" class="form-control m-input m-input--square" id="txtAddress" placeholder="Enter email">
-                                <div class="valmsg" *ngIf="TransportForm.get('Address').hasError('required') && submitFail">
-                                    Address required !
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">State </label>
-                                <input type="text" required formControlName="State" class="form-control m-input m-input--square" id="txtState" placeholder="Enter email">
-                                <div class="valmsg" *ngIf="TransportForm.get('State').hasError('required')">
-                                    State required !
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Town/Village </label>
-                                <input type="text" required formControlName="Town" class="form-control m-input m-input--square" id="txtTown" placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">City </label>
-                                <input type="text" required formControlName="City" class="form-control m-input m-input--square" id="txtCity" placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Country Of Residence </label>
-                                <input type="text" required formControlName="ContryOfResidence" class="form-control m-input m-input--square" id="txtContryOfResidence"
-                                    placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Phone Number </label>
-                                <input type="text" required formControlName="PhoneNumber" class="form-control m-input m-input--square" id="txtPhNumber"
-                                    placeholder="Enter email">
-                                    <div class="valmsg" *ngIf="TransportForm.get('PhoneNumber').hasError('required') && submitFail">
-                                        Phone Number required !
-                                    </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Mobile Number </label>
-                                <input type="text" required formControlName="MobileNumber" class="form-control m-input m-input--square" id="txtMoNumber"
-                                    placeholder="Enter email">
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <br>
-                        <h3 class="section-title">Registration Mark</h3>
-                        <br>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Registration Mark Applied For </label>
-                                <input type="text" required formControlName="RegistrationNumber" class="form-control m-input m-input--square" id="txtRegistrationNumber"
-                                    placeholder="Enter email">
-                                    <div class="valmsg" *ngIf="TransportForm.get('RegistrationNumber').hasError('required') && submitFail">
-                                        Registration Number required !
-                                    </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Insert NYP for vehicle not yet purchased </label>
-                                <input type="text" required formControlName="NYP" class="form-control m-input m-input--square" id="txtNYP" placeholder="Enter email">
-                                <div class="valmsg" *ngIf="TransportForm.get('NYP').hasError('required') && submitFail">
-                                    NYP required !
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group m-form__group">
-                                <label>Captcha </label>
-                                <!-- <input type="email" formControlName="Captcha" class="form-control m-input m-input--square" id="txtCaptcha" placeholder="Enter email"> -->
-                                <p-captcha siteKey="6LdZhmgUAAAAAJQRaQslsDukOQROpgYfFW-d7HVA" id="txtCaptcha" (onResponse)="showResponse($event)"></p-captcha>
-                                <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
-                            </div>
-                        </div>
-                        <div class="col-md-4">
 
+                        <div *ngIf="onApplicationTypeFlag" class="col6">
+                            <label>Company Name</label>
+                            <input type="text" id="txtCompanyName" maxlength="50" formControlName="CompanyName" class="form-control" value="" placeholder="Max length 50 charecters"
+                            />
+                        </div>
+
+                        <div *ngIf="onApplicationTypeFlag" class="col6">
+                            <label>Company Number</label>
+                            <input type="text" formControlName="CompanyNumber" id="txtCompanyNumber" maxlength="50" value="" class="form-control" placeholder="Max length 50 charecters"
+                            />
+                        </div>
+
+                        <div class="col6">
+                            <label>First Name
+                                <span class="requiredMark">*</span>
+                            </label>
+                            <input type="text" id="txtFirstName" maxlength="50" formControlName="FirstName" [readonly]="!onBehalfFlag" class="form-control"
+                                value="" placeholder="Max length50 charecters" />
+                            <div class="valmsg" *ngIf="TransportForm.get('FirstName').hasError('required') && submitFail">
+                                First name required !
+                            </div>
+                        </div>
+
+                        <div class="col6">
+                            <label>Family Name
+                                <span class="requiredMark">*</span>
+                            </label>
+                            <input type="text" formControlName="FamilyName" id="txtFamilyName" maxlength="50" [readonly]="!onBehalfFlag" class="form-control"
+                                placeholder="Max length 50 charecters" value="" />
+                            <div class="valmsg" *ngIf="TransportForm.get('FamilyName').hasError('required') && submitFail">
+                                Family name required !
+                            </div>
+                        </div>
+
+                        <div class="col12">
+                            <div class="col6">
+                                <label>NIC Number / Passport Number</label>
+                                <input type="text" formControlName="NIC" id="txtNIC" [readonly]="!onBehalfFlag" maxlength="15" placeholder="Max length 15 charecters"
+                                    value="" />
+                            </div>
+                        </div>
+
+                        <div class="col12">
+                            <label>Address
+                                <span class="requiredMark">*</span>
+                            </label>
+                            <input formControlName="Address" id="txtAddress" type="text" [readonly]="!onBehalfFlag" maxlength="250" value="" placeholder="Max length 250 charecters"
+                            />
+                            <div class="valmsg" *ngIf="TransportForm.get('Address').hasError('required') && submitFail">
+                                Address required !
+                            </div>
+                        </div>
+
+                        <div class="col6">
+                            <label>City</label>
+                            <input formControlName="City" id="txtCity" type="text" [readonly]="!onBehalfFlag" maxlength="50" value="" placeholder="Max length 50 charecters"
+                            />
+                        </div>
+
+                        <div class="col6">
+                            <label>Country of Residence
+                                <span class="requiredMark">*</span>
+                            </label>
+                            <input formControlName="ContryOfResidence" id="txtContryOfResidence" type="text" [readonly]="!onBehalfFlag" value="" maxlength="50"
+                                placeholder="Max length 50 charecters" />
+                            <div class="valmsg" *ngIf="TransportForm.get('ContryOfResidence').hasError('required') && submitFail">
+                                Contry Of Residence required !
+                            </div>
+                        </div>
+
+                        <div class="col6">
+                            <label>Phone number</label>
+                            <!-- <input placeholder="Phone Number  230-9999999" /> -->
+                            <p-inputMask formControlName="PhoneNumber" id="txtPhNumber" type="text" [readonly]="!onBehalfFlag" maxlength="11" value=""
+                                mask="999-9999999" placeholder="Eg. 230-9999999"></p-inputMask>
+                        </div>
+
+                        <div class="col6">
+                            <label>Mobile Number</label>
+                            <!-- <input  /> -->
+                            <p-inputMask formControlName="username" mask="999-9-9999999" formControlName="MobileNumber" id="txtMobileNumber" [readonly]="!onBehalfFlag"
+                                maxlength="13" value="" placeholder="Eg. 230-5-9999999"></p-inputMask>
+                        </div>
+
+                        <div class="col12">
+                            <label>Registration Mark Applied For
+                                <span class="requiredMark">*</span>
+                            </label>
+                            <input formControlName="RegistrationNumber" id="txtRegistrationNumber" type="text" maxlength="250" value="" placeholder="Should be as per rule A1-A2500 OR AA1-AA2500 Eg. 'BC1952'"
+                            />
+                            <div class="valmsg" *ngIf="TransportForm.get('RegistrationNumber').hasError('required') && submitFail">
+                                Registration Number required !
+                            </div>
+                        </div>
+
+                        <div class="col12">
+                            <label>Insert NYP for vehicle not yet purchased
+                                <span class="requiredMark">*</span>
+                            </label>
+                            <input formControlName="NYP" id="txtNYP" type="text" maxlength="50" value="" placeholder="Max length 50 charecters" />
+                            <div class="valmsg" *ngIf="TransportForm.get('NYP').hasError('required') && submitFail">
+                                NYP required !
+                            </div>
+                        </div>
+                        <div class="col12">
+                            <label>Captcha
+                                <span class="requiredMark">*</span>
+                            </label>
+                            <div class="valmsg">
+                                Invalid captcha try agin !
+                            </div>
+                            <p-captcha siteKey={{sitekey}} id="txtCaptcha" (onResponse)="showResponse($event)"></p-captcha>
+                        </div>
+
+                        <div class="col12">
+                            <input type="submit" value="Save Data" />
+                            <button type="reset" (click)="back()">Cancel</button>
                         </div>
                     </div>
-                </div>
-                <div class="m-portlet__foot m-portlet__foot--fit">
-                    <div class="m-form__actions">
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <button type="reset" (click)="back()" class="btn btn-secondary">Cancel</button>
-                    </div>
-                </div>
-            </form>
-            <!--end::Form-->
+                </form>
+            </div>
         </div>
-        <!--end::Portlet-->
     </div>
-    <div class="col-md-1"></div>
 </div>

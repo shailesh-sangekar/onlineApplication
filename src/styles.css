@@ -8,3 +8,36 @@
 .helpSPFx{
     margin: 2px 0px 0px 0px;
 }
+#sideNavBox {float: left !important;margin-left: 20px !important;margin-right: 20px !important;width: 180px !important;display: none !important;}#contentBox {margin-left: 29px !important;}#s4-titlerow {display: none !important}.ms-webpart-chrome-title {display: none !important;}
+#s4-ribbonrow {
+    display: none !important;
+}
+#suiteBar {
+    display: none !important;
+}
+.bodyContainer{
+    /*DEV*/
+    margin-top: -21px!important;
+    margin-left: -30px!important;
+    /*UAT*/
+    /* margin-top: -79px!important;
+    margin-left: -90px!important; */
+    /*local*/
+    /* margin-top: 0px!important;
+    margin-left: 0px!important; */
+}
+#suiteBarTop{
+    display: none !important;
+}
+::placeholder {
+    color: #c5c5c5bf;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #c5c5c5bf;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #c5c5c5bf;
+}

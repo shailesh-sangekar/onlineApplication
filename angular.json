@@ -26,9 +26,16 @@
               "src/styles.css",
               "./node_modules/primeicons/primeicons.css",
               "./node_modules/primeng/resources/themes/omega/theme.css",
-              "./node_modules/primeng/resources/primeng.min.css"
+              "./node_modules/primeng/resources/primeng.min.css",
+              "./src/assets/css/animate.css",
+              "./src/assets/css/registration_mark.css",
+              "./src/assets/css/media.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./src/assets/scripts/jquery-3.3.1.min.js",
+              "./src/assets/scripts/plugins.js",
+              "./src/assets/scripts/main.js"
+            ]
           },
           "configurations": {
             "production": {

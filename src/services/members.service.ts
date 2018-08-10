@@ -32,7 +32,15 @@ export class MembersService {
             .finally(() => this._spinnerService.hide());
     }
     getDetails(UserName: any) {
-        const url = Config.GetMemberURL('/api/FRCI/Transport/TransportCountByStatus?Status=' + UserName);
+        const url = Config.GetMemberURL('/api/FRCI/Members/GetByLoginName?LoginName=' + UserName);
+        this._spinnerService.show();
+        return this.authHttp.get(url)
+            .map(this.extractData)
+            .catch(this.handleError)
+            .finally(() => this._spinnerService.hide());
+    }
+    getDetailsByName(FirstName: string, FamilyName: string) {
+        const url = Config.GetMemberURL('/api/FRCI/Transport/GetMembersPeronalDetails?FName=' + FirstName + '&LName=' + FamilyName);
         this._spinnerService.show();
         return this.authHttp.get(url)
             .map(this.extractData)

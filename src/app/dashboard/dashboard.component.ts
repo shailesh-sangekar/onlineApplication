@@ -28,64 +28,11 @@ export class DashboardComponent implements OnInit {
   constructor(private _commonService: CommonService, private _authTokenService: AuthTokenService,
     private _transportService: TransportService, private _spService: SpService,
     private _router: Router) {
-    // this.model = new AuthInfo('password', '', '');
-    // this._spService.baseUrl = 'http://espld205:2233/';
   }
-
-  submitTransportData() {
-    this.displayError = false;
-    console.log('submit function' + this.displayError);
-
-
-  }
-
   ngOnInit() {
-    // this.loggedInUser = 'Ankit.panchal';
-    // this.loginName = 'Ankit.panchal';
-
-    // this.getTransport();
-    // this.getAuthToken();
-    // this._spService.read('ServiceConfig').then(function (response) {
-    //   console.log(response.d.results);
-    // });
   }
-
-  // getAuthToken() {
-
-  //   this.model.UserName = this.loginName;
-  //   this.model.Password = 'Espl@123';
-  //   this._commonService.getAuthToken(this.model)
-  //     .subscribe(
-  //       (results: any) => {
-
-  //         console.log('Access grated for current user');
-  //         console.log(results);
-  //       },
-  //       error => {
-
-  //         this.errorMessage = <any>error;
-  //         // this._router.navigate(['/unauthorized', 1]);
-  //       });
-  // }
-
-  // getTransport() {
-  //   console.log('from transport');
-  //   this._transportService.getTransport()
-  //     .subscribe(
-  //       (results: any) => {
-
-  //         console.log('Transport Data');
-  //         console.log(results);
-  //       },
-  //       error => {
-  //         // debugger;
-  //         this.errorMessage = <any>error;
-  //         // this._router.navigate(['/unauthorized', 1]);
-  //       });
-  // }
-
   newRequest(e: any) {
     e.preventDefault();
-    this._router.navigate(['/new-request', 1]);
+    this._router.navigate(['/new-request']);
   }
 }

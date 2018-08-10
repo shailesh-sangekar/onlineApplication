@@ -1,23 +1,20 @@
-<div class="m-grid m-grid--hor m-grid--root m-page">
-    <!-- Header -->
+<!-- <div class="m-grid m-grid--hor m-grid--root m-page">
     <header id="m_header" class="m-grid__item    m-header " m-minimize-offset="200" m-minimize-mobile-offset="200">
         <div class="m-container m-container--fluid m-container--full-height">
             <div class="m-stack m-stack--ver m-stack--desktop">
-                <!-- BEGIN: Brand -->
+
                 <div class="m-stack__item m-brand  m-brand--skin-dark ">
                     <div class="m-stack m-stack--ver m-stack--general">
                         <div class="m-stack__item m-stack__item--middle m-brand__logo">
                             <a href="?page=index&amp;demo=default" class="m-brand__logo-wrapper">
-                                <!-- <img alt="" src="./assets/demo/default/media/img/logo/logo_default_dark.png"> -->
                                 <strong style="color: white;font-size: 20px">FRCI</strong>
                             </a>
                         </div>
                     </div>
                 </div>
-                <!-- END: Brand -->
+                
                 <div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
 
-                    <!-- BEGIN: Topbar -->
                     <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general m-stack--fluid">
 
 
@@ -28,9 +25,6 @@
                                     <a href="#" class="m-nav__link m-dropdown__toggle">
                                         <span class="m-topbar__userpic">
                                             <img src="http://espld205:2233/SiteAssets/frci/assets/img/user4.jpg" class="m--img-rounded m--marginless" alt="">
-                                            <!--
-            <span class="m-type m--bg-brand"><span class="m--font-light">S<span><span>
-            -->
                                         </span>
                                         <span class="m-topbar__username m--hide">Nick</span>
                                     </a>
@@ -82,15 +76,260 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- END: Topbar -->
                 </div>
             </div>
         </div>
     </header>
-    <!-- Main Page -->
     <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="margin-top:-15px;width: 100%">
         <div class="m-grid__item m-grid__item--fluid m-wrapper">
             <router-outlet></router-outlet>
         </div>
     </div>
+</div> -->
+
+<div>
+    <!-- header -->
+    <header>
+        <!-- burger icon -->
+        <div class="my-navbar-button">
+            <div id="mynav-item">Ministries</div>
+            <div id="mynav-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+        <!-- end burger icon -->
+        <div class="top-nav-container">
+            <a href="#">
+                <span class="egov-button">
+                    <span class="text">ACCESS&nbsp;&nbsp;
+                        <strong>MyGOV</strong>
+                    </span>
+                    <span class="icon"></span>
+                </span>
+            </a>
+            <ul class="header-utility-links">
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+            </ul>
+            <div class="font-increase-utility">
+                <button class="increaseFont" value="increase"> A+ </button>
+                <button class="decreaseFont" value="decrease"> A- </button>
+            </div>
+        </div>
+
+        <div class="bottom-nav-container">
+            <span class="logo"></span>
+
+            <a href="#">
+                <span class="btn-momoris">
+                    <span class="txt1">MoMoris</span>
+                </span>
+            </a>
+
+            <nav id="nav">
+                <ul>
+                    <li>
+                        <a aria-haspopup="true">About Mauritius
+                            <span>
+                                <i class="fa fa-caret-down"></i>
+                            </span>
+                        </a>
+                        <ul class="drop2">
+                            <div class="sub-box">
+                                <li>
+                                    <a href="#">History</a>
+                                </li>
+                                <li>
+                                    <a href="#">The Dodo</a>
+                                </li>
+                                <li>
+                                    <a href="#">Culture</a>
+                                </li>
+                                <li>
+                                    <a href="#">Culture</a>
+                                </li>
+                                <li>
+                                    <a href="#">Geography and People</a>
+                                </li>
+                                <li>
+                                    <a href="#">National Symbols</a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">News</a>
+                    </li>
+                    <li>
+                        <a href="#">Events</a>
+                    </li>
+                    <li>
+                        <a aria-haspopup="true">Digital Government
+                            <span>
+                                <i class="fa fa-caret-down"></i>
+                            </span>
+                        </a>
+                        <ul class="drop2">
+                            <div class="sub-box">
+                                <li>
+                                    <a href="#">E-govt Initiatives</a>
+                                </li>
+                                <li>
+                                    <a href="#">E-Payment</a>
+                                </li>
+                                <li>
+                                    <a href="#">E-Procurement</a>
+                                </li>
+                                <li>
+                                    <a href="#">E-Services</a>
+                                </li>
+                                <li>
+                                    <a href="#">Mobile Apps</a>
+                                </li>
+                            </div>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a aria-haspopup="true">Information &amp; Services
+                            <span>
+                                <i class="fa fa-caret-down"></i>
+                            </span>
+                        </a>
+                        <ul>
+                            <div class="sub-box">
+                                <li>
+                                    <a href="#">AGRICULTURE</a>
+                                </li>
+                                <li>
+                                    <a href="#">ARTS &amp; CULTURE</a>
+                                </li>
+                                <li>
+                                    <a href="#">BUSINESS &amp; INDUSTRY</a>
+                                </li>
+                                <li>
+                                    <a href="#">COMMUNICATION &amp; INNOVATION</a>
+                                </li>
+                            </div>
+                            <div class="sub-box">
+                                <li>
+                                    <a href="#">EDUCATION AND TRAINING</a>
+                                </li>
+                                <li>
+                                    <a href="#">ENVIRONMENTAL &amp; WASTE MANAGEMENT</a>
+                                </li>
+                                <li>
+                                    <a href="#">FAMILY &amp; CONSUMER PROTECTION</a>
+                                </li>
+                                <li>
+                                    <a href="#">FINANCE &amp; TAXES</a>
+                                </li>
+                            </div>
+                            <div class="sub-box">
+                                <li>
+                                    <a href="#">GOVERNANCE &amp; ADMINISTRATION</a>
+                                </li>
+                                <li>
+                                    <a href="#">HEALTH AND MEDICAL SERVICES</a>
+                                </li>
+                                <li>
+                                    <a href="#">HOUSING</a>
+                                </li>
+                                <li>
+                                    <a href="#">JOBS &amp; WORKSPACE</a>
+                                </li>
+                            </div>
+                            <div class="sub-box">
+                                <li>
+                                    <a href="#">JUSTICE &amp; DEFENCE</a>
+                                </li>
+                                <li>
+                                    <a href="#">SPORTS &amp; LEISURE</a>
+                                </li>
+                                <li>
+                                    <a href="#">TRANSPORT</a>
+                                </li>
+                                <li>
+                                    <a href="#">TRAVEL &amp; TOURISM</a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">About Rodrigues</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- end header -->
+
+    <!-- Start site wrapper-->
+    <div class="gov-site-wrapper">
+        <!-- Start site container-->
+        <div class="gov-site-container">
+            <div class="gov-site-home-banner-container inner-banner">
+                <!-- 290 -->
+                <div class="home-overlay-banner-content">
+                    <h1></h1>
+
+                </div>
+            </div>
+
+            <!-- Content Container -->
+            <div class="content-container">
+                <router-outlet></router-outlet>
+            </div>
+            <!-- End  Content Container-->
+
+        </div>
+        <!-- End site container-->
+
+        <!-- External-menu -->
+        <div class="menu-container">
+            <strong style="color: white">LIST OF MINISTRIES</strong>
+        </div>
+        <!-- External-menu -->
+    </div>
+    <!-- End site wrapper-->
+
+
+    <!-- FOOTER -->
+    <footer class="foot">
+        <div class="bottom-footer-cn">
+            <div class="bottom-menu">
+                <ul>
+                    <li>
+                        <a href="#">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="#">Feedback</a>
+                    </li>
+                    <li>
+                        <a href="#">Disclaimer</a>
+                    </li>
+                    <li>
+                        <a href="#">Map</a>
+                    </li>
+                    <li>
+                        <a href="#">Copyright Notice</a>
+                    </li>
+                    <li>
+                        <a href="#">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="#">Site Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="copyright">&copy; Government of Mauritius 2017. All rights reserved. Hosted by National Computer Board.</div>
+        </div>
+
+    </footer>
+    <!-- END FOOTER -->
 </div>

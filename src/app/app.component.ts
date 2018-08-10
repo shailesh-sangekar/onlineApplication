@@ -5,7 +5,8 @@ import { CommonService } from '../shared/services/common.service';
 import { SpService } from '../shared/services/spcommon.service';
 import { TransportService } from '../services/transport.service';
 import { MembersService } from '../services/members.service';
-
+import { Config } from '../shared/config/config';
+import { User } from '../shared/models/User';
 
 @Component({
   selector: 'app-root',
@@ -20,21 +21,21 @@ export class AppComponent implements OnInit {
   loginName: string;
   errorMessage: string;
   loggedInUserData: any;
-  currentUser: any;
+  currentUser: User;
 
   title = 'app';
   displayError = true;
 
   constructor(private _commonService: CommonService, private _authTokenService: AuthTokenService,
-    private _transportService: TransportService, private _spService: SpService, private _membersService: MembersService) {
+    private _transportService: TransportService, private _spService: SpService) {
     this.model = new AuthInfo('password', '', '');
-    this._spService.baseUrl = '';
+    this._spService.baseUrl = Config.getRootURL();
   }
 
   submitTransportData() {
     this.displayError = false;
     console.log('submit function' + this.displayError);
-
+    this.currentUser = new User();
 
   }
 
@@ -42,9 +43,10 @@ export class AppComponent implements OnInit {
     this.loggedInUser = 'Ankit.panchal';
     this.loginName = 'Ankit.panchal';
 
-    // this.getTransport();
     this.getAuthToken();
-    this.getMemberDetails('TestLoginName');
+    this.getCurrentUser();
+    this.getTransport();
+    // this.getMemberDetails('TestLoginName');
   }
 
   getAuthToken() {
@@ -80,18 +82,20 @@ export class AppComponent implements OnInit {
         });
   }
 
-  getMemberDetails(loginName: string) {
-    const _cntx = this;
-    this._membersService.getMembers()
-      .subscribe(
-        (results: any) => {
-          _cntx.currentUser = results;
-        },
-        error => {
-          // debugger;
-          this.errorMessage = <any>error;
-          console.log(this.errorMessage);
-        });
+  
+  getCurrentUser() {
+    const _this = this;
+    this._spService.getCurrentUser().then(function (response) {
+      if (response != null) {
+        const _user = response.d;
+        let _currentUser: User = new User();
+        _currentUser.Title = _user.Title;
+        _currentUser.LoginName = _user.LoginName;
+        _currentUser.Email = _user.Email;
+        _currentUser.Groups = _user.Groups.results.map(g => g.Title);
+        localStorage.setItem('user', JSON.stringify(_currentUser));
+      }
+    });
   }
 
 }

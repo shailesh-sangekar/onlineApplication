@@ -7,7 +7,7 @@ import { NewTransportComponent } from './transport/transportNew.component';
 
 const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'new-request/:id', component: NewTransportComponent },
+    { path: 'new-request', component: NewTransportComponent },
     // { path: 'user-action/:id', component: NewTransportComponent },
     // {
     //     path: 'contact-list', component: ContactListComponent,

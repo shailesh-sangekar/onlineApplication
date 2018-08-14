@@ -6,8 +6,8 @@ export class Config {
     }
     public static GetURL(apiURL: string): string {
         /**UAT */
-        const baseURL = 'https://espld202:44310/';
-        // const baseURL = 'https://localhost:44300/';
+        // const baseURL = 'https://espld202:44310/';
+        const baseURL = 'https://localhost:44300/';
         /**Prod */
         // let baseURL = 'http://espld202:5556';
         return baseURL + apiURL;

@@ -44,8 +44,8 @@ export class AppComponent implements OnInit {
     this.loginName = 'Ankit.panchal';
 
     this.getAuthToken();
-    this.getCurrentUser();
-    this.getTransport();
+   // this.getCurrentUser();
+    // this.getTransport();
     // this.getMemberDetails('TestLoginName');
   }
 
@@ -81,8 +81,6 @@ export class AppComponent implements OnInit {
           // this._router.navigate(['/unauthorized', 1]);
         });
   }
-
-  
   getCurrentUser() {
     const _this = this;
     this._spService.getCurrentUser().then(function (response) {

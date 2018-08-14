@@ -1,0 +1,73 @@
+<div class="Innerpage_content bg-white Registration-mark">
+    <div class="cont1450 sidespace">
+        <div class="inner-title">Available Registration Marks</div>
+        <div class="inner-sub-title">Search</div>
+        <div class="cnWrapper sidespace">
+            <div class="Registration-form">
+                <form role="form" [formGroup]="SearchForm" (ngSubmit)="onSubmit(SearchForm)">
+                    <div class="form-row">
+                        <div class="col12">
+                            <div class="col3">
+                                <label>Rule</label>
+                            </div>
+                            <div class="col3">
+                                <label class="container">1 – 9999
+                                    <input type="radio" [checked]="true" value="R1" formControlName="RuleOption" class="form-control" name="RuleOption" (change)="onRadioChange($event.target.value)">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="col3">
+                                <label class="container">A1 – Z2500
+                                    <input type="radio" value="R2" formControlName="RuleOption" class="form-control" name="RuleOption" (change)="onRadioChange($event.target.value)">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="col3">
+                                <label class="container">AA1 – FM2500
+                                    <input type="radio" value="R3" formControlName="RuleOption" class="form-control" name="RuleOption" (change)="onRadioChange($event.target.value)">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col12">
+                            <div class="col3">
+                                <label>FROM
+                                    <span class="requiredMark">*</span>
+                                </label>
+                            </div>
+                            <div class="col3">
+                                <select formControlName="Rule1" *ngIf="ruleBox1" name="Applicant_Type" (change)="onSelect($event.target.value)" class="Applicant_Type">
+                                    <option *ngFor="let char1 of charOption" value={{char1}}>{{char1}}</option>
+                                </select>
+                            </div>
+                            <div class="col3">
+                                <select formControlName="Rule2" *ngIf="ruleBox2" name="Applicant_Type" (change)="onSelect($event.target.value)" class="Applicant_Type">
+                                    <option *ngFor="let char2 of charOption2" value={{char2}}>{{char2}}</option>
+                                </select>
+                            </div>
+                            <div class="col3">
+                                <input type="number" id="txtMaxNumber" formControlName="FromNumber" class="form-control" value="" [maxlength]="4" min="1"
+                                    (blur)="onOut($event.target.value)" max="9999" />
+                            </div>
+                        </div>
+                        <div class="col12">
+                            <div class="col3">
+                                <label>TO
+                                    <span class="requiredMark">*</span>
+                                </label>
+                            </div>
+                            <div class="col3">
+                                <input type="number" id="txtMinNumber" formControlName="ToNumber" class="form-control" value="" (blur)="onOut($event.target.value)"
+                                    [maxlength]="4" [min]="1" [max]="9999" />
+                            </div>
+                        </div>
+                        <div class="col12">
+                            <input type="submit" value="Search" />
+                            <button type="reset" (click)="back()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

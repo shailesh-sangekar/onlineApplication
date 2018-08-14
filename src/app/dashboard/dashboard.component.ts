@@ -35,4 +35,8 @@ export class DashboardComponent implements OnInit {
     e.preventDefault();
     this._router.navigate(['/new-request']);
   }
+  search(e: any) {
+    e.preventDefault();
+    this._router.navigate(['/search']);
+  }
 }

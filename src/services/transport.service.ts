@@ -57,7 +57,7 @@ export class TransportService {
             .catch(this.handleError)
             .finally(() => this._spinnerService.hide());
     }
-    getTransportByStatus(Status: any) {
+    getTransportByStatus(Status: string) {
         const url = Config.GetURL('/api/FRCI/Transport/TransportByStatus?Status=' + Status);
         this._spinnerService.show();
         return this.authHttp.get(url)
@@ -65,8 +65,33 @@ export class TransportService {
             .catch(this.handleError)
             .finally(() => this._spinnerService.hide());
     }
-    getTransportCountByStatus(Status: any) {
+    getTransportCountByStatus(Status: string) {
         const url = Config.GetURL('/api/FRCI/Transport/TransportCountByStatus?Status=' + Status);
+        this._spinnerService.show();
+        return this.authHttp.get(url)
+            .map(this.extractData)
+            .catch(this.handleError)
+            .finally(() => this._spinnerService.hide());
+    }
+
+    ValidateRegistrationMark(RegistrationMark: string) {
+        const url = Config.GetURL('/api/FRCI/Transport/IsRegistrationAvailable?RegistrationMark=' + RegistrationMark);
+        this._spinnerService.show();
+        return this.authHttp.get(url)
+            .map(this.extractData)
+            .catch(this.handleError)
+            .finally(() => this._spinnerService.hide());
+    }
+    getRegistrationRule(status: string, year: string) {
+        const url = Config.GetURL('/api/FRCI/RegistrationRule/RuleByStatusAndYear?Status=' + status + '&Year=' + year);
+        this._spinnerService.show();
+        return this.authHttp.get(url)
+            .map(this.extractData)
+            .catch(this.handleError)
+            .finally(() => this._spinnerService.hide());
+    }
+    searchMarks(Prefix: string, From: string, To: string) {
+        const url = Config.GetURL('/api/FRCI//Transport/Search?Prefix=' + Prefix + '&FromNumber=' + From + '&ToNumber=' + To);
         this._spinnerService.show();
         return this.authHttp.get(url)
             .map(this.extractData)

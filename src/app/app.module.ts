@@ -9,7 +9,8 @@ import { APP_BASE_HREF, CommonModule, LocationStrategy, HashLocationStrategy } f
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app.routing';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { NewTransportComponent } from './transport/transportNew.component';
+import { NewTransportComponent } from './transport/newregistration/transportNew.component';
+import { SearchMarkComponent } from './transport/search/searchmark.component';
 import { TooltipModule } from 'primeng/tooltip';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
@@ -21,6 +22,7 @@ import { MembersService } from '../services/members.service';
   declarations: [
     AppComponent,
     NewTransportComponent,
+    SearchMarkComponent,
     DashboardComponent
   ],
   imports: [

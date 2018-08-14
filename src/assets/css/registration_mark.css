@@ -243,10 +243,13 @@ background-size: cover;}
 .Registration-form form{width: 100%;float: left;}
 .Registration-form form .form-row{width: 100%;float: left;margin: 1rem 0;}
 	.form-row .col12 .col6{padding: 0px;padding-right: 2%;}
+	.form-row .col12 .col3{padding: 0px;padding-right: 2%;}
 	.form-row .col6{width: 50%;float: left;padding: 20px 0px;padding-right: 4%;}
+	.form-row .col3{width: 25%;float: left;padding: 20px 0px;padding-right: 4%;}
 	.form-row .col12{width: 100%;float: left;padding: 20px 0px;padding-right: 4%;}
 	.form-row label{float: left;width: 100%;font-size: 19px;color: #47515a;font-weight: 500}
 	.form-row input[type='text']{float: left;width: 100%;background-color: #e1e1e1;border: 1px solid #c5c5c5;border-radius: 10px;height: 40px;margin-top: 10px;padding: 0px 10px;font-size: 17px;color: #47515a;}
+	.form-row input[type='number']{float: left;width: 100%;background-color: #e1e1e1;border: 1px solid #c5c5c5;border-radius: 10px;height: 40px;margin-top: 10px;padding: 0px 10px;font-size: 17px;color: #47515a;}
 	.form-row input[value=""] {background-color: #fbfbfb;}
 	.form-row select{float: left;width: 100%;-webkit-appearance: none;background-color:#fbfbfb;border: 1px solid #c5c5c5;border-radius: 10px;height: 40px;margin-top: 10px;padding: 0px 10px;font-size: 17px;color: #47515a;cursor: pointer;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2ODVCNTk4MDlBMUExMUU4QUMyN0IzQzRCRDc1MUVBNSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2ODVCNTk4MTlBMUExMUU4QUMyN0IzQzRCRDc1MUVBNSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjY4NUI1OTdFOUExQTExRThBQzI3QjNDNEJENzUxRUE1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY4NUI1OTdGOUExQTExRThBQzI3QjNDNEJENzUxRUE1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+6Aaq2AAAALZJREFUeNpidA+MKmNgYLgJxBsZyAA71i1l8AiK5gIyNwCxJhOQqATidUAcTY6BUMO2ALErEF8HGegBxF+AeBEZhsIMcwTiPUAcADLwJBC7kWEosmGbgdgb6P1vTFBJUg1FNywEaNgvkAQTkiJ0Q2NJNQzdQGyGZpJiGDYDkQ39BMTTkAzlRjcMiH+ha2bB4S2YobughoIMCwViM3yG4XIhNpd2E2MYIQORDX0HxOsJGQYCAAEGAGDdQ2UYtYfjAAAAAElFTkSuQmCC);background-position: 95% 50%; ;background-repeat: no-repeat;}
@@ -255,3 +258,68 @@ background-size: cover;}
 	.form-row button[type="reset"]{border: none;background: none;cursor: pointer;font-size: 18px;font-weight: 500;color: #d1cfcf;}
 	.form-row button[type="reset"]::before{content: "\f00d";font-family: 'FontAwesome';margin-right: 5px;}
 	.form-row button[type="reset"]:hover{color: #E70008}
+
+	/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #898989;
+    /* background-color: #eee; */
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}

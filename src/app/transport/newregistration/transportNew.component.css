@@ -17,6 +17,9 @@ hr.style1{
 .valmsg{
     color: #dc3545;
 }
+.valmsgSuccess{
+    color: #0b7b2d;
+}
 .requiredMark{
     color: #E70008;
 }

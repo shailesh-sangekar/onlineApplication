@@ -1,0 +1,40 @@
+.heading{
+    color: whitesmoke;
+    background-color: cornflowerblue;
+}
+.frmBody{
+    width: 80%;
+}
+.sidebar{
+    width: 20%;
+}
+.section-title{
+    margin: 15px 0px 10px 55px;
+}
+hr.style1{
+	border-top: 2px solid #8c8b8b;
+}
+.valmsg{
+    color: #dc3545;
+}
+.valmsgSuccess{
+    color: #0b7b2d;
+}
+.requiredMark{
+    color: #E70008;
+}
+.sidespace{
+    margin-left: 25px
+}
+::placeholder {
+    color: #c5c5c5bf;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #c5c5c5bf;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #c5c5c5bf;
+}

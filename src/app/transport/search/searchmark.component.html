@@ -3,12 +3,12 @@
         <div class="inner-title">Available Registration Marks</div>
         <div class="inner-sub-title">Search</div>
         <div class="cnWrapper sidespace">
-            <div class="Registration-form">
+            <div class="reg-form">
                 <form role="form" [formGroup]="SearchForm" (ngSubmit)="onSubmit(SearchForm)">
                     <div class="form-row">
                         <div class="col12">
                             <div class="col3">
-                                <label>Rule</label>
+                                <label>Rule</label>&nbsp;
                             </div>
                             <div class="col3">
                                 <label class="container">1 – 9999
@@ -25,6 +25,12 @@
                             <div class="col3">
                                 <label class="container">AA1 – FM2500
                                     <input type="radio" value="R3" formControlName="RuleOption" class="form-control" name="RuleOption" (change)="onRadioChange($event.target.value)">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="col3">
+                                <label class="container">FN1 – ZZ2500
+                                    <input type="radio" value="R4" formControlName="RuleOption" class="form-control" name="RuleOption" (change)="onRadioChange($event.target.value)">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -46,8 +52,12 @@
                                 </select>
                             </div>
                             <div class="col3">
-                                <input type="number" id="txtMaxNumber" formControlName="FromNumber" class="form-control" value="" [maxlength]="4" min="1"
-                                    (blur)="onOut($event.target.value)" max="9999" />
+                                <input type="number" id="txtMaxNumber" formControlName="FromNumber" name="FromNumber" class="form-control" value="" [maxlength]="4"
+                                    min="1" (blur)="onOut($event.target.name,$event.target.value);onCheckFrom($event.target.name)"
+                                    max="9999" />
+                                <div class="valmsg" *ngIf="SearchForm.get('FromNumber').hasError('required')">
+                                    From Number required !
+                                </div>
                             </div>
                         </div>
                         <div class="col12">
@@ -57,17 +67,28 @@
                                 </label>
                             </div>
                             <div class="col3">
-                                <input type="number" id="txtMinNumber" formControlName="ToNumber" class="form-control" value="" (blur)="onOut($event.target.value)"
+                                <input type="number" id="txtMinNumber" formControlName="ToNumber" name="ToNumber" class="form-control" value="" (blur)="onOut($event.target.name,$event.target.value);onCheckFrom($event.target.name)"
                                     [maxlength]="4" [min]="1" [max]="9999" />
+                                <div class="valmsg" *ngIf="SearchForm.get('ToNumber').hasError('required')">
+                                    To Number required !
+                                </div>
                             </div>
                         </div>
                         <div class="col12">
+                            <div class="valmsg" *ngIf="InRange">
+                                Invalid range 'From' number should be less than 'To' number !
+                            </div>
+                            <div class="valmsg" *ngIf="InMaxRange">
+                                The value should be between 1 to 2500.
+                            </div>
                             <input type="submit" value="Search" />
                             <button type="reset" (click)="back()">Cancel</button>
                         </div>
                     </div>
                 </form>
+
             </div>
+            <app-search-result *ngIf="searchResult.length>0" [data]="searchResult"></app-search-result>
         </div>
     </div>
 </div>

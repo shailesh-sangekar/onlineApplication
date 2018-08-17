@@ -40,12 +40,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.loggedInUser = 'sp_farm';
+    // this.loginName = 'sp_farm';
+
     this.loggedInUser = 'Ankit.panchal';
     this.loginName = 'Ankit.panchal';
 
     this.getAuthToken();
-   // this.getCurrentUser();
-    // this.getTransport();
+    // On sharepoint site only
+    this.getCurrentUser();
     // this.getMemberDetails('TestLoginName');
   }
 
@@ -53,30 +56,13 @@ export class AppComponent implements OnInit {
 
     this.model.UserName = this.loginName;
     this.model.Password = 'Espl@123';
+    // this.model.Password = 'Pa$$w0rd';
     this._commonService.getAuthToken(this.model)
       .subscribe(
         (results: any) => {
-          // console.log('Access grated for current user');
-          // console.log(results);
         },
         error => {
 
-          this.errorMessage = <any>error;
-          // this._router.navigate(['/unauthorized', 1]);
-        });
-  }
-
-  getTransport() {
-    console.log('from transport');
-    this._transportService.getTransport()
-      .subscribe(
-        (results: any) => {
-
-          console.log('Transport Data');
-          console.log(results);
-        },
-        error => {
-          // debugger;
           this.errorMessage = <any>error;
           // this._router.navigate(['/unauthorized', 1]);
         });
@@ -86,7 +72,7 @@ export class AppComponent implements OnInit {
     this._spService.getCurrentUser().then(function (response) {
       if (response != null) {
         const _user = response.d;
-        let _currentUser: User = new User();
+        const _currentUser: User = new User();
         _currentUser.Title = _user.Title;
         _currentUser.LoginName = _user.LoginName;
         _currentUser.Email = _user.Email;

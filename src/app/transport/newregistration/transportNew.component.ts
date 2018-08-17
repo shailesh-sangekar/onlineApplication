@@ -34,7 +34,9 @@ export class NewTransportComponent implements OnInit {
     avalabilityLabel = 'Check Availability';
     validMark = false;
     isReadonly = false;
+    markMsg = true;
     regRules: any;
+    searchedMark: string;
     constructor(private _spService: SpService, private _commonservice: CommonService, private _transportService: TransportService,
         private _router: Router, private route: ActivatedRoute, private transportFormBuilder: FormBuilder,
         private _membersService: MembersService) {
@@ -52,11 +54,19 @@ export class NewTransportComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.route.params.forEach((params: Params) => {
+            this.searchedMark = params['mark'];
+        });
+        if (this.searchedMark !== undefined && this.searchedMark !== '') {
+            this.isReadonly = true;
+            this.avalabilityLabel = 'Edit';
+            this.validMark = true;
+        }
         this._user = JSON.parse(localStorage.getItem('user'));
         // For Prod
-        // this.getMemberDetails(this._user.LoginName.split('\\')[1]);
+        this.getMemberDetails(this._user.LoginName.split('\\')[1]);
         /**TODO: Remove after testing */
-        this.getMemberDetails('shailesh.sangekar');
+        // this.getMemberDetails('shailesh.sangekar');
         this.setTransportForm(this.MemberDetails);
     }
 
@@ -86,12 +96,16 @@ export class NewTransportComponent implements OnInit {
     }
     validate() {
         const _mark = this.TransportForm.get('RegistrationMark').value; // 'DZZ-2500';
+        if (_mark === null || _mark === '') {
+            alert('Please provide regestration mark');
+            return;
+        }
         if (this.avalabilityLabel === 'Check Availability') {
-            if (_mark.indexOf('-') > 0) {
-                this.checkRegistrationMark(_mark);
-            } else { this.validMark = false; }
+            this.checkRegistrationMark(_mark);
+            // if (_mark.indexOf('-') > 0) {
+            // } else { this.validMark = false; }
         } else {
-            this.TransportForm.reset({ RegistrationMark: '123' });
+            this.TransportForm.patchValue({ RegistrationMark: '' });
             this.validMark = false;
             this.isReadonly = false;
             this.avalabilityLabel = 'Check Availability';
@@ -124,7 +138,7 @@ export class NewTransportComponent implements OnInit {
             CountryOfResidence: [_member.CountryOfResidence, [Validators.required]],
             PhoneNumber: [_member.PhoneNumber],
             MobileNumber: [_member.MobileNumber],
-            RegistrationMark: ['', [Validators.required]],
+            RegistrationMark: [this.searchedMark, [Validators.required, Validators.maxLength(6)]],
             NYP: ['', [Validators.required]],
             Captcha: ['']
         });
@@ -142,15 +156,6 @@ export class NewTransportComponent implements OnInit {
                 (results: any) => {
                     _cntx.MemberDetails = results;
                     this.setTransportForm(_cntx.MemberDetails);
-                    // const _dt = new Date();
-                    // let dateString = _cntx.MemberDetails.DateOfBirth;
-                    // let DOBDate = new Date(dateString);
-                    // const age = _dt.getFullYear() - DOBDate.getFullYear();
-
-                    // if (age <= 21) {
-                    //     alert('You are under age for registration !');
-                    //     this._router.navigate(['/dashboard']);
-                    // }
                 },
                 error => {
                     this.errorMessage = <any>error;
@@ -162,13 +167,11 @@ export class NewTransportComponent implements OnInit {
         this._transportService.addTransport(DataToAdd)
             .subscribe(
                 (results: any) => {
-                    console.log('Transport Data Saved');
-                    console.log(results);
+                    alert('Transport mark request registered sucesseffully !');
                     this._router.navigate(['/dashboard']);
                 },
                 error => {
                     this.errorMessage = <any>error;
-                    // this._router.navigate(['/unauthorized', 1]);
                 });
     }
     onSubmit({ value, valid }: { value: Transport, valid: boolean }) {
@@ -184,7 +187,6 @@ export class NewTransportComponent implements OnInit {
             this.submitFail = false;
             this.addTransport(value);
         } else {
-            // this.errorFlagForAdd = true;
             this.submitFail = true;
             console.log('Invalid / Error in form submission');
         }
@@ -210,39 +212,45 @@ export class NewTransportComponent implements OnInit {
         this._transportService.ValidateRegistrationMark(RegistrationMark)
             .subscribe(
                 (results: any) => {
-                    _cntx.validMark = results;
-                    if (_cntx.validMark) {
-                        const _dt = new Date();
-                        _cntx.getRegistrationRule('Active', _dt.getFullYear().toString(), RegistrationMark);
-                    }
-                },
-                error => {
-                    this.errorMessage = <any>error;
-                    console.log(this.errorMessage);
-                });
-    }
-    getRegistrationRule(Status: string, Year: string, NewMark: string) {
-        const _cntx = this;
-        this._transportService.getRegistrationRule(Status, Year)
-            .subscribe(
-                (results: any) => {
-                    _cntx.regRules = results;
-                    _cntx.validMark = _cntx.validateRules(_cntx.regRules, NewMark);
-                    /** */
-                    if (_cntx.validMark) {
+                    if (results.StatusCode === 1) {
                         this.avalabilityLabel = 'Edit';
                         this.isReadonly = true;
+                        this.validMark = true;
+                        this.markMsg = true;
                     } else {
                         this.isReadonly = false;
+                        this.validMark = false;
+                        this.markMsg = false;
                         this.avalabilityLabel = 'Check Availability';
                     }
-                    /** */
-                    const res = _cntx.validMark;
-                    console.log(res);
                 },
                 error => {
                     this.errorMessage = <any>error;
                     console.log(this.errorMessage);
                 });
     }
+    // getRegistrationRule(Status: string, Year: string, NewMark: string) {
+    //     const _cntx = this;
+    //     this._transportService.getRegistrationRule(Status, Year)
+    //         .subscribe(
+    //             (results: any) => {
+    //                 _cntx.regRules = results;
+    //                 _cntx.validMark = _cntx.validateRules(_cntx.regRules, NewMark);
+    //                 /** */
+    //                 if (_cntx.validMark) {
+    //                     this.avalabilityLabel = 'Edit';
+    //                     this.isReadonly = true;
+    //                 } else {
+    //                     this.isReadonly = false;
+    //                     this.avalabilityLabel = 'Check Availability';
+    //                 }
+    //                 /** */
+    //                 const res = _cntx.validMark;
+    //                 console.log(res);
+    //             },
+    //             error => {
+    //                 this.errorMessage = <any>error;
+    //                 console.log(this.errorMessage);
+    //             });
+    // }
 }

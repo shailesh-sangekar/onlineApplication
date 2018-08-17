@@ -27,22 +27,22 @@
 
                         <div *ngIf="onApplicationTypeFlag" class="col6">
                             <label>Company Name</label>
-                            <input type="text" id="txtCompanyName" maxlength="50" formControlName="CompanyName" class="form-control" value="" placeholder="Max length 50 charecters"
-                            />
+                            <input type="text" id="txtCompanyName" maxlength="50" name="CompanyName" formControlName="CompanyName" class="form-control"
+                                value="" placeholder="Max length 50 charecters" />
                         </div>
 
                         <div *ngIf="onApplicationTypeFlag" class="col6">
                             <label>Company Number</label>
-                            <input type="text" formControlName="RegisteredCoNumber" id="txtRegisteredCoNumber" maxlength="50" value="" class="form-control"
-                                placeholder="Max length 50 charecters" />
+                            <input type="text" formControlName="RegisteredCoNumber" name="RegisteredCoNumber" id="txtRegisteredCoNumber" maxlength="50"
+                                value="" class="form-control" placeholder="Max length 50 charecters" />
                         </div>
 
                         <div class="col6">
                             <label>First Name
                                 <span class="requiredMark">*</span>
                             </label>
-                            <input type="text" id="txtFirstName" maxlength="50" formControlName="FirstName" [readonly]="!onBehalfFlag" class="form-control"
-                                value="" placeholder="Max length50 charecters" />
+                            <input type="text" id="txtFirstName" maxlength="50" name="FirstName" formControlName="FirstName" [readonly]="!onBehalfFlag"
+                                class="form-control" value="" placeholder="Max length50 charecters" />
                             <div class="valmsg" *ngIf="TransportForm.get('FirstName').hasError('required') && submitFail">
                                 First name required !
                             </div>
@@ -114,23 +114,23 @@
                                 <label>Registration Mark Applied For
                                     <span class="requiredMark">*</span>
                                 </label>
-                                <input formControlName="RegistrationMark" id="txtRegistrationMark" [readonly]="isReadonly" type="text" maxlength="250" value=""
-                                    placeholder="Eg. 'BC-1952'" />
+                                <input formControlName="RegistrationMark" id="txtRegistrationMark" [readonly]="isReadonly" type="text" maxlength="6" value=""
+                                    placeholder="Eg. 'BC1952'" />
                                 <div class="valmsg" *ngIf="TransportForm.get('RegistrationMark').hasError('required') && submitFail">
                                     Registration Number required !
                                 </div>
                                 <!-- <div class="valmsg" *ngIf="TransportForm.get('RegistrationMark').hasError('required') && validMark">
                                     Registration Mark is not available try new Once !
                                 </div> -->
-                                <div class="valmsg" *ngIf="!validMark">
-                                    Registration Mark is not available try new Once !
+                                <div class="valmsg" *ngIf="!validMark && !markMsg">
+                                    Registration Mark is not available. Please try again !
                                 </div>
                                 <div class="valmsgSuccess" *ngIf="validMark">
                                     Congrats! Registration Mark is available!!
                                 </div>
                             </div>
                             <div class="col6">
-                                <button type="button" class="btn btn-primary" style="margin-top:9%;" (click)="validate()">{{avalabilityLabel}}</button>
+                                <input type="button" class="btn btn-primary" style="margin-top:10%;" (click)="validate()" value="{{avalabilityLabel}}" />
                             </div>
                         </div>
 

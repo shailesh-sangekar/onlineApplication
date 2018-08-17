@@ -38,3 +38,8 @@ hr.style1{
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: #c5c5c5bf;
 }
+.reg-form{
+    /* float: left; */
+    width: 100%;
+    max-width: 988px;
+}

@@ -61,10 +61,10 @@ export class DashboardComponent implements OnInit {
           tempData.ServiceName = element.ServiceName;
           tempData.Permissions = element.Permissions;
           tempData.siteUrl = element.siteUrl;
-          // ctl.data.push(tempData);
-          if (userGroup.Groups.indexOf(element.Permissions.Name) > -1) {
-            ctl.data.push(tempData);
-          }
+          ctl.data.push(tempData);
+          // if (userGroup.Groups.indexOf(element.Permissions.Name) > -1) {
+          //   ctl.data.push(tempData);
+          // }
         });
         if (ctl.data.length === 0) {
           ctl.NoDataMsg = true;

@@ -43,6 +43,7 @@ export class CommonService {
         for (let i = 1; i < array.length; i++) {
             let line = '';
             array[0].forEach(index => {
+                // if (line !== '') { line += ','; } // Changed after client request
                 if (line !== '') { line += ','; }
                 line += array[i][index];
             });
@@ -61,9 +62,11 @@ export class CommonService {
 
         const csv = this.convertToCSV(jsonObject);
 
-        const exportedFilenmae = fileTitle + '.csv' || 'export.csv';
+        // const exportedFilenmae = fileTitle + '.csv' || 'export.csv'; // Changed after client request
+        const exportedFilenmae = fileTitle + '.tsv' || 'export.csv';
 
-        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        // const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); // Changed after client request
+        const blob = new Blob([csv], { type: 'text/tsv;charset=utf-8;' });
         if (navigator.msSaveBlob) { // IE 10+
             navigator.msSaveBlob(blob, exportedFilenmae);
         } else {

@@ -11,12 +11,16 @@
                     </div>
                 </div>
                 <div>
+                    <input type="file" accept=".csv" (change)="convertFile($event)" />
+                    <a (click)="import()" class="btn btn-warning pull-right" style="margin-top:15px;">Import</a>
+                </div>
+                <div>
                     <a routerLink="dashboard" class="btn btn-danger pull-right" style="margin-top:15px;">Back</a>
                 </div>
             </div>
             <div class="m-portlet__body" style="font-size:14px;">
                 <!-- BEGIN :: Dynamic table structure-->
-                <p-table #srv [value]="data" [paginator]="true" [rows]="15" [globalFilterFields]="['SID','NIC','FirstName','MobileNumber','Address','CountryOfResidence']">
+                <p-table #srv [value]="data" [paginator]="true" [rows]="15" [globalFilterFields]="['SID','GenericId','NIC','FirstName','MobileNumber','Address','CountryOfResidence']">
                     <ng-template pTemplate="caption">
                         <!-- <div class="ui-helper-clearfix">
                             <input type="button" class="btn btn-info m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill" value="Export" text="Export"
@@ -35,6 +39,9 @@
                         <tr>
                             <th [pSortableColumn]="'SID'">SID
                                 <p-sortIcon [field]="'SID'"></p-sortIcon>
+                            </th>
+                            <th [pSortableColumn]="'GenericId'">Unique Code
+                                <p-sortIcon [field]="'GenericId'"></p-sortIcon>
                             </th>
                             <th [pSortableColumn]="'NIC'">NIC
                                 <p-sortIcon [field]="'NIC'"></p-sortIcon>
@@ -58,6 +65,7 @@
                         <tr class="tblrow">
                             <td style="display: none;">{{request.ID}}</td>
                             <td>{{request.SID}}</td>
+                            <td>{{request.GenericId}}</td>
                             <td>{{request.NIC}}</td>
                             <td>{{request.FirstName}} {{request.FamilyName}}</td>
                             <td>{{request.MobileNumber}}</td>

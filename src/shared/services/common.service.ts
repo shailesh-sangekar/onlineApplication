@@ -44,7 +44,7 @@ export class CommonService {
             let line = '';
             array[0].forEach(index => {
                 // if (line !== '') { line += ','; } // Changed after client request
-                if (line !== '') { line += ','; }
+                if (line !== '') { line += '\t'; }
                 line += array[i][index];
             });
             str += line + '\r\n';
@@ -63,7 +63,7 @@ export class CommonService {
         const csv = this.convertToCSV(jsonObject);
 
         // const exportedFilenmae = fileTitle + '.csv' || 'export.csv'; // Changed after client request
-        const exportedFilenmae = fileTitle + '.tsv' || 'export.csv';
+        const exportedFilenmae = fileTitle + '.tsv' || 'export.tsv';
 
         // const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); // Changed after client request
         const blob = new Blob([csv], { type: 'text/tsv;charset=utf-8;' });
@@ -84,9 +84,40 @@ export class CommonService {
         }
     }
 
-    // END call the exportCSVFile() function to process the JSON and trigger the download
+    // Convert CSV data to Json object dynamically
+    convertToJson(csv: any, callback): any {
+        const fileReaded = csv.target.files[0];
 
-
+        const reader: FileReader = new FileReader();
+        reader.readAsText(fileReaded);
+        reader.onload = (event) => {
+            const csvData: any = reader.result;
+            const allTextLines = csvData.split(/\r|\n|\r/);
+            const headers = allTextLines[0].split(',');
+            const lines = [];
+            for (let counter = 1; counter < allTextLines.length; counter++) {
+                // split content based on comma
+                const currentLine = allTextLines[counter].split(',');
+                if (currentLine.length === headers.length) {
+                    const newLine = {};
+                    for (let innerCounter = 0; innerCounter < headers.length; innerCounter++) {
+                        newLine[this.cleanData(headers[innerCounter])] = this.cleanData(currentLine[innerCounter]);
+                    }
+                    // log each row to see output
+                    lines.push(newLine);
+                }
+            }
+            // all rows in the csv file
+            callback(lines);
+        };
+    }
+    // Get clean values of field of property
+    cleanData(value: any) {
+        return value
+            .replace(/^\s*|\s*$/g, '') // remove leading & trailing space
+            .replace(/^"|"$/g, '') // remove " on the beginning and end
+            .replace(/""/g, '"'); // replace "" with "
+    }
 
     // Get user auth token
     getAuthToken(credentials: AuthInfo) {
@@ -121,38 +152,39 @@ export class CommonService {
             .catch(this.handleError)
             .finally(() => this._spinnerService.hide());
     }
-    getBrand() {
-        const url = Config.GetURL('/api/Brands/Get');
-        this._spinnerService.show();
-        return this.authHttp.get(url)
-            .map(this.extractData)
-            .catch(this.handleError)
-            .finally(() => this._spinnerService.hide());
-    }
-    addBrand(payload: any) {
-        const url = Config.GetURL('/api/Brands/Post');
-        this._spinnerService.show();
-        return this.authHttp.post(url, payload)
-            .map(this.extractData)
-            .catch(this.handleError)
-            .finally(() => this._spinnerService.hide());
-    }
-    updateBrand(payload: any) {
-        const url = Config.GetURL('/api/Brands/UpdateBrandByID');
-        this._spinnerService.show();
-        return this.authHttp.post(url, payload)
-            .map(this.extractData)
-            .catch(this.handleError)
-            .finally(() => this._spinnerService.hide());
-    }
-    deleteBrand(value: any) {
-        const url = Config.GetURL('/api/Brands/DeleteBrandByID/' + value.ID);
-        this._spinnerService.show();
-        return this.authHttp.post(url, value)
-            .map(this.extractData)
-            .catch(this.handleError)
-            .finally(() => this._spinnerService.hide());
-    }
+    // getBrand() {
+    //     const url = Config.GetURL('/api/Brands/Get');
+    //     this._spinnerService.show();
+    //     return this.authHttp.get(url)
+    //         .map(this.extractData)
+    //         .catch(this.handleError)
+    //         .finally(() => this._spinnerService.hide());
+    // }
+    // addBrand(payload: any) {
+    //     const url = Config.GetURL('/api/Brands/Post');
+    //     this._spinnerService.show();
+    //     return this.authHttp.post(url, payload)
+    //         .map(this.extractData)
+    //         .catch(this.handleError)
+    //         .finally(() => this._spinnerService.hide());
+    // }
+    // updateBrand(payload: any) {
+    //     const url = Config.GetURL('/api/Brands/UpdateBrandByID');
+    //     this._spinnerService.show();
+    //     return this.authHttp.post(url, payload)
+    //         .map(this.extractData)
+    //         .catch(this.handleError)
+    //         .finally(() => this._spinnerService.hide());
+    // }
+    // deleteBrand(value: any) {
+    //     const url = Config.GetURL('/api/Brands/DeleteBrandByID/' + value.ID);
+    //     this._spinnerService.show();
+    //     return this.authHttp.post(url, value)
+    //         .map(this.extractData)
+    //         .catch(this.handleError)
+    //         .finally(() => this._spinnerService.hide());
+    // }
+
     /**Set Token in localstorage */
     private setToken(res: Response) {
         if (res.status < 200 || res.status >= 300) {

@@ -81,8 +81,8 @@ export class ServiceDashboardComponent implements OnInit {
                 datasets: [
                     {
                         data: _data,
-                        backgroundColor: ['#ffb822', '#00c5dc', '#716aca'],
-                        hoverBackgroundColor: ['#ffb822', '#00c5dc', '#716aca'/**'#f4516c'*/]
+                        backgroundColor: ['#ffb822', '#00c5dc', '#f72e4f'],
+                        hoverBackgroundColor: ['#ffb822', '#00c5dc', '#f72e4f'/**red-'#f4516c'| purple-'#716aca'*/]
                     }]
             };
     }

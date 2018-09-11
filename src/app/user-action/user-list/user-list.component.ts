@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { RestOptions, SpService, CommonService } from '../../../shared';
+import { RestOptions, SpService, CommonService, ReservedMarks } from '../../../shared';
 import { ServiceRequest } from '../';
 
 @Component({
@@ -19,6 +19,7 @@ export class UserlistComponent implements OnInit {
   data: Array<ServiceRequest>;
   options: RestOptions;
   fields: string;
+  filesForImport: any;
   constructor(private _spService: SpService, private _commonservice: CommonService,
     private _router: Router, private route: ActivatedRoute) {
   }
@@ -38,23 +39,25 @@ export class UserlistComponent implements OnInit {
   }
   private init() {
     this.options = new RestOptions();
-    this.options.select = 'ID,SID,NIC,FirstName,FamilyName,Address,CountryOfResidence,MobileNumber,Status,Created,Modified';
+    this.options.select = 'ID,SID,NIC,FirstName,FamilyName,Address,CountryOfResidence,MobileNumber,Status,Created,Modified,GenericId';
     this.options.orderby = 'ID desc';
     this.options.filter = 'Status eq \'' + this.action + '\'';
     this.data = Array<ServiceRequest>();
     // for (let i = 1; i <= 100; i++) {
-    //   let tempData = new ServiceRequest();
+    //   const tempData = new ServiceRequest();
     //   tempData.SID = 'MH8938-' + i;
     //   tempData.NIC = i + 'VVhite';
+    //   tempData.GenericId = 'GID' + i + 'VVhite';
     //   tempData.FirstName = 'HND';
     //   tempData.FamilyName = 'HNDFamily';
     //   tempData.Address = '2016';
     //   tempData.CountryOfResidence = 'CNT2016';
     //   tempData.MobileNumber = '5612016';
     //   this.data.push(tempData);
-    //   let tempData1 = new ServiceRequest();
+    //   const tempData1 = new ServiceRequest();
     //   tempData1.SID = 'MH89381';
     //   tempData1.NIC = 'VVhite1';
+    //   tempData1.GenericId = 'GID02' + i + 'VVhite';
     //   tempData1.FirstName = 'HND1';
     //   tempData1.FamilyName = 'HNDFamily1';
     //   tempData1.Address = '20161';
@@ -62,15 +65,17 @@ export class UserlistComponent implements OnInit {
     //   tempData1.MobileNumber = '15612016';
     //   this.data.push(tempData1);
     // }
-    // let tempData1 = new ServiceRequest();
-    // tempData1.SID = 'MH3752';
-    // tempData1.NIC = 'VVhite1';
-    // tempData1.FirstName = 'HND1';
-    // tempData1.FamilyName = 'HNDFamily1';
-    // tempData1.Address = '20161';
-    // tempData1.CountryOfResidence = 'CNT20161';
-    // tempData1.MobileNumber = '15612016';
-    // this.data.push(tempData1);
+    // const tempData2 = new ServiceRequest();
+    // tempData2.SID = 'MH3752';
+    // tempData2.NIC = 'VVhite1';
+    // tempData2.GenericId = 'GID' + i + 'VVhite';
+    // tempData2.FirstName = 'HND1';
+    // tempData2.FamilyName = 'HNDFamily1';
+    // tempData2.Address = '20161';
+    // tempData2.CountryOfResidence = 'CNT20161';
+    // tempData2.MobileNumber = '15612016';
+    // this.data.push(tempData2);
+    console.log(this.data);
   }
   getListData(ListName: string, Options?: RestOptions) {
     const ctl = this;
@@ -98,6 +103,7 @@ export class UserlistComponent implements OnInit {
   onUpdateRequest(id: string) {
     this._router.navigate(['/user-action', id, this.serviceUrl, this.serviceList, this.service + '-' + this.action]);
   }
+
 
   export() {
     const _options = new RestOptions();
@@ -130,5 +136,28 @@ export class UserlistComponent implements OnInit {
       }
     });
   }
-}
 
+  /**Add multiple data to sharepoint list using batch*/
+  import() {
+    this._commonservice.convertToJson(this.filesForImport, this.jsonResult);
+  }
+  jsonResult(jsData: any) {
+    let Marks: Array<ReservedMarks> = new Array<ReservedMarks>();
+    Marks = jsData;
+    console.log(Marks);
+    // Test data generator
+    // const Marks: Array<ReservedMarks> = new Array<ReservedMarks>();
+    // for (let counter = 0; counter < 10; counter++) {
+    //   const excMark: ReservedMarks = new ReservedMarks();
+    //   excMark.RegistrationMark = 'REGMRK-' + counter;
+    //   excMark.Status = 'Blacklisted';
+    //   excMark.Title = 'no title';
+    //   Marks.push(excMark);
+    // }
+    this._spService.addBatchRequest('ReservedMark', Marks);
+  }
+
+  convertFile(csv: any) {
+    this.filesForImport = csv;
+  }
+}

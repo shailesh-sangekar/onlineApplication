@@ -401,5 +401,75 @@ export class SpService {
             });
         });
     }
-    // **
+    // **//
+    /**
+    * Adds employees in a single batch request.
+    * @param {Array{any}} batchData - JSON array of ListItem to add.
+    */
+    addBatchRequest(listName: string, batchData: Array<any>) {
+
+        // generate a batch boundary
+        const batchGuid = this.GenerateGUID();
+        const changeSetId = this.GenerateGUID();
+
+        // creating the body
+        const batchContents = new Array();
+
+        // for each object...
+        batchData.forEach(bData => {
+            // append metadata
+            if (!bData.__metadata) {
+                bData.__metadata = { 'type': 'SP.' + listName + 'ListItem' };
+            }
+            // create the request endpoint
+            const listUrl = this.apiUrl.replace('{0}', listName);
+
+            // create the changeset
+            batchContents.push('--changeset_' + changeSetId);
+            batchContents.push('Content-Type: application/http');
+            batchContents.push('Content-Transfer-Encoding: binary');
+            batchContents.push('');
+            batchContents.push('POST ' + listUrl + ' HTTP/1.1');
+            batchContents.push('Content-Type: application/json;odata=verbose');
+            batchContents.push('');
+            batchContents.push(JSON.stringify(bData));
+            batchContents.push('');
+        });
+
+        // END changeset to create data
+        batchContents.push('--changeset_' + changeSetId + '--');
+
+        // generate the body of the batch
+        const batchBody = batchContents.join('\r\n');
+
+        // create the request endpoint
+        const batchApi = this.baseUrl + '/_api/$batch';
+
+        // create request
+        const svc = this;
+        return this.refreshDigest().then(function (_res: Response) {
+            // batches need a specific header
+            const _header = svc.headers;
+            _header.append('Content-Type', 'multipart/mixed; boundary="batch_' + batchGuid + '"');
+            // const _header = new Headers({
+            //     'X-RequestDigest': _res,
+            //     'Content-Type': 'multipart/mixed; boundary="batch_' + batchGuid + '"'
+            // });
+            svc.options = new RequestOptions({ headers: _header });
+            return svc.http.post(batchApi, batchBody, svc.options).toPromise().then(function (res: Response) {
+                return res.json();
+            }).catch(svc.handleError);
+        });
+    }
+
+    //  Generates a GUID-like string, used in OData HTTP batches.
+    GenerateGUID() {
+        let d = new Date().getTime();
+        const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            const r = (d + Math.random() * 16) % 16 || 0;
+            d = Math.floor(d / 16);
+            return (c === 'x' ? r : (r && 0x7 || 0x8)).toString(16);
+        });
+        return uuid;
+    }
 }

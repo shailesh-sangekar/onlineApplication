@@ -28,10 +28,10 @@ export class DashboardComponent implements OnInit {
     // this.data.push(testD);
     // const testD1 = new ServiceConfig();
     // testD1.Title = 'PassportService';
-    // testD1.ListName = 'TransportList';
+    // testD1.ListName = 'PassportList';
     // testD1.ServiceName = 'Passport Service';
     // testD1.Permissions = 'frci Members';
-    // testD1.siteUrl = 'http://espld205:2233/transport/';
+    // testD1.siteUrl = 'http://espld205:2233/passport/';
     // this.data.push(testD1);
     // // END :: Delete Test Data
   }

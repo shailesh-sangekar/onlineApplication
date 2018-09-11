@@ -6,6 +6,7 @@ import { SpService } from '../../shared/services/spcommon.service';
 import { TransportService } from '../../services/transport.service';
 import { Router } from '@angular/router';
 
+declare var $: any;
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +22,14 @@ export class DashboardComponent implements OnInit {
   errorMessage: string;
   loggedInUserData: any;
 
+  lat: any = -20.168529;
+  lng: any = 57.485452;
+  lat1: any = -20.024509;
+  lng1: any = 57.576280;
+  lat2: any = -20.327520;
+  lng2: any = 57.383162;
+  lat3: any = -20.258659;
+  lng3: any = 57.490749;
 
   title = 'app';
   displayError = true;
@@ -29,7 +38,7 @@ export class DashboardComponent implements OnInit {
     private _transportService: TransportService, private _spService: SpService,
     private _router: Router) {
     this.model = new AuthInfo('password', '', '');
-    this._spService.baseUrl = 'http://espld205:2233/';
+    this._spService.baseUrl = 'https://chetanbadgujar.sharepoint.com';
   }
 
   submitTransportData() {
@@ -43,11 +52,35 @@ export class DashboardComponent implements OnInit {
     this.loggedInUser = 'Ankit.panchal';
     this.loginName = 'Ankit.panchal';
 
-     this.getTransport();
+    this.getDocuments();
     // this.getAuthToken();
     // this._spService.read('ServiceConfig').then(function (response) {
     //   console.log(response.d.results);
     // });
+
+    $('.block-news').slick({
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 939,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            dots: true,
+          }
+        },
+        {
+          breakpoint: 719,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: true,
+          }
+        }
+      ]
+    });
   }
 
   getAuthToken() {
@@ -68,20 +101,11 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  getTransport() {
+  getDocuments() {
     console.log('from transport');
-    this._transportService.getTransport()
-      .subscribe(
-      (results: any) => {
-
-        console.log('Transport Data');
-        console.log(results);
-      },
-      error => {
-        // debugger;
-        this.errorMessage = <any>error;
-        // this._router.navigate(['/unauthorized', 1]);
-      });
+    this._spService.read('Documents').then(function (response) {
+      console.log(response.d.results);
+    });
   }
 
   onService(service: any, action: any, e: any) {

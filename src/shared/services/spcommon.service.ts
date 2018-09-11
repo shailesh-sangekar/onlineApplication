@@ -44,7 +44,8 @@ export class SpService {
     login: String;
 
     constructor(private http: Http) {
-        this.setBaseUrl('http://espld205:2233');
+        // http://espld205:2233
+        this.setBaseUrl('https://chetanbadgujar.sharepoint.com');
     }
 
     // HTTP Error handling
@@ -304,6 +305,16 @@ export class SpService {
         // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support
         let url = this.apiUrl.replace('{0}', listName);
         url = this.readBuilder(url, options);
+        return this.http.get(url, this.options).toPromise().then(function (resp: Response) {
+            return resp.json();
+        });
+    }
+    readDocument(listName: string): Promise<any> {
+        // Build URL syntax
+        // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support
+        this.apiUrl = this.baseUrl + '/_api/web/GetFolderByServerRelativeUrl(\'{0}\')';
+        const url = this.apiUrl.replace('{0}', listName);
+        // url = this.readBuilder(url, options);
         return this.http.get(url, this.options).toPromise().then(function (resp: Response) {
             return resp.json();
         });

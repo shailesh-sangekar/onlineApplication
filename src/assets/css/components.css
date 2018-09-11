@@ -1,0 +1,84 @@
+@charset "utf-8";
+/*
+ Components css 
+ Author: Loic Ng Ah wai 
+*/
+
+
+/*core of website
+******************************************************************/
+
+/* homepage */
+.home-news .cnleft{max-width: 470px;width:29.7468%;float: left;}
+.home-news .cnright{max-width: 1110px;width:70.2531%;float: left;}
+.home-news .cnintro{width: 100%;}
+.home-news .cnintro .intro{font-family: 'Roboto Slab', serif;font-size: 44px;color:#072C6C;font-weight: 700;margin-bottom: 25px }
+.home-news .cnintro .intro strong{color:#59C0CC}
+.home-news .cnintro .text{font-size: 17px;color:#ADADAD; }
+    .block-news {clear: both;padding: 0px;margin: 0px;}
+    .block-news .col.g-3{width: 30.3333%;max-width: 350px;display:inline-block;vertical-align: top;margin: 0px 1.5%;cursor: pointer}
+    .block-news .col.g-3:last-child{margin-right: 0px}
+    .block-news .cnImg{position: relative;overflow: hidden;float: left;width: 100%;overflow: hidden;}
+    .block-news .cnImg::before{content: '';width: 100%;height: 100%;position: absolute;top:0px;left: 0px;background: rgba(9 , 44, 109, 0.4);transition: all 0.5s ease}
+    .block-news .col.g-3:hover .cnImg::before{background: rgba(9 , 44, 109, 0.7)}
+    .block-news .col.g-3:hover a{color:#59C0CC}
+    .block-news .more{float: right;}
+    .block-news .more a{padding: 8px 20px;color: #fff;background:#092C6D;font-family: 'Roboto Slab', serif;font-size: 15px;display: block}
+    .block-news .more a span{font-size: 18px;position: relative;top: 1px;}
+    .block-news .cnDesc{width: 100%;color: #fff;font-weight: 700; position: absolute;top: 0px;left: 0px;padding: 8% 5%;}
+    .block-news .date{font-size: 13px;margin-bottom: 12%;}
+    .block-news .text{font-size: 26px}
+
+.Parallax{min-height: 550px;  background-attachment: fixed;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;}
+.Parallax::before{content:'';position: absolute;background: rgba(9 , 44, 109, 0.3);width: 100%;height: 100%;left: 0;top: 0}
+.Parallax .transparent-box{position:relative;width: 100%;float: left;max-width: 415px;height:415px;background: transparent;/* border: 10px solid #fff; */position: absolute;bottom: -20%;visibility: hidden;}
+.Parallax .transparent-box .text{font-size:44px;color: #fff;width: 100%;padding: 8% 8%;word-wrap: break-word;font-weight: 700;float: left;}
+.Parallax .transparent-box .text strong{color:#59C0CC}
+.Parallax .transparent-box  .more{float: left;margin-top: 35px;}
+.Parallax .transparent-box  .more a{transition:all 0.5s;padding: 8px 20px;color: #fff;background:#59C2CC;font-family: 'Roboto Slab', serif;font-size: 15px;display: block}
+.Parallax .transparent-box  .more a span{font-size: 18px;position: relative;top: 1px;}
+.Parallax .transparent-box  .more a:hover{color:#59C0CC;background: #fff}
+
+.home-info { padding: 10% 0px 6% 0px;}
+.home-info .box{width: 25%;float: left;}
+.home-info .box .cnInner{padding: 0px 5%;width: 100%;}
+.home-info .box .cnInner .cncontent{background: #fff;width: 100%;padding: 50px 0px;transition: all 0.5s ease;cursor: pointer;}
+.home-info .box .cnInner .cncontent .cnImg{width: 95px;height: 95px;margin: 0 auto;margin-bottom: 10px;}
+.home-info .box .cnInner .cncontent .cnImg img{width: auto}
+.home-info .box .cnInner .cncontent .cntext{font-family: 'Roboto Slab', serif;color: #092C6D;font-size:33px;font-weight:700;text-align: center}
+.home-info .box .cnInner .cncontent:hover{background: #59C0CC;}
+.home-info .box .cnInner .cncontent:hover .cntext{color: #fff}
+
+
+.home-desc .box{width: 33.3333%;float: left;}
+.home-desc .box .cnInner{padding: 0px 5%;width: 100%;}
+.home-desc .box .cnInner .title{font-family: 'Roboto Slab', serif;color: #59C1CC;font-size: 40px;font-weight: 700;margin-bottom: 5px}
+.home-desc .box .cnInner .more{float: right;}
+.home-desc .box .cnInner .more a{padding: 8px 20px;color: #fff;background:#59C2CC;font-family: 'Roboto Slab', serif;font-size: 15px;display: block}
+.home-desc .box .cnInner .more a span{font-size: 18px;position: relative;top: 1px;}
+.home-desc .box .cnInner .more a:hover{color:#092C6D}
+.home-desc .box .cnInner .cncontent{background: #fff;float:left;width: 100%;padding: 45px 20px;min-height: 430px;}
+    .home-desc .pdf-content{float: left;width:100%;}
+    .home-desc .pdf-content ul li{float: left;width: 100%;padding: 20px 0px;border-bottom: 1px solid #092C6D;}
+    .home-desc .pdf-content ul li:first-child{padding-top: 0px}
+    .home-desc .pdf-content ul li:last-child{border:none}
+    .home-desc .pdf-content ul li a{display: block;position: relative;color:#1F1F1F;font-size: 19px}
+    .home-desc .pdf-content ul li a::before{content:'';display: inline-block;vertical-align: middle;width: 50px;height: 50px;
+    background: url('../img/icn-logo/pdf-icn.png') center center no-repeat;margin-right: 20px;background-size: 50px}
+    .home-desc .pdf-content ul li a span{position: absolute;right: 0px;top: 50%;transform: translate(0%,-50%);color:#092C6D;font-size: 22px}
+    .home-desc .pdf-content ul li a:hover{color: #59C1CC;}
+
+.home-desc .new-content{float: left;width:100%;}
+.home-desc .new-content ul li{float: left;width: 100%;padding: 30px 0px;border-bottom: 1px solid #092C6D;}
+.home-desc .new-content ul li:first-child{padding-top: 0px}
+.home-desc .new-content ul li:last-child{border:none}
+.home-desc .new-content ul li::before{content:'';display: inline-block;vertical-align: middle;width: 55px;height: 53px;
+    background: url('../img/icn-logo/news.png') center center no-repeat;margin-right: 9px;background-size: 54px}
+.home-desc .new-content .cnDesc{display: inline-block; vertical-align: top;line-height: 20px}
+.home-desc .new-content .date{color: #0A2C6D;font-size: 14px;font-weight: 700}
+.home-desc .new-content .text{color: #201F1F;font-size: 17px;}
+.home-desc .new-content .bot a{color: #59C3CC;font-size: 16px}
+.home-desc .new-content .bot{font-size: 16px;color: #0A2C6D;font-weight: 700}
+
+.home-desc .box.nopad .cnInner .cncontent{padding: 0}
+#map_canvas {height: 430px;width: 100%;}

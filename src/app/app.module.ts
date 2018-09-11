@@ -12,6 +12,8 @@ import { DashboardComponent } from './dashboard/dashboard.compnent';
 import { UserlistComponent } from './user-action/user-list/user-list.component';
 import { UserActionComponent } from './user-action/user-action/user-action.component';
 
+import { AgmCoreModule } from '@agm/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +26,9 @@ import { UserActionComponent } from './user-action/user-action/user-action.compo
     HttpModule,
     FormsModule,
     AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDczNGDt8Q76C4C_gaP0YnvxZA5Ay_HDOY'
+    }),
     SharedModule.forRoot()
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },

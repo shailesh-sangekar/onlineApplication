@@ -5,6 +5,7 @@ import { CommonService } from '../shared/services/common.service';
 import { SpService } from '../shared/services/spcommon.service';
 import { TransportService } from '../services/transport.service';
 
+declare var $: any;
 
 @Component({
   selector: 'app-root',
@@ -46,6 +47,25 @@ export class AppComponent implements OnInit {
     // this._spService.read('test').then(function (response) {
     //   console.log(response.d.results);
     // });
+    $('.slider-text').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      vertical: true,
+      verticalSwiping: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
+    });
+    $('.slider-wish').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: true,
+      fade: true,
+      cssEase: 'linear',
+      autoplay: true,
+      autoplaySpeed: 3000,
+    });
   }
 
   getAuthToken() {
@@ -54,32 +74,32 @@ export class AppComponent implements OnInit {
     this.model.Password = 'Espl@123';
     this._commonService.getAuthToken(this.model)
       .subscribe(
-        (results: any) => {
+      (results: any) => {
 
-          console.log('Access grated for current user');
-          console.log(results);
-        },
-        error => {
+        console.log('Access grated for current user');
+        console.log(results);
+      },
+      error => {
 
-          this.errorMessage = <any>error;
-          // this._router.navigate(['/unauthorized', 1]);
-        });
+        this.errorMessage = <any>error;
+        // this._router.navigate(['/unauthorized', 1]);
+      });
   }
 
   getTransport() {
     console.log('from transport');
     this._transportService.getTransport()
       .subscribe(
-        (results: any) => {
+      (results: any) => {
 
-          console.log('Transport Data');
-          console.log(results);
-        },
-        error => {
-          // debugger;
-          this.errorMessage = <any>error;
-          // this._router.navigate(['/unauthorized', 1]);
-        });
+        console.log('Transport Data');
+        console.log(results);
+      },
+      error => {
+        // debugger;
+        this.errorMessage = <any>error;
+        // this._router.navigate(['/unauthorized', 1]);
+      });
   }
 
 }

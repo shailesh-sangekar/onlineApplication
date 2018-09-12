@@ -20,6 +20,10 @@ export class UserlistComponent implements OnInit {
   options: RestOptions;
   fields: string;
   filesForImport: any;
+  csvMarks: Array<ReservedMarks> = new Array<ReservedMarks>();
+  importLabel = 'Import';
+  importLabelFlag = true;
+
   constructor(private _spService: SpService, private _commonservice: CommonService,
     private _router: Router, private route: ActivatedRoute) {
   }
@@ -138,25 +142,61 @@ export class UserlistComponent implements OnInit {
   }
 
   /**Add multiple data to sharepoint list using batch*/
-  import() {
-    this._commonservice.convertToJson(this.filesForImport, this.jsonResult);
+  import(data: any) {
+    console.log(data);
+    if (this.filesForImport === undefined || this.filesForImport === null) { alert('Please select the file'); return false; }
+    if (!confirm('Are you sure you want import data?')) { return false; }
+    if (this.importLabelFlag) {
+      this.importLabelFlag = false;
+      this.convertToJson(this.filesForImport, this.jsonResult);
+      this.importLabelFlag = true;
+      this.filesForImport.value = '';
+    }
   }
-  jsonResult(jsData: any) {
+  jsonResult(jsData: any, svc: any) {
     let Marks: Array<ReservedMarks> = new Array<ReservedMarks>();
     Marks = jsData;
     console.log(Marks);
-    // Test data generator
-    // const Marks: Array<ReservedMarks> = new Array<ReservedMarks>();
-    // for (let counter = 0; counter < 10; counter++) {
-    //   const excMark: ReservedMarks = new ReservedMarks();
-    //   excMark.RegistrationMark = 'REGMRK-' + counter;
-    //   excMark.Status = 'Blacklisted';
-    //   excMark.Title = 'no title';
-    //   Marks.push(excMark);
-    // }
-    this._spService.addBatchRequest('ReservedMark', Marks);
+    Marks.forEach(_mark => {
+      svc._spService.create('ReservedMark', _mark);
+    });
+    alert('Importing data is complete!');
+    //  svc._spService.addBatchRequest('ReservedMark', Marks);
   }
-
+  // Convert CSV data to Json object dynamically
+  convertToJson(csv: any, callback): any {
+    const fileReaded = csv.target.files[0];
+    const _svc = this;
+    const reader: FileReader = new FileReader();
+    reader.readAsText(fileReaded);
+    reader.onload = (event) => {
+      const csvData: any = reader.result;
+      const allTextLines = csvData.split(/\r|\n|\r/);
+      const headers = allTextLines[0].split(',');
+      const lines = [];
+      for (let counter = 1; counter < allTextLines.length; counter++) {
+        // split content based on comma
+        const currentLine = allTextLines[counter].split(',');
+        if (currentLine.length === headers.length) {
+          const newLine = {};
+          for (let innerCounter = 0; innerCounter < headers.length; innerCounter++) {
+            newLine[this.cleanData(headers[innerCounter])] = this.cleanData(currentLine[innerCounter]);
+          }
+          // log each row to see output
+          lines.push(newLine);
+        }
+      }
+      // all rows in the csv file
+      callback(lines, _svc);
+    };
+  }
+  // Get clean values of field of property
+  cleanData(value: any) {
+    return value
+      .replace(/^\s*|\s*$/g, '') // remove leading & trailing space
+      .replace(/^"|"$/g, '') // remove " on the beginning and end
+      .replace(/""/g, '"'); // replace "" with "
+  }
   convertFile(csv: any) {
     this.filesForImport = csv;
   }

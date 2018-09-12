@@ -21,6 +21,7 @@ export class SpService {
     currentUser: String;
     login: String;
 
+
     constructor(private http: Http) {
         this.setBaseUrl();
     }
@@ -411,7 +412,6 @@ export class SpService {
         // generate a batch boundary
         const batchGuid = this.GenerateGUID();
         const changeSetId = this.GenerateGUID();
-
         // creating the body
         const batchContents = new Array();
 
@@ -419,7 +419,8 @@ export class SpService {
         batchData.forEach(bData => {
             // append metadata
             if (!bData.__metadata) {
-                bData.__metadata = { 'type': 'SP.' + listName + 'ListItem' };
+                bData.__metadata = { 'type': 'SP.ListItem' };
+                // bData.__metadata = { 'type': 'SP.' + listName + 'ListItem' };
             }
             // create the request endpoint
             const listUrl = this.apiUrl.replace('{0}', listName);
@@ -450,14 +451,14 @@ export class SpService {
         return this.refreshDigest().then(function (_res: Response) {
             // batches need a specific header
             const _header = svc.headers;
-            _header.append('Content-Type', 'multipart/mixed; boundary="batch_' + batchGuid + '"');
+            _header.set('Content-Type', 'multipart/mixed; boundary="batch_' + batchGuid + '"');
             // const _header = new Headers({
             //     'X-RequestDigest': _res,
             //     'Content-Type': 'multipart/mixed; boundary="batch_' + batchGuid + '"'
             // });
             svc.options = new RequestOptions({ headers: _header });
             return svc.http.post(batchApi, batchBody, svc.options).toPromise().then(function (res: Response) {
-                return res.json();
+                return res;
             }).catch(svc.handleError);
         });
     }
@@ -466,10 +467,14 @@ export class SpService {
     GenerateGUID() {
         let d = new Date().getTime();
         const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            const r = (d + Math.random() * 16) % 16 || 0;
+            const r = Math.floor((d + Math.random() * 16) % 16 || 0);
             d = Math.floor(d / 16);
             return (c === 'x' ? r : (r && 0x7 || 0x8)).toString(16);
         });
-        return uuid;
+        // const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        //     const r = Math.random() * 16 || 0, v = c === 'x' ? r : (r && 0x3 || 0x8);
+        //     return v.toString(16);
+        // });
+        return uuid.slice(0, 50);
     }
 }

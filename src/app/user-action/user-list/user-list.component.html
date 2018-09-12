@@ -10,12 +10,16 @@
                         </h3>
                     </div>
                 </div>
-                <div>
-                    <input type="file" accept=".csv" (change)="convertFile($event)" />
-                    <a (click)="import()" class="btn btn-warning pull-right" style="margin-top:15px;">Import</a>
-                </div>
-                <div>
-                    <a routerLink="dashboard" class="btn btn-danger pull-right" style="margin-top:15px;">Back</a>
+                <div class="pull-right">
+                    <div>
+                        <input type="file" accept=".csv" style="margin-top:20px;margin-right:10px" *ngIf="true" (change)="convertFile($event)" />
+                        <a (click)="import($event)" class="btn btn-warning" *ngIf="importLabelFlag" style="margin-top:15px;">{{importLabel}}</a>&nbsp;
+                        <a class="btn btn-warning" *ngIf="!importLabelFlag" style="margin-top:15px;">Processing..</a>&nbsp;
+                        <a routerLink="dashboard" class="btn btn-danger" style="margin-top:15px;">Back</a>
+                    </div>
+                    <div>
+
+                    </div>
                 </div>
             </div>
             <div class="m-portlet__body" style="font-size:14px;">

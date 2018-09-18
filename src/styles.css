@@ -8,3 +8,37 @@
 .helpSPFx{
     margin: 2px 0px 0px 0px;
 }
+.ms-webpart-chrome-title{
+        display: none !important;
+}
+#titleAreaBox{
+    display: none !important;
+}
+#s4-titlerow{
+    display: none !important;
+}
+#sideNavBox{
+    display: none !important;
+}
+#contentBox{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+#messageBox{
+    display: none !important;
+}
+#suiteBarTop{
+    display: block !important;
+}
+#RibbonContainer{
+    display: none !important;
+}
+#s4-ribbonrow{
+    display: none !important;
+}
+#previewRibbon{
+    display: none !important;
+}
+#contentRow{
+    padding-top: 0px !important;
+}

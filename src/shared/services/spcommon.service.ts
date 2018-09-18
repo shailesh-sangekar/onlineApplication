@@ -29,6 +29,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import { Config } from '../config/config';
 
 @Injectable()
 export class SpService {
@@ -45,7 +46,7 @@ export class SpService {
 
     constructor(private http: Http) {
         // http://espld205:2233
-        this.setBaseUrl('https://chetanbadgujar.sharepoint.com');
+        this.setBaseUrl(Config.getRootURL());
     }
 
     // HTTP Error handling
@@ -309,17 +310,36 @@ export class SpService {
             return resp.json();
         });
     }
-    readDocument(listName: string): Promise<any> {
+    readNews(listName: string, options?: any): Promise<any> {
         // Build URL syntax
         // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support
-        this.apiUrl = this.baseUrl + '/_api/web/GetFolderByServerRelativeUrl(\'{0}\')';
-        const url = this.apiUrl.replace('{0}', listName);
-        // url = this.readBuilder(url, options);
+        let url = this.baseUrl + '/_api/sitepages/pages/feed?promotedstate=2&published=true&$skip=0&$top=3&$expand=CreatedBy,FirstPublishedRelativeTime,OriginalSourceItemId,OriginalSourceUrl,Path';
+        //let url = this.apiUrl.replace('{0}', listName);
+        //url = this.readBuilder(url, options);
+        return this.http.get(url).toPromise().then(function (resp: Response) {
+            return resp.json();
+        });
+    }
+    readDocument(listName: string, options?: any): Promise<any> {
+        // Build URL syntax
+        // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support
+        let apiUrl = this.baseUrl + '/_api/web/GetFolderByServerRelativeUrl(\'{0}\')/Files';
+        let url = apiUrl.replace('{0}', listName);
+        url = this.readBuilder(url, options);
         return this.http.get(url, this.options).toPromise().then(function (resp: Response) {
             return resp.json();
         });
     }
-
+    readNewsImages(listName: string, options?: any): Promise<any> {
+        // Build URL syntax
+        // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support
+        let apiUrl = this.baseUrl + '/_api/web/GetFolderByServerRelativeUrl(\'{0}\')';
+        let url = apiUrl.replace('{0}', listName);
+        url = this.readBuilder(url, options);
+        return this.http.get(url, this.options).toPromise().then(function (resp: Response) {
+            return resp.json();
+        });
+    }
     // READ single item - SharePoint list name, and item ID number
     readItem(listName: string, id: string): Promise<any> {
         let url = this.apiUrl.replace('{0}', listName) + '(' + id + ')';

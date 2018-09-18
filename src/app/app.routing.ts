@@ -5,11 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.compnent';
 import { UserlistComponent } from './user-action/user-list/user-list.component';
 import { UserActionComponent } from './user-action/user-action/user-action.component';
-
+import { NewsDetailsComponent } from './news-details/news-details.component';
 const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'user-list/:id', component: UserlistComponent },
     { path: 'user-action/:id', component: UserActionComponent },
+    { path: 'news-details/:id', component: NewsDetailsComponent },
     // {
     //     path: 'contact-list', component: ContactListComponent,
     //     children: [

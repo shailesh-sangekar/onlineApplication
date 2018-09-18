@@ -30,7 +30,7 @@
     .block-news .text{font-size: 26px}
 
 .Parallax{min-height: 550px;  background-attachment: fixed;background-position: center;background-repeat: no-repeat;background-size: cover;position: relative;}
-.Parallax::before{content:'';position: absolute;background: rgba(9 , 44, 109, 0.3);width: 100%;height: 100%;left: 0;top: 0}
+.Parallax::before{content:'';position: absolute;width: 100%;height: 100%;left: 0;top: 0}
 .Parallax .transparent-box{position:relative;width: 100%;float: left;max-width: 415px;height:415px;background: transparent;/* border: 10px solid #fff; */position: absolute;bottom: -20%;visibility: hidden;}
 .Parallax .transparent-box .text{font-size:44px;color: #fff;width: 100%;padding: 8% 8%;word-wrap: break-word;font-weight: 700;float: left;}
 .Parallax .transparent-box .text strong{color:#59C0CC}

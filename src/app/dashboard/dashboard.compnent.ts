@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AuthInfo } from '../../shared/models/authInfo';
 import { AuthTokenService } from '../../shared/services/authToken.service';
 import { CommonService } from '../../shared/services/common.service';
 import { SpService } from '../../shared/services/spcommon.service';
 import { TransportService } from '../../services/transport.service';
 import { Router } from '@angular/router';
+import { RestOptions } from '../../shared/models/restoptions';
+import { Config } from '../../shared/config/config';
+// import * as AOS from 'aos';
+
 
 declare var $: any;
 
@@ -14,7 +18,7 @@ declare var $: any;
   styleUrls: ['./dashboard.component.css'],
   providers: [SpService]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
 
   model: AuthInfo;
   loggedInUser: string;
@@ -33,12 +37,20 @@ export class DashboardComponent implements OnInit {
 
   title = 'app';
   displayError = true;
-
+  options: RestOptions;
+  documentList: any;
+  outsideNews: any;
+  mainNews: any;
+  url: any = '';
   constructor(private _commonService: CommonService, private _authTokenService: AuthTokenService,
     private _transportService: TransportService, private _spService: SpService,
     private _router: Router) {
     this.model = new AuthInfo('password', '', '');
-    this._spService.baseUrl = 'https://chetanbadgujar.sharepoint.com';
+    // this._spService.baseUrl = 'https://alphaportal.sharepoint.com/sites/ibl';
+    this.documentList = [];
+    this.outsideNews = [];
+    this.mainNews = [];
+    this.url = Config.getRootURL();
   }
 
   submitTransportData() {
@@ -49,15 +61,20 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    // AOS.init();
     this.loggedInUser = 'Ankit.panchal';
     this.loginName = 'Ankit.panchal';
-
+    this.options = new RestOptions();
+    this.options.top = '4';
     this.getDocuments();
+    this.getOutsideNews();
+    this.getMainNews();
     // this.getAuthToken();
     // this._spService.read('ServiceConfig').then(function (response) {
     //   console.log(response.d.results);
     // });
-
+  }
+  ngAfterViewInit() {
     $('.block-news').slick({
       infinite: true,
       slidesToShow: 3,
@@ -82,7 +99,6 @@ export class DashboardComponent implements OnInit {
       ]
     });
   }
-
   getAuthToken() {
 
     this.model.UserName = this.loginName;
@@ -103,13 +119,56 @@ export class DashboardComponent implements OnInit {
 
   getDocuments() {
     console.log('from transport');
-    this._spService.read('Documents').then(function (response) {
-      console.log(response.d.results);
+    const ctl = this;
+    this._spService.readDocument('Shared%20Documents', this.options).then(function (response) {
+      console.log('Documents', response.d.results);
+      ctl.documentList = response.d.results;
     });
   }
-
+  getOutsideNews() {
+    const ctl = this;
+    this.options.top = '3';
+    this._spService.read('outsideNewsAnnouncement', this.options).then(function (response) {
+      console.log(response.d.results);
+      ctl.outsideNews = response.d.results;
+      console.log('Outside News', ctl.outsideNews);
+    });
+  }
+  getMainNews() {
+    const ctl = this;
+    this.options = new RestOptions();
+    this.options.filter = "ContentType eq 'Site Page'&promotedstate=2&published=true";
+    this.options.select = 'LinkFilename,*';
+    this.options.top = '3';
+    this.options.orderby = 'Modified desc';
+    this._spService.readNews('Site Pages', this.options).then(function (response) {
+      console.log(response.value);
+      ctl.mainNews = response.value;
+      console.log('Main News', ctl.mainNews);
+      // for (let i = 0; i < ctl.mainNews.length; i++) {
+      //   ctl.getNewsImages(ctl.mainNews[i].LinkFilename.split('.')[0], i);
+      // }
+    });
+  }
+  getNewsImages(url, i) {
+    const ctl = this;
+    this.options = new RestOptions();
+    this.options.select = '*';
+    this.options.expand = 'Files';
+    this._spService.readNewsImages('SiteAssets/SitePages/' + url, this.options).then(function (response) {
+      console.log('news images', response.d.results);
+      ctl.mainNews[i].imgURL = response ? response.d.Files.results[0].ServerRelativeUrl : '';
+      // ctl.documentList = response.d.results;
+    }).catch(function (err) {
+      ctl.mainNews[i].imgURL = 'https://ibltogether.sharepoint.com/SiteAssets/HomeAssets/assets/img/news-default.png';
+    }
+      );
+  }
   onService(service: any, action: any, e: any) {
     e.preventDefault();
     this._router.navigate(['/user-list', service + '-' + action]);
+  }
+  onNewsClick(news: any) {
+    this._router.navigate(['/news-details', news.FileName]);
   }
 }

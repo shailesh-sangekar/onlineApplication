@@ -12,42 +12,19 @@
                 </div>
                 <div class="cnright">
                     <div class="block-news">
-                        <div class="col g-3" onclick="window.location.href='https://www.google.com/'" data-aos="fade-down">
-                            <div class="cnImg">
-                                <img src="../../assets/img/interface/news1.jpg" alt="news1" class="img-responsive" />
+                        <div class="col g-3" data-aos="fade-down" *ngFor="let news of mainNews">
+                            <div class="cnImg" (click)="onNewsClick(news)">
+                                <img src="{{news.BannerImageUrl}}" style="height:250px !important" alt="news1" class="img-responsive"
+                                />
                                 <div class="cnDesc">
-                                    <div class="date">18 Jun 2018</div>
-                                    <div class="text">IBL On The Move is BACK and live online !</div>
+                                    <div class="date">{{news.FirstPublished | date:'dd MMM yyyy'}}</div>
+                                    <div class="text">{{news.Title}}</div>
                                 </div>
                             </div>
-                            <div class="more">
-                                <a href="#">Learn more <span class="fa fa-angle-right"></span></a>
+                            <div class="more" (click)="onNewsClick(news)">
+                                <a>Learn more <span class="fa fa-angle-right"></span></a>
                             </div>
 
-                        </div>
-                        <div class="col g-3" onclick="window.location.href='https://www.google.com/'" data-aos="fade-down">
-                            <div class="cnImg">
-                                <img src="../../assets/img/interface/news2.jpg" alt="news1" class="img-responsive" />
-                                <div class="cnDesc">
-                                    <div class="date">18 Jun 2018</div>
-                                    <div class="text">Retour sur le talk - Heureux comme un Mauricien !</div>
-                                </div>
-                            </div>
-                            <div class="more">
-                                <a href="#">Learn more <span class="fa fa-angle-right"></span></a>
-                            </div>
-                        </div>
-                        <div class="col g-3" onclick="window.location.href='https://www.google.com/'" data-aos="fade-down">
-                            <div class="cnImg">
-                                <img src="../../assets/img/interface/news1.jpg" alt="news1" class="img-responsive" />
-                                <div class="cnDesc">
-                                    <div class="date">18 Jun 2018</div>
-                                    <div class="text">IBL On The Move is BACK and live online !</div>
-                                </div>
-                            </div>
-                            <div class="more">
-                                <a href="#">Learn more <span class="fa fa-angle-right"></span></a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -55,10 +32,10 @@
         </div>
     </div>
 
-    <div class="section Parallax" style="background-image: url('../../assets/img/interface/parallax.jpg')">
+    <div class="section Parallax" style="background-image: url('https://alphaportal.sharepoint.com/sites/ibl/SiteAssets/HomeAssets/assets/img/interface/parallax.jpg')">
         <div class="cont1580">
             <div class="cnWrapper">
-                <div class="transparent-box">
+                <div class="transparent-box" style="visibility:visible">
                     <span class="l1"></span>
                     <span class="l2"></span>
                     <span class="l3"></span>
@@ -84,7 +61,7 @@
                     <div class="cnInner">
                         <div class="cncontent">
                             <div class="cnImg">
-                                <img src="../../assets/img/icn-logo/training.png" />
+                                <img src="{{url}}/SiteAssets/HomeAssets/assets/img/icn-logo/training.png" />
                             </div>
                             <div class="cntext">Training</div>
                         </div>
@@ -94,7 +71,7 @@
                     <div class="cnInner">
                         <div class="cncontent">
                             <div class="cnImg">
-                                <img src="../../assets/img/icn-logo/offers.png" />
+                                <img src="{{url}}/SiteAssets/HomeAssets/assets/img/icn-logo/offers.png" />
                             </div>
                             <div class="cntext">Job Offers</div>
                         </div>
@@ -104,7 +81,7 @@
                     <div class="cnInner">
                         <div class="cncontent">
                             <div class="cnImg">
-                                <img src="../../assets/img/icn-logo/leave.png" />
+                                <img src="{{url}}/SiteAssets/HomeAssets/assets/img/icn-logo/leave.png" />
                             </div>
                             <div class="cntext">Request a leave</div>
                         </div>
@@ -114,7 +91,7 @@
                     <div class="cnInner">
                         <div class="cncontent">
                             <div class="cnImg">
-                                <img src="../../assets/img/icn-logo/remise.png" />
+                                <img src="{{url}}/SiteAssets/HomeAssets/assets/img/icn-logo/remise.png" />
                             </div>
                             <div class="cntext">Special Offers</div>
                         </div>
@@ -129,21 +106,12 @@
             <div class="cnWrapper">
                 <div class="box" data-aos="zoom-in">
                     <div class="cnInner">
-                        <div class="title">Documents</div>
+                        <div class="title">Documents </div>
                         <div class="cncontent">
                             <div class="pdf-content">
                                 <ul>
-                                    <li>
-                                        <a href="">Lean Management.pdf <span class="fa fa-angle-down"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="">Lean Management.pdf <span class="fa fa-angle-down"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="">Lean Management.pdf <span class="fa fa-angle-down"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="">Lean Management.pdf <span class="fa fa-angle-down"></span></a>
+                                    <li *ngFor="let doc of documentList">
+                                        <a href="https://alphaportal.sharepoint.com{{doc.ServerRelativeUrl}}" target="_blank">{{doc.Name}} <span class="fa fa-angle-down"></span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -159,28 +127,13 @@
                         <div class="cncontent">
                             <div class="new-content">
                                 <ul>
-                                    <li>
+                                    <li *ngFor="let news of outsideNews">
                                         <div class="cnDesc">
-                                            <div class="date">23.05.2018</div>
-                                            <div class="text">Budget 2017 - 2048 : Ce qu’il faut savoir</div>
-                                            <div class="bot"><a href="#">Read sur lexpress.mu</a></div>
+                                            <div class="date">{{news.Created | date : 'dd.MM.yyyy'}}</div>
+                                            <div class="text">{{news.Title}}</div>
+                                            <div class="bot">Venue: {{news.venue}}</div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="cnDesc">
-                                            <div class="date">23.05.2018</div>
-                                            <div class="text">Budget 2017 - 2048 : Ce qu’il faut savoir</div>
-                                            <div class="bot">Venue: IBL House, Caudan Waterfront</div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="cnDesc">
-                                            <div class="date">23.05.2018</div>
-                                            <div class="text">Budget 2017 - 2048 : Ce qu’il faut savoir</div>
-                                            <div class="bot">Venue: IBL House, Caudan Waterfront</div>
-                                        </div>
-                                    </li>
-
                                 </ul>
                             </div>
                         </div>
@@ -205,7 +158,6 @@
             </div>
         </div>
     </div>
-
     <div class="section social-feeds">
         <div class="cont1400"></div>
     </div>

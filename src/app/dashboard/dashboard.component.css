@@ -1,3 +1,23 @@
 agm-map {
   height: 400px;
 }
+.name{
+    color: #59C1CC; 
+    font-size: 24px;
+    margin-bottom: 5px; 
+}
+.info{
+    color: #fff;
+    font-size: 15px;
+}
+.info > a{
+    color: #fff;
+    font-size: 15px;
+}
+.carousel-indicators{
+    margin-left: 0% !important;
+        bottom: -15px !important;
+}
+.nav > ul{
+    width:100% !important;
+}

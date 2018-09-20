@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.slideConfig = { 'slidesToShow': 1, 'slidesToScroll': 1 };
     this.getLoggedInUser();
     this.getAnnouncement();
-    this.getBirthDate();
+    // this.getBirthDate();
     // this.getTransport();
     // this.getAuthToken();
     // this._spService.read('test').then(function (response) {
@@ -110,5 +110,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       this._router.navigate(['/dashboard']);
     }
 
+  }
+  onSearch() {
+    this._router.navigate(['/search', 'search']);
   }
 }

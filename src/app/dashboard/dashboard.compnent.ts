@@ -41,7 +41,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   documentList: any;
   outsideNews: any;
   mainNews: any;
+  bannerNews: any;
   url: any = '';
+  announcementList: any;
   constructor(private _commonService: CommonService, private _authTokenService: AuthTokenService,
     private _transportService: TransportService, private _spService: SpService,
     private _router: Router) {
@@ -50,6 +52,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.documentList = [];
     this.outsideNews = [];
     this.mainNews = [];
+    this.bannerNews = [];
+    this.announcementList = [];
     this.url = Config.getRootURL();
   }
 
@@ -69,6 +73,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.getDocuments();
     this.getOutsideNews();
     this.getMainNews();
+    this.getBannerNews();
+    this.getAnnouncement();
+    this.getBirthDate();
     // this.getAuthToken();
     // this._spService.read('ServiceConfig').then(function (response) {
     //   console.log(response.d.results);
@@ -116,7 +123,22 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         // this._router.navigate(['/unauthorized', 1]);
       });
   }
-
+  getAnnouncement() {
+    console.log('from transport');
+    const ctl = this;
+    this._spService.read('IBLAnnouncement').then(function (response) {
+      console.log(response.d.results);
+      ctl.announcementList = response.d.results;
+      for (let i = 0; i < ctl.announcementList.length; i++) {
+        if (i === 0) {
+          ctl.announcementList[i].class = 'active';
+        } else {
+          ctl.announcementList[i].class = '';
+        }
+      }
+      console.log('Announcement', ctl.announcementList);
+    });
+  }
   getDocuments() {
     console.log('from transport');
     const ctl = this;
@@ -126,12 +148,25 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
   }
   getOutsideNews() {
+    // const ctl = this;
+    // this.options.top = '3';
+    // this._spService.readOutsideNews('outsideNewsSideLibrary', this.options).then(function (response) {
+    //   console.log(response.d.results);
+    //   ctl.outsideNews = response.d.results;
+    //   console.log('Outside News', ctl.outsideNews);
+    // });
     const ctl = this;
+    this.options = new RestOptions();
+    this.options.filter = "ContentType eq 'Site Page'&promotedstate=2&published=true";
+    this.options.select = 'LinkFilename,*';
     this.options.top = '3';
-    this._spService.read('outsideNewsAnnouncement', this.options).then(function (response) {
-      console.log(response.d.results);
-      ctl.outsideNews = response.d.results;
+    this.options.orderby = 'Modified desc';
+    this._spService.readOutsideNews('Site Pages', this.options).then(function (response) {
+      ctl.outsideNews = response.value;
       console.log('Outside News', ctl.outsideNews);
+      // for (let i = 0; i < ctl.mainNews.length; i++) {
+      //   ctl.getNewsImages(ctl.mainNews[i].LinkFilename.split('.')[0], i);
+      // }
     });
   }
   getMainNews() {
@@ -142,12 +177,29 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.options.top = '3';
     this.options.orderby = 'Modified desc';
     this._spService.readNews('Site Pages', this.options).then(function (response) {
-      console.log(response.value);
       ctl.mainNews = response.value;
       console.log('Main News', ctl.mainNews);
       // for (let i = 0; i < ctl.mainNews.length; i++) {
       //   ctl.getNewsImages(ctl.mainNews[i].LinkFilename.split('.')[0], i);
       // }
+    });
+  }
+  getBannerNews() {
+    const ctl = this;
+    this.options = new RestOptions();
+    this.options.filter = "ContentType eq 'Site Page'&promotedstate=2&published=true";
+    this.options.select = 'LinkFilename,*';
+    this.options.top = '1';
+    this.options.orderby = 'Modified desc';
+    this._spService.readBannerNews('Site Pages', this.options).then(function (response) {
+      if (response.value.length > 0) {
+        ctl.bannerNews = response.value[0];
+        ctl.bannerNews.BannerImageUrl = ctl.bannerNews.BannerImageUrl + '&$&resolution=3';
+        console.log('Banner News', ctl.bannerNews);
+        // for (let i = 0; i < ctl.mainNews.length; i++) {
+        //   ctl.getNewsImages(ctl.mainNews[i].LinkFilename.split('.')[0], i);
+        // }
+      }
     });
   }
   getNewsImages(url, i) {
@@ -164,11 +216,20 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
       );
   }
+  getBirthDate() {
+    const ctl = this;
+    this._spService.readBirthDate('user information list').then(function (response) {
+      console.log('user information list', response.d.results);
+    });
+  }
   onService(service: any, action: any, e: any) {
     e.preventDefault();
     this._router.navigate(['/user-list', service + '-' + action]);
   }
   onNewsClick(news: any) {
     this._router.navigate(['/news-details', news.FileName]);
+  }
+  onOutsideNewsClick(news: any) {
+    this._router.navigate(['/outsidenews-details', news.FileName]);
   }
 }

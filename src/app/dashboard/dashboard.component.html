@@ -1,4 +1,60 @@
 <!-- core -->
+<div class="bot-nav">
+    <div class="cont1580">
+        <div class="cnWrapper">
+            <div class="cnleft" data-aos="fade-right">
+                <div class="cnIcn">
+                    <span> <img src="{{url}}/SiteAssets/HomeAssets/assets/img/icn-logo/cake.png" alt="cake"/> </span>
+                </div>
+                <div class="cnText">
+                    <div class="top-section">
+                        Birthdays today!
+                        <div class="overlay"><img src="{{url}}/SiteAssets/HomeAssets/assets/img/icn-logo/test.png" alt="test" /></div>
+                    </div>
+                    <div class="bot-section">
+                        <!-- <div class="slider-wish">
+                                    <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+                                        <div class="box slide" ngxSlickItem *ngFor="let announce of announcementList">
+                                            <div class="name">David Hasselhoff</div>
+                                            <div class="info">{{announce.Expires | date : 'dd.MM.yyyy'}} | <a href="#"> Send Wish <span class="fa fa-angle-right"></span> </a></div>
+                                        </div>
+                                    </ngx-slick>
+                                </div> 
+                                  <div class="slider-wish">
+                                    <div class="box" *ngFor="let announce of announcementList">
+                                        <div class="name">David Hasselhoff</div>
+                                        <div class="info">{{announce.Expires | date : 'dd.MM.yyyy'}} | <a href="#"> Send Wish <span class="fa fa-angle-right"></span> </a></div>
+                                    </div>
+                                </div>   -->
+                        <div id="demo" class="carousel slide" data-ride="carousel">
+
+                            <!-- Indicators -->
+                            <ul class="carousel-indicators">
+                                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                <li data-target="#demo" data-slide-to="1"></li>
+                                <li data-target="#demo" data-slide-to="2"></li>
+                            </ul>
+
+                            <!-- The slideshow -->
+                            <div class="carousel-inner">
+                                <div *ngFor="let announce of announcementList" class="carousel-item {{announce.class}}">
+                                    <div class="box">
+                                        <div class="name">David Hasselhoff</div>
+                                        <div class="info">{{announce.Expires | date : 'dd.MM.yyyy'}} | <a href="#"> Send Wish <span class="fa fa-angle-right"></span> </a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cnright">
+                <div class="Text" data-aos="fade-left">Everyday<strong> together.</strong></div>
+
+            </div>
+        </div>
+    </div>
+</div>
 <div class="core">
 
     <div class="section home-news bg-white">
@@ -14,8 +70,7 @@
                     <div class="block-news">
                         <div class="col g-3" data-aos="fade-down" *ngFor="let news of mainNews">
                             <div class="cnImg" (click)="onNewsClick(news)">
-                                <img src="{{news.BannerImageUrl}}" style="height:250px !important" alt="news1" class="img-responsive"
-                                />
+                                <img src="{{news.BannerImageUrl}}" style="height:250px !important" alt="news1" class="img-responsive" />
                                 <div class="cnDesc">
                                     <div class="date">{{news.FirstPublished | date:'dd MMM yyyy'}}</div>
                                     <div class="text">{{news.Title}}</div>
@@ -32,7 +87,7 @@
         </div>
     </div>
 
-    <div class="section Parallax" style="background-image: url('https://alphaportal.sharepoint.com/sites/ibl/SiteAssets/HomeAssets/assets/img/interface/parallax.jpg')">
+    <div class="section Parallax" [ngStyle]="{'background-image': 'url(' +  bannerNews.BannerImageUrl + ')'}">
         <div class="cont1580">
             <div class="cnWrapper">
                 <div class="transparent-box" style="visibility:visible">
@@ -42,7 +97,8 @@
                     <span class="l4"></span>
                     <div class="text">
                         <div class="unbreak">
-                            Taking on <br/> heights <strong> together.</strong>
+                            <!-- Taking on <br/> heights <strong> together.</strong> -->
+                            {{bannerNews.Title}}
                         </div>
                         <div class="more">
                             <a href="">View More <span class="fa fa-angle-right"></span></a>
@@ -127,9 +183,9 @@
                         <div class="cncontent">
                             <div class="new-content">
                                 <ul>
-                                    <li *ngFor="let news of outsideNews">
+                                    <li *ngFor="let news of outsideNews" (click)="onOutsideNewsClick(news)">
                                         <div class="cnDesc">
-                                            <div class="date">{{news.Created | date : 'dd.MM.yyyy'}}</div>
+                                            <div class="date">{{news.FirstPublished | date : 'dd.MM.yyyy'}}</div>
                                             <div class="text">{{news.Title}}</div>
                                             <div class="bot">Venue: {{news.venue}}</div>
                                         </div>

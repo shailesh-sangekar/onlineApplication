@@ -310,10 +310,50 @@ export class SpService {
             return resp.json();
         });
     }
+    // readOutsideNews(listName: string, options?: any): Promise<any> {
+    //     // Build URL syntax
+    //     // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support
+    //     let apiUrl = this.baseUrl + '/outsidenews/_api/web/lists/GetByTitle(\'{0}\')/items';
+    //     let url = apiUrl.replace('{0}', listName);
+    //     url = this.readBuilder(url, options);
+    //     return this.http.get(url, this.options).toPromise().then(function (resp: Response) {
+    //         return resp.json();
+    //     });
+    // }
+    readBirthDate(listName: string, options?: any): Promise<any> {
+        // Build URL syntax
+        // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support
+        let url = this.baseUrl + '/_api/search/query?querytext=%27*%27&sourceid=%27B09A7990-05EA-4AF9-81EF-EDFAB16C4E31%27&rowlimit=5&selectproperties=%27PreferredName,WorkEmail,PictureUrl,Title,Department,RefinableDate00,Url%27';
+        //let url = this.apiUrl.replace('{0}', listName);
+        //url = this.readBuilder(url, options);
+        return this.http.get(url).toPromise().then(function (resp: Response) {
+            return resp.json();
+        });
+    }
     readNews(listName: string, options?: any): Promise<any> {
         // Build URL syntax
         // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support
         let url = this.baseUrl + '/_api/sitepages/pages/feed?promotedstate=2&published=true&$skip=0&$top=3&$expand=CreatedBy,FirstPublishedRelativeTime,OriginalSourceItemId,OriginalSourceUrl,Path';
+        //let url = this.apiUrl.replace('{0}', listName);
+        //url = this.readBuilder(url, options);
+        return this.http.get(url).toPromise().then(function (resp: Response) {
+            return resp.json();
+        });
+    }
+    readOutsideNews(listName: string, options?: any): Promise<any> {
+        // Build URL syntax
+        // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support
+        let url = this.baseUrl + '/outsidenews/_api/sitepages/pages/feed?promotedstate=2&published=true&$select=venue,*&$skip=0&$top=3&$expand=CreatedBy,FirstPublishedRelativeTime,OriginalSourceItemId,OriginalSourceUrl,Path';
+        //let url = this.apiUrl.replace('{0}', listName);
+        //url = this.readBuilder(url, options);
+        return this.http.get(url).toPromise().then(function (resp: Response) {
+            return resp.json();
+        });
+    }
+    readBannerNews(listName: string, options?: any): Promise<any> {
+        // Build URL syntax
+        // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support
+        let url = this.baseUrl + '/bannernews/_api/sitepages/pages/feed?promotedstate=2&published=true&$skip=0&$top=1&$expand=CreatedBy,FirstPublishedRelativeTime,OriginalSourceItemId,OriginalSourceUrl,Path';
         //let url = this.apiUrl.replace('{0}', listName);
         //url = this.readBuilder(url, options);
         return this.http.get(url).toPromise().then(function (resp: Response) {

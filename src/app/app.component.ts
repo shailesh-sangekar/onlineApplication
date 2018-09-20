@@ -108,8 +108,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   onNavbarClick(route) {
     if (route === 'dashboard') {
       this._router.navigate(['/dashboard']);
+    } else if (route === 'newslist') {
+      this._router.navigate(['/newslist']);
     }
-
   }
   onSearch() {
     this._router.navigate(['/search', 'search']);

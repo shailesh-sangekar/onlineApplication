@@ -21,3 +21,4 @@ agm-map {
 .nav > ul{
     width:100% !important;
 }
+  .block-news .col.g-3{width: 30.3333% !important;max-width: 350px;display:inline-block;vertical-align: top;margin: 0px 1.5%;cursor: pointer}

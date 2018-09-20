@@ -340,6 +340,16 @@ export class SpService {
             return resp.json();
         });
     }
+    readNewsList(listName: string, options?: any): Promise<any> {
+        // Build URL syntax
+        // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support
+        let url = this.baseUrl + '/_api/sitepages/pages/feed?promotedstate=2&published=true';
+        // let url = this.apiUrl.replace('{0}', listName);
+        url = this.readBuilder(url, options);
+        return this.http.get(url, this.options).toPromise().then(function (resp: Response) {
+            return resp.json();
+        });
+    }
     readOutsideNews(listName: string, options?: any): Promise<any> {
         // Build URL syntax
         // https://msdn.microsoft.com/en-us/library/office/fp142385.aspx#bk_support

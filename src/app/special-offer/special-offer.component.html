@@ -1,0 +1,36 @@
+<div class="bot-nav">
+    <div class="cont1580">
+        <div class="cnWrapper">
+            <div class="cnleft" data-aos="fade-right">
+                <div class="Text" data-aos="fade-left">Special<strong> Offers</strong></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- core -->
+<div class="core">
+
+    <div class="section section-offers bg-white ">
+        <div class="cont1580">
+            <div class="cnWrapper cf">
+                <div class="block-offers" *ngFor="let offer of specialOfferList">
+                    <div class="cnimg">
+                        <img src="{{offer.Image.Url}}" alt="" *ngIf="offer.Image !== null" style="height:200px;"/>
+                        <img src="{{url}}/SiteAssets/HomeAssets/assets/img/icn-logo/remise.png" alt="" style="height:200px;" *ngIf="offer.Image === null"/>
+                    </div>
+                    <div class="cnDesc">
+                        <div class="brand-name">{{offer.Title}}</div>
+                        <div class="offers">{{offer.offer}}</div>
+                        <div class="date"><span class="fa fa-calendar"></span>Valid till {{offer.validtill | date:'dd MMM yyyy'}}</div>
+                        <div class="more"><a href="{{offer.ServerRedirectedEmbedUrl}}" target="_blank"><span class="icn"></span>Download pdf</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<!-- core -->

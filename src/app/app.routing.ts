@@ -8,6 +8,9 @@ import { UserActionComponent } from './user-action/user-action/user-action.compo
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import { OutsidenewsDetailsComponent } from './outsidenews-details/outsidenews-details.component';
 import { SearchComponent } from './search/search.component';
+import { NewsListComponent } from './news-list/news-list.component';
+import { SpecialOfferComponent } from './special-offer/special-offer.component';
+import { DocumentListComponent } from './document-list/document-list.component';
 
 const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
@@ -16,6 +19,9 @@ const routes: Routes = [
     { path: 'news-details/:id', component: NewsDetailsComponent },
     { path: 'outsidenews-details/:id', component: OutsidenewsDetailsComponent },
     { path: 'search/:id', component: SearchComponent },
+    { path: 'newslist', component: NewsListComponent },
+    { path: 'special-offer', component: SpecialOfferComponent },
+    { path: 'document-list', component: DocumentListComponent },
     // {
     //     path: 'contact-list', component: ContactListComponent,
     //     children: [

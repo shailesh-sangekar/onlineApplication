@@ -1,0 +1,57 @@
+<div class="bot-nav">
+    <div class="cont1580">
+        <div class="cnWrapper">
+            <div class="cnleft" data-aos="fade-right">
+                <div class="Text" data-aos="fade-left">Latest<strong> news</strong></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- core -->
+<div class="core">
+
+    <div class="section home-news bg-white News">
+        <div class="cont1580">
+            <div class="cnWrapper cf">
+                <div class="cnright">
+                    <div class="select">
+                        <div class="title">Year</div>
+                        <select [(ngModel)]="selectedYear" name="year" (change)="onSelect($event.target.value)">
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>  
+                        </select>
+                    </div>
+                    <div class="block-news" *ngIf="newsList.length > 0">
+                        <div class="col g-3" data-aos="fade-down" *ngFor="let news of newsList">
+                            <div class="cnImg" (click)="onNewsClick(news)">
+                                <img src="{{news.BannerImageUrl}}" style="height:250px !important" alt="news1" class="img-responsive" />
+                                <div class="cnDesc">
+                                    <div class="date">{{news.FirstPublished | date:'dd MMM yyyy'}}</div>
+                                    <div class="text">{{news.Title}}</div>
+                                </div>
+                            </div>
+                            <div class="more" (click)="onNewsClick(news)">
+                                <a >Learn more <span class="fa fa-angle-right"></span></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="block-news" *ngIf="newsList.length === 0">
+                        <div style="text-align:  center; padding: 20px;">No Latest News Found</div>
+                    </div>
+                    <div class="pag">
+                        <div class="prev" (click)="onPrevious(currentPage)"><span class="fa fa-angle-left"></span></div>
+                        <div class="page">Page <span class="activepage"> {{currentPage}}</span> of <span class="totalpage">{{totalPages}}</span></div>
+                        <div class="next" (click)="onNext(currentPage)"><span class="fa fa-angle-right"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<!-- core -->

@@ -14,6 +14,9 @@ import { UserActionComponent } from './user-action/user-action/user-action.compo
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import { OutsidenewsDetailsComponent } from './outsidenews-details/outsidenews-details.component';
 import { SearchComponent } from './search/search.component';
+import { NewsListComponent } from './news-list/news-list.component';
+import { SpecialOfferComponent } from './special-offer/special-offer.component';
+import { DocumentListComponent } from './document-list/document-list.component';
 
 import { AgmCoreModule } from '@agm/core';
 import { SlickModule } from 'ngx-slick';
@@ -28,7 +31,10 @@ import { SlickModule } from 'ngx-slick';
     UserActionComponent,
     NewsDetailsComponent,
     OutsidenewsDetailsComponent,
-    SearchComponent
+    SearchComponent,
+    NewsListComponent,
+    SpecialOfferComponent,
+    DocumentListComponent
   ],
   imports: [
     BrowserModule,

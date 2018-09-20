@@ -7,6 +7,8 @@ import { UserlistComponent } from './user-action/user-list/user-list.component';
 import { UserActionComponent } from './user-action/user-action/user-action.component';
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import { OutsidenewsDetailsComponent } from './outsidenews-details/outsidenews-details.component';
+import { JobOffersComponent } from './job-offers/job-offers.component';
+import { TrainingComponent } from './training-list/training-list.component';
 import { SearchComponent } from './search/search.component';
 import { NewsListComponent } from './news-list/news-list.component';
 import { SpecialOfferComponent } from './special-offer/special-offer.component';
@@ -18,6 +20,8 @@ const routes: Routes = [
     { path: 'user-action/:id', component: UserActionComponent },
     { path: 'news-details/:id', component: NewsDetailsComponent },
     { path: 'outsidenews-details/:id', component: OutsidenewsDetailsComponent },
+    { path: 'job-offer', component: JobOffersComponent },
+    { path: 'training-list', component: TrainingComponent },
     { path: 'search/:id', component: SearchComponent },
     { path: 'newslist', component: NewsListComponent },
     { path: 'special-offer', component: SpecialOfferComponent },

@@ -238,4 +238,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   onViewMoreDoc() {
     this._router.navigate(['/document-list']);
   }
+  onJobOfferClick() {
+    this._router.navigate(['/job-offer']);
+  }
+  onTrainingClick() {
+    this._router.navigate(['/training-list']);
+  }
 }

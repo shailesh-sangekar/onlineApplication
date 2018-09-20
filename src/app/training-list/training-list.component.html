@@ -1,0 +1,35 @@
+<div class="bot-nav">
+    <div class="cont1580">
+        <div class="cnWrapper">
+            <div class="cnleft" data-aos="fade-right">
+                <div class="Text" data-aos="fade-left">Training<strong> Lists</strong></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- core -->
+<div class="core">
+
+    <div class="section section-training bg-white ">
+        <div class="cont1580">
+            <div class="cnWrapper cf">
+                <div class="block-training" *ngFor="let item of trainingsList">
+                    <div class="cnDesc">
+                        <div class="name">{{item.Title?item.Title.substring(0,50):'N/A'}}</div>
+                        <div class="date"><span class="fa fa-calendar"></span>
+                            Valid till {{item.ExpiryDate | date:'longDate'}}</div>
+                        <div class="location"><span class="fa fa-map-marker"></span>{{item.Location?item.Location.substring(0,150):'N/A'}}</div>
+                        <div class="text">{{item.TrainingDescription?item.TrainingDescription.substring(0,255):'N/A'}}</div>
+                        <div class="more">
+                            <!-- <a href="item.TrainingDescription" (click)="getAttachment(item)"><span class="icn"></span>Download pdf</a> -->
+                            <a (click)="getAttachment(item)"><span class="icn"></span>Download1 pdf</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div><!-- core -->

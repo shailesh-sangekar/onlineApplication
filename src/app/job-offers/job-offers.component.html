@@ -1,0 +1,63 @@
+<div class="bot-nav">
+    <div class="cont1580">
+        <div class="cnWrapper">
+            <div class="cnleft" data-aos="fade-right">
+                <div class="Text" data-aos="fade-left">Job<strong> Offers</strong></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- core -->
+<div class="core">
+
+    <div class="section job-offers">
+        <div class="cont1580">
+            <div class="cnWrapper cf">
+                <div class="intro">
+                    Check out the vacancies currently being advertised within the group.<br />
+                    Feel free to apply or share with a friend.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-training bg-white ">
+        <div class="cont1580">
+            <div class="cnWrapper cf">
+                <div class="block-training" *ngFor="let offer of jobOffersList">
+                    <div class="cnDesc">
+                        <div class="head-title">{{offer.Company?offer.Company.substring(0,50):'N/A'}}</div>
+                        <div class="name">{{offer.Title?data.Title.length>75?offer.Title.substring(0,75):offer.Title:'N/A'}}</div>
+                        <div class="date"> <span class="fa fa-calendar"></span>
+                            Valid till {{offer.ExpiryDate | date:'longDate'}}
+                        </div>
+                        <div class="text">{{offer.JobDescription?offer.JobDescription.length>255?offer.JobDescription.substring(0,255):offer.JobDescription:'N/A'}}</div>
+                        <div class="desc">{{offer.Note?offer.Note.length>75?offer.Note.substring(0,75):offer.Note:'N/A'}}</div>
+                        <div class="more"><a href="" (click)="onDetails()" style="color:#59c2cc"><span class="icn"></span>Full
+                                job
+                                description</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- core -->
+
+<script>
+    AOS.init({
+        once: true
+    });
+</script>
+<script type="text/javascript">
+    $('.slider-text').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        vertical: true,
+        verticalSwiping: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    });       
+</script>

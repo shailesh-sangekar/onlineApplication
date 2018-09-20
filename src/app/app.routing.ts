@@ -7,6 +7,8 @@ import { UserlistComponent } from './user-action/user-list/user-list.component';
 import { UserActionComponent } from './user-action/user-action/user-action.component';
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import { OutsidenewsDetailsComponent } from './outsidenews-details/outsidenews-details.component';
+import { JobOffersComponent } from './job-offers/job-offers.component';
+import { TrainingComponent } from './training-list/training-list.component';
 import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
@@ -15,6 +17,8 @@ const routes: Routes = [
     { path: 'user-action/:id', component: UserActionComponent },
     { path: 'news-details/:id', component: NewsDetailsComponent },
     { path: 'outsidenews-details/:id', component: OutsidenewsDetailsComponent },
+    { path: 'job-offer', component: JobOffersComponent },
+    { path: 'training-list', component: TrainingComponent },
     { path: 'search/:id', component: SearchComponent },
     // {
     //     path: 'contact-list', component: ContactListComponent,

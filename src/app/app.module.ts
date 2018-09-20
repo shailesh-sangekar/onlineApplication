@@ -13,6 +13,8 @@ import { UserlistComponent } from './user-action/user-list/user-list.component';
 import { UserActionComponent } from './user-action/user-action/user-action.component';
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import { OutsidenewsDetailsComponent } from './outsidenews-details/outsidenews-details.component';
+import { JobOffersComponent } from './job-offers/job-offers.component';
+import { TrainingComponent } from './training-list/training-list.component';
 import { SearchComponent } from './search/search.component';
 
 import { AgmCoreModule } from '@agm/core';
@@ -28,6 +30,8 @@ import { SlickModule } from 'ngx-slick';
     UserActionComponent,
     NewsDetailsComponent,
     OutsidenewsDetailsComponent,
+    JobOffersComponent,
+    TrainingComponent,
     SearchComponent
   ],
   imports: [

@@ -232,4 +232,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   onOutsideNewsClick(news: any) {
     this._router.navigate(['/outsidenews-details', news.FileName]);
   }
+  onJobOfferClick() {
+    this._router.navigate(['/job-offer']);
+  }
+  onTrainingClick() {
+    this._router.navigate(['/training-list']);
+  }
 }

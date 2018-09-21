@@ -2,7 +2,7 @@
     <div class="cont1580">
         <div class="cnWrapper">
             <div class="cnleft" data-aos="fade-right">
-                <div class="Text" data-aos="fade-left">Job<strong> Offers</strong></div>
+                <div class="Text" data-aos="fade-left">Job<strong> Details</strong></div>
             </div>
         </div>
     </div>
@@ -25,18 +25,18 @@
     <div class="section section-training bg-white ">
         <div class="cont1580">
             <div class="cnWrapper cf">
-                <div class="block-training" *ngFor="let offer of jobOffersList">
+                <div class="block-training">
                     <div class="cnDesc">
-                        <div class="head-title">{{offer.Company?offer.Company.substring(0,50):'N/A'}}</div>
-                        <div class="name">{{offer.Title?offer.Title.length>75?offer.Title.substring(0,75):offer.Title:'N/A'}}</div>
+                        <div class="head-title">{{jobDetails.Company?jobDetails.Company:'N/A'}}</div>
+                        <div class="name">{{jobDetails.Title?jobDetails.Title:'N/A'}}</div>
                         <div class="date"> <span class="fa fa-calendar"></span>
-                            Valid till {{offer.ExpiryDate | date:'longDate'}}
+                            Valid till {{jobDetails.ExpiryDate | date:'longDate'}}
                         </div>
-                        <div class="text">{{offer.JobDescription?offer.JobDescription.length>255?offer.JobDescription.substring(0,255):offer.JobDescription:'N/A'}}</div>
-                        <div class="desc">{{offer.Note?offer.Note.length>75?offer.Note.substring(0,75):offer.Note:'N/A'}}</div>
-                        <div class="more"><a [routerLink]="['/job-details', offer.ID]"  style="color:#59c2cc"><span class="icn"></span>Full
-                                job
-                                description</a></div>
+                        <div class="text">{{jobDetails.JobDescription?jobDetails.JobDescription:'N/A'}}</div>
+                        <div class="desc">&nbsp;{{jobDetails.Note?jobDetails.Note:'N/A'}}</div>
+                        <div class="more" *ngFor="let attachment of jobDetails.AttachmentFiles.results">
+                            <a href="attachment.ServerRelativeUrl" style="color:#59c2cc"><span class="icn"></span>{{attachment.Name}}</a>
+                        </div>
                     </div>
                 </div>
             </div>

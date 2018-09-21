@@ -391,9 +391,9 @@ export class SpService {
         });
     }
     // READ single item - SharePoint list name, and item ID number
-    readItem(listName: string, id: string): Promise<any> {
+    readItem(listName: string, id: string, options?: any): Promise<any> {
         let url = this.apiUrl.replace('{0}', listName) + '(' + id + ')';
-        url = this.readBuilder(url, null);
+        url = this.readBuilder(url, options);
         return this.http.get(url, this.options).toPromise().then(function (resp: Response) {
             return resp.json();
         });

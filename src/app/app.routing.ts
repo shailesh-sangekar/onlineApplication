@@ -13,6 +13,7 @@ import { SearchComponent } from './search/search.component';
 import { NewsListComponent } from './news-list/news-list.component';
 import { SpecialOfferComponent } from './special-offer/special-offer.component';
 import { DocumentListComponent } from './document-list/document-list.component';
+import { JobDetailsComponent } from './job-offers/job-details/job-details.component';
 
 const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
@@ -20,12 +21,13 @@ const routes: Routes = [
     { path: 'user-action/:id', component: UserActionComponent },
     { path: 'news-details/:id', component: NewsDetailsComponent },
     { path: 'outsidenews-details/:id', component: OutsidenewsDetailsComponent },
-    { path: 'job-offer', component: JobOffersComponent },
     { path: 'training-list', component: TrainingComponent },
     { path: 'search/:id', component: SearchComponent },
     { path: 'newslist', component: NewsListComponent },
     { path: 'special-offer', component: SpecialOfferComponent },
     { path: 'document-list', component: DocumentListComponent },
+    { path: 'job-offer', component: JobOffersComponent },
+    { path: 'job-details/:id', component: JobDetailsComponent },
     // {
     //     path: 'contact-list', component: ContactListComponent,
     //     children: [

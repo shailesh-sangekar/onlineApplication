@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { SpService } from '../../shared/services/spcommon.service';
 import { Config } from '../../shared/config/config';
 
@@ -12,6 +12,7 @@ import { Config } from '../../shared/config/config';
 export class JobOffersComponent implements OnInit {
     listName = 'JobOffersList';
     jobOffersList: Array<any>;
+
     constructor(private _spService: SpService, private _router: Router) {
         this._spService.baseUrl = Config.getRootURL();
     }
@@ -20,8 +21,8 @@ export class JobOffersComponent implements OnInit {
         this.jobOffersList = new Array<any>();
         this.getJobOffers();
     }
-    onDetails() {
-        this._router.navigate(['/user-list/Trasport-Pending']);
+    onDetails(offer: any) {
+        this._router.navigate(['/job-details', offer.ID]);
     }
     getJobOffers() {
         const svc = this;

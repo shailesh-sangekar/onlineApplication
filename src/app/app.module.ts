@@ -13,6 +13,7 @@ import { UserlistComponent } from './user-action/user-list/user-list.component';
 import { UserActionComponent } from './user-action/user-action/user-action.component';
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import { OutsidenewsDetailsComponent } from './outsidenews-details/outsidenews-details.component';
+import { BannernewsDetailsComponent } from './bannernews-details/bannernews-details.component';
 import { JobOffersComponent } from './job-offers/job-offers.component';
 import { TrainingComponent } from './training-list/training-list.component';
 import { SearchComponent } from './search/search.component';
@@ -35,6 +36,7 @@ import { SlickModule } from 'ngx-slick';
     UserActionComponent,
     NewsDetailsComponent,
     OutsidenewsDetailsComponent,
+    BannernewsDetailsComponent,
     SearchComponent,
     NewsListComponent,
     SpecialOfferComponent,

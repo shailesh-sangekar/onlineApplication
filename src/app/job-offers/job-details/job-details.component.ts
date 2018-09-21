@@ -16,8 +16,9 @@ export class JobDetailsComponent implements OnInit {
     jobDetails: any;
     params: string;
     options: RestOptions;
+    url: any = '';
     constructor(private _spService: SpService, private _router: Router, private route: ActivatedRoute) {
-        this._spService.baseUrl = Config.getRootURL();
+        this._spService.baseUrl = this.url = Config.getRootURL();
     }
 
     ngOnInit() {

@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.getMainNews();
     this.getBannerNews();
     this.getAnnouncement();
-    this.getBirthDate();
+    // this.getBirthDate();
     // this.getAuthToken();
     // this._spService.read('ServiceConfig').then(function (response) {
     //   console.log(response.d.results);
@@ -243,5 +243,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
   onTrainingClick() {
     this._router.navigate(['/training-list']);
+  }
+  onBannerNewsDetails(news: any) {
+    this._router.navigate(['/bannernews-details', news.FileName]);
   }
 }

@@ -138,3 +138,23 @@
 .document-block .cnleft{display: inline-block;vertical-align: middle;width: 49%;line-height:20px}
 .document-block .cnright{display: inline-block;vertical-align: middle;width: 50%;text-align: right;font-weight: 700;font-size: 16px;color: #59c2cc}
 .document-block .cnright .icn{width: 25px;height: 25px;background: url('../img/icn-logo/dw.png') center center no-repeat;background-size: 25px;display: inline-block;vertical-align: middle;margin-right: 15px;}
+
+
+/* section-training */
+.block-training{width: 32.333%;padding: 2% 2%;display: inline-block;vertical-align: top;}
+.block-training .cnDesc{float: left;width: 100%;}
+.block-training .name{font-family: 'Roboto Slab', serif;font-weight: 700;font-size: 20px;color:#092c6d;margin-bottom: 15px}
+.block-training .date{font-size: 16px;color: #888888;margin-bottom: 10px}
+.block-training .date span{margin-right: 10px;width: 15px}
+.block-training .location{font-size: 16px;color: #888888;margin-bottom: 10px}
+.block-training .location span{margin-right: 10px;width: 15px}
+.block-training .text{font-weight: 300;font-size: 16px;color: #000000;margin: 20px 0px}
+.block-training .more {font-weight: 500;font-size: 16px;color: #59c2cc}
+.block-training .more .icn{width: 25px;height: 25px;background: url('../img/icn-logo/dw.png') center center no-repeat;background-size: 25px;display: inline-block;vertical-align: middle;margin-right: 15px;}
+
+
+/* job-offers */
+.job-offers{padding: 2% 0%;}
+.job-offers .intro{font-weight: 300;font-size: 30px;color:#5b5b5b;line-height: 34px;}
+.section-training .head-title{font-weight: 700;font-size: 18px;color:#59c2cc;margin-bottom: 7px;}
+.section-training .desc{font-weight: 500;font-size: 16px;color: #000000;margin-bottom: 12px;}

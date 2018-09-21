@@ -21,9 +21,9 @@
                             Valid till {{item.ExpiryDate | date:'longDate'}}</div>
                         <div class="location"><span class="fa fa-map-marker"></span>{{item.Location?item.Location.substring(0,150):'N/A'}}</div>
                         <div class="text">{{item.TrainingDescription?item.TrainingDescription.substring(0,255):'N/A'}}</div>
-                        <div class="more">
+                        <div class="more" *ngIf="item.AttachmentFiles && item.AttachmentFiles.results.length > 0">
                             <!-- <a href="item.TrainingDescription" (click)="getAttachment(item)"><span class="icn"></span>Download pdf</a> -->
-                            <a (click)="getAttachment(item)"><span class="icn"></span>Download1 pdf</a></div>
+                            <a href="https://alphaportal.sharepoint.com{{item.AttachmentFiles.results[0].ServerRelativeUrl}}" target="_blank"><span class="icn"></span>Download1 pdf</a></div>
                     </div>
                 </div>
             </div>

@@ -20,6 +20,7 @@ import { NewsListComponent } from './news-list/news-list.component';
 import { SpecialOfferComponent } from './special-offer/special-offer.component';
 import { DocumentListComponent } from './document-list/document-list.component';
 import { JobDetailsComponent } from './job-offers/job-details/job-details.component';
+import { DocumentSearchPipe } from '../shared/pipes/docsearch-pipe';
 
 import { AgmCoreModule } from '@agm/core';
 import { SlickModule } from 'ngx-slick';
@@ -41,7 +42,8 @@ import { SlickModule } from 'ngx-slick';
     JobOffersComponent,
     JobDetailsComponent,
     TrainingComponent,
-    SearchComponent
+    SearchComponent,
+    DocumentSearchPipe
   ],
   imports: [
     BrowserModule,

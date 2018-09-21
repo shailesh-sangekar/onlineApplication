@@ -22,16 +22,16 @@
                         <option value="Financial Documents">Financial Documents</option>
                     </select>
                     <form class="search-container">
-                        <input type="text" id="search-bar" placeholder="Enter search term here...">
-                        <a href="#"><span class="fa fa-search"></span></a>
+                        <input type="text" id="search-bar" placeholder="Enter search term here..." [(ngModel)] = "searchString" name="search">
+                        <a><span class="fa fa-search"></span></a>
                     </form>
                 </div>
                 <div class="document-result">
                     <div class="title">LATEST UPDATED DOCUMENTS</div>
 
-                    <div class="document-block" *ngIf="NoticeOfMeeting.length > 0 && showNotice">
-                        <div class="sub-title">Notice of Meeting</div>
-                        <ul *ngFor="let doc of NoticeOfMeeting">
+                    <div class="document-block" *ngFor="let cat of finalList">
+                        <div class="sub-title">{{cat.category}}</div>
+                        <ul *ngFor="let doc of cat.list | DocSearchPipe: searchString">
                             <li>
                                 <div class="cnleft">
                                     <div class="name">{{doc.Title}}</div>
@@ -44,7 +44,7 @@
                         </ul>
                     </div>
 
-                    <div class="document-block" *ngIf="proxyList.length > 0 && showProxy">
+                    <!-- <div class="document-block" *ngIf="proxyList.length > 0 && showProxy">
                         <div class="sub-title">Proxy</div>
                         <ul *ngFor="let doc of proxyList">
                             <li>
@@ -72,7 +72,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

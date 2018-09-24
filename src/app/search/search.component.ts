@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.route.params.forEach((params: Params) => {
             this.params = params['id'];
-            this.pdfUrl = this.domSanitizer.bypassSecurityTrustResourceUrl('https://alphaportal.sharepoint.com/' + this.params);
+            this.pdfUrl = this.domSanitizer.bypassSecurityTrustResourceUrl('https://ibltogether.sharepoint.com/' + this.params);
 
         });
     }

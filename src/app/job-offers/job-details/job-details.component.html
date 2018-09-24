@@ -35,7 +35,7 @@
                         <div class="text">{{jobDetails.JobDescription?jobDetails.JobDescription:'N/A'}}</div>
                         <div class="desc">&nbsp;{{jobDetails.Note?jobDetails.Note:'N/A'}}</div>
                         <div class="more" *ngIf="jobDetails.AttachmentFiles && jobDetails.AttachmentFiles.results.length > 0">
-                            <a *ngFor="let attachment of jobDetails.AttachmentFiles.results" href="https://alphaportal.sharepoint.com{{attachment.ServerRelativeUrl}}" target="_blank" style="color:#59c2cc"><span class="icn"></span>{{attachment.Name}}</a>
+                            <a *ngFor="let attachment of jobDetails.AttachmentFiles.results" href="https://ibltogether.sharepoint.com{{attachment.ServerRelativeUrl}}" target="_blank" style="color:#59c2cc"><span class="icn"></span>{{attachment.Name}}</a>
                         </div>
                     </div>
                 </div>

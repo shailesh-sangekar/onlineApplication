@@ -1,8 +1,8 @@
 export class Config {
 
     public static getRootURL(): string {
-         // const LogoURL = 'https://ibltogether.sharepoint.com';
-          const LogoURL = 'https://alphaportal.sharepoint.com/sites/ibl';
+          const LogoURL = 'https://ibltogether.sharepoint.com';
+         // const LogoURL = 'https://alphaportal.sharepoint.com/sites/ibl';
         return LogoURL;
     }
     public static GetURL(apiURL: string): string {

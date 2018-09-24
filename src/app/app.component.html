@@ -77,8 +77,8 @@
                     </div>
                     <div class="nav">
                         <ul>
-                            <li><a href="">Home</a></li>
-                            <li><a href="">News</a></li>
+                            <li><a (click)="onNavbarClick('dashboard')">Home</a></li>
+                            <li><a (click)="onNavbarClick('newslist')">News</a></li>
                             <li><a href="">HC Corner</a></li>
                         </ul>
                     </div>
@@ -128,7 +128,7 @@
                     </div>
                 </div>
 
-                <div class="search">
+                <div class="search" (click)="onSearch()">
                     <span class="fa fa-search"></span>
                 </div>
             </div>

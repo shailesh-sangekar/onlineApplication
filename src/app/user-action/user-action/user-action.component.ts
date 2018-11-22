@@ -83,12 +83,14 @@ export class UserActionComponent implements OnInit {
             if (response !== null) {
                 console.log('Data Is Updated');
             }
+            alert('Application submitted Successfully!');
+            ctl.onBack();
         });
     }
     onUpdate(status: string) {
         // const tempData = '{\'Status\': \'' + status + '\',\'Title\': \'' + this.comments + '\'}';
         this.updates.Status = status;
-        this.update(this.serviceList, this.requestId, { 'Title': 'Testing only title field' });
+        this.update(this.serviceList, this.requestId, this.updates);
     }
 
 }

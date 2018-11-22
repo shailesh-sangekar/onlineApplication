@@ -16,6 +16,7 @@ import { ChartModule } from 'primeng/chart';
 import { TooltipModule } from 'primeng/tooltip';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { UserlistTestComponent } from './userlist-test/userlist-test.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MessageModule } from 'primeng/message';
     DashboardComponent,
     ServiceDashboardComponent,
     UserlistComponent,
-    UserActionComponent
+    UserActionComponent,
+    UserlistTestComponent
   ],
   imports: [
     BrowserModule,
